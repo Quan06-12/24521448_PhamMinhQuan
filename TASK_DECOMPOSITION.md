@@ -57,3 +57,37 @@
 - Validate required fields on the client side.
 - Provide clear validation feedback.
 - Handle form submission without reloading the page.
+# Exercise 4: Resilient Component Architecture
+
+## Component State Machine
+
+The project component supports four states:
+
+- Loading: Display a skeleton placeholder while data is loading.
+- Live: Display project data normally.
+- Empty: Display a message when no project data is available.
+- Error: Display an accessible error message with a retry action.
+
+State flow:
+
+Loading -> Live
+Loading -> Empty
+Loading -> Error
+Error -> Loading
+## T-04A: Loading Skeleton
+
+- Create a pure CSS shimmer skeleton.
+- Display placeholder content while project data is loading.
+- Do not require JavaScript animation.
+
+## T-04B: Live Data State
+
+- Render project metadata.
+- Display project badges.
+- Display projects using a responsive CSS Grid.
+
+## T-04C: Empty and Error States
+
+- Display a clear empty-state message.
+- Display an accessible error message.
+- Provide a Retry button for the error state.
