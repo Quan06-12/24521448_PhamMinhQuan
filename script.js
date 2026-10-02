@@ -35,3 +35,19 @@ themeButton.addEventListener("click", function () {
     }
 
 });
+const contactForm = document.getElementById("contact-form");
+const formStatus = document.getElementById("form-status");
+
+contactForm.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    if (contactForm.checkValidity()) {
+        formStatus.textContent = "Message submitted successfully.";
+        contactForm.reset();
+    } else {
+        formStatus.textContent = "Please complete all required fields.";
+        contactForm.reportValidity();
+    }
+
+});

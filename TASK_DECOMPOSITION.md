@@ -50,3 +50,10 @@
 - Add project title, technology badge, description, and source link.
 - Use `data-category` to classify projects.
 - Keep the cards responsive using CSS Grid.
+## T-03E: Contact Form
+
+- Create an accessible contact form.
+- Use labels connected to each input.
+- Validate required fields on the client side.
+- Provide clear validation feedback.
+- Handle form submission without reloading the page.

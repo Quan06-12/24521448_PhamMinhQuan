@@ -153,6 +153,32 @@ img {
 .card-footer {
     margin-top: var(--space-small);
 }
+.contact {
+    display: grid;
+    gap: var(--space-medium);
+}
+
+form {
+    display: grid;
+    gap: var(--space-medium);
+}
+
+input {
+    padding: var(--space-small);
+    font: inherit;
+}
+
+textarea {
+    padding: var(--space-small);
+    font: inherit;
+    min-height: 120px;
+}
+
+button {
+    width: fit-content;
+    padding: var(--space-small) var(--space-medium);
+    font: inherit;
+}
 @media (max-width: 600px) {
 
     body {
