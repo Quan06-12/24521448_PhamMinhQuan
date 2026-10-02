@@ -20,3 +20,10 @@
 - Create a desktop two-column layout.
 - Adapt the layout for mobile screens.
 - Ensure there is no horizontal scrolling at 375px width.
+## T-02C: Theme Engine
+
+- Implement Dark and Light theme switching.
+- Store theme state using localStorage key `theme`.
+- Restore the selected theme after page reload.
+- Support keyboard interaction for the theme button.
+- Ensure zero console errors during theme toggling.
