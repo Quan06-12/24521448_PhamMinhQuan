@@ -27,3 +27,8 @@
 - Restore the selected theme after page reload.
 - Support keyboard interaction for the theme button.
 - Ensure zero console errors during theme toggling.
+## T-03A: Hero Section
+
+- Create a semantic hero section.
+- Add a high-resolution portrait with explicit width and height.
+- Add a headline and short personal pitch.
