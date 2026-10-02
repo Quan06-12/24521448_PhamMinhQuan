@@ -105,7 +105,24 @@ img {
     height: auto;
     border-radius: var(--radius-medium);
 }
+.skills {
+    display: grid;
+    gap: var(--space-medium);
+}
 
+.skill-group {
+    padding: var(--space-medium);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+}
+
+.skill-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-small);
+    padding-left: var(--space-large);
+}
 @media (max-width: 600px) {
 
     body {
@@ -127,4 +144,7 @@ img {
     .hero {
         grid-template-columns: 1fr;
     }
+    .skill-list {
+    grid-template-columns: 1fr;
+}
 }

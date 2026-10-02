@@ -32,3 +32,15 @@
 - Create a semantic hero section.
 - Add a high-resolution portrait with explicit width and height.
 - Add a headline and short personal pitch.
+## T-03B: Accessible Theme Switcher
+
+- Add `aria-pressed` state to the theme button.
+- Change the icon and label based on the active theme.
+- Preserve theme state using `localStorage`.
+- Support keyboard interaction.
+- Ensure zero console errors.
+## T-03C: Skills Matrix
+
+- Create categorized skill groups.
+- Display skills using CSS Grid.
+- Keep the layout responsive on mobile devices.
