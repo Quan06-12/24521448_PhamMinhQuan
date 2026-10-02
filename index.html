@@ -88,11 +88,12 @@
             <h2>About</h2>
         </section>
 
-     <section id="projects" class="projects" data-state="live">
+  <section id="projects" class="projects" data-state="live">
 
     <h2>Projects</h2>
 
-    <section class="project-list">
+    <!-- LIVE STATE -->
+    <section id="project-list" class="project-list">
 
         <article class="project-card" data-category="frontend">
 
@@ -141,6 +142,42 @@
 
         </article>
 
+    </section>
+
+    <!-- EMPTY STATE -->
+    <section
+        id="project-empty"
+        class="empty-state"
+        role="status"
+        hidden
+    >
+        <h3>No Projects Found</h3>
+
+        <p>
+            There are currently no projects available.
+        </p>
+    </section>
+
+    <!-- ERROR STATE -->
+    <section
+        id="project-error"
+        class="error-state"
+        role="alert"
+        hidden
+    >
+        <h3>Unable to Load Projects</h3>
+
+        <p>
+            Something went wrong while loading the project data.
+        </p>
+
+        <button
+            id="retry-projects"
+            class="retry-button"
+            type="button"
+        >
+            Retry
+        </button>
     </section>
 
 </section>

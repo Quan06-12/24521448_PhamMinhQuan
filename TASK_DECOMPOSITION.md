@@ -88,6 +88,11 @@ Error -> Loading
 
 ## T-04C: Empty and Error States
 
-- Display a clear empty-state message.
+### Empty State
+- Display a clear message when no project data is available.
+- Keep the empty state accessible.
+
+### Error State
 - Display an accessible error message.
-- Provide a Retry button for the error state.
+- Provide a keyboard-accessible Retry button.
+- Allow the component to recover from the error state.

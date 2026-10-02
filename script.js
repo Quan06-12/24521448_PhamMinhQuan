@@ -51,3 +51,38 @@ contactForm.addEventListener("submit", function (event) {
     }
 
 });
+const projectList = document.getElementById("project-list");
+const projectEmpty = document.getElementById("project-empty");
+const projectError = document.getElementById("project-error");
+const retryProjects = document.getElementById("retry-projects");
+
+let projectState = "live";
+
+function renderProjectState() {
+
+    projectList.hidden = true;
+    projectEmpty.hidden = true;
+    projectError.hidden = true;
+
+    if (projectState === "live") {
+        projectList.hidden = false;
+    }
+
+    if (projectState === "empty") {
+        projectEmpty.hidden = false;
+    }
+
+    if (projectState === "error") {
+        projectError.hidden = false;
+    }
+}
+
+retryProjects.addEventListener("click", function () {
+
+    projectState = "live";
+
+    renderProjectState();
+
+});
+
+renderProjectState();
