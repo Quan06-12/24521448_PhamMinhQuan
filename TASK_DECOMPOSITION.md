@@ -44,3 +44,9 @@
 - Create categorized skill groups.
 - Display skills using CSS Grid.
 - Keep the layout responsive on mobile devices.
+## T-03D: Project Cards
+
+- Create reusable project cards using semantic `article` elements.
+- Add project title, technology badge, description, and source link.
+- Use `data-category` to classify projects.
+- Keep the cards responsive using CSS Grid.

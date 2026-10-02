@@ -123,6 +123,36 @@ img {
     gap: var(--space-small);
     padding-left: var(--space-large);
 }
+.projects {
+    display: grid;
+    gap: var(--space-medium);
+}
+
+.project-card {
+    display: grid;
+    gap: var(--space-medium);
+
+    padding: var(--space-medium);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+}
+
+.card-header {
+    display: grid;
+    gap: var(--space-small);
+}
+
+.badge {
+    width: fit-content;
+    padding: var(--space-small);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+}
+
+.card-footer {
+    margin-top: var(--space-small);
+}
 @media (max-width: 600px) {
 
     body {
