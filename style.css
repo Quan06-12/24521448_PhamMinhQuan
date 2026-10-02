@@ -14,6 +14,11 @@
     --radius-medium: 12px;
 }
 
+
+/* =========================
+   LIGHT THEME
+   ========================= */
+
 .light-theme {
     --color-background: #f8fafc;
     --color-surface: #e2e8f0;
@@ -21,23 +26,39 @@
     --color-link: #0369a1;
     --color-border: #94a3b8;
 }
+
+
+/* =========================
+   RESET
+   ========================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 [hidden] {
     display: none !important;
 }
+
+
+/* =========================
+   BODY
+   ========================= */
+
 body {
     background-color: var(--color-background);
     color: var(--color-text);
     font-family: var(--font-main);
     line-height: 1.6;
+
     padding: var(--space-large);
 
     display: grid;
+
     grid-template-columns: 220px minmax(0, 1fr);
+
     grid-template-areas:
         "skip skip"
         "header header"
@@ -45,6 +66,11 @@ body {
 
     gap: var(--space-medium);
 }
+
+
+/* =========================
+   BASIC ELEMENTS
+   ========================= */
 
 a {
     color: var(--color-link);
@@ -54,156 +80,379 @@ ul {
     padding-left: var(--space-large);
 }
 
-.site-header {
-    grid-area: header;
-    padding: var(--space-medium);
-    background-color: var(--color-surface);
-    border-radius: var(--radius-medium);
-}
-
-nav {
-    grid-area: nav;
-    padding: var(--space-medium);
-    background-color: var(--color-surface);
-    border-radius: var(--radius-medium);
-}
-
-main {
-    grid-area: main;
-    display: grid;
-    gap: var(--space-medium);
-    min-width: 0;
-}
-
-section {
-    padding: var(--space-medium);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-medium);
-}
-
-.skip-link {
-    grid-area: skip;
-}
-
-.hero {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: var(--space-large);
-    align-items: center;
-
-    padding: var(--space-large);
-    background-color: var(--color-surface);
-    border-radius: var(--radius-medium);
-}
-
-.hero-content {
-    display: grid;
-    gap: var(--space-medium);
-}
-
 img {
     max-width: 100%;
     height: auto;
     border-radius: var(--radius-medium);
 }
+
+
+/* =========================
+   SKIP LINK
+   ========================= */
+
+.skip-link {
+    grid-area: skip;
+}
+
+
+/* =========================
+   SITE HEADER
+   ========================= */
+
+.site-header {
+    grid-area: header;
+
+    padding: var(--space-medium);
+
+    background-color: var(--color-surface);
+
+    border-radius: var(--radius-medium);
+}
+
+
+/* =========================
+   NAVIGATION
+   ========================= */
+
+nav {
+    grid-area: nav;
+
+    padding: var(--space-medium);
+
+    background-color: var(--color-surface);
+
+    border-radius: var(--radius-medium);
+}
+
+
+/* =========================
+   MAIN
+   ========================= */
+
+main {
+    grid-area: main;
+
+    display: grid;
+
+    gap: var(--space-medium);
+
+    min-width: 0;
+}
+
+
+/* =========================
+   HERO
+   ========================= */
+
+.hero {
+    display: grid;
+
+    grid-template-columns: 320px minmax(0, 1fr);
+
+    gap: var(--space-large);
+
+    align-items: center;
+
+    padding: var(--space-large);
+
+    background-color: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-medium);
+
+    min-width: 0;
+}
+
+.hero-content {
+    display: grid;
+
+    gap: var(--space-medium);
+
+    min-width: 0;
+}
+
+
+/* =========================
+   SKILLS
+   ========================= */
+
 .skills {
     display: grid;
+
     gap: var(--space-medium);
+
+    padding: var(--space-medium);
+
+    background-color: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-medium);
 }
 
 .skill-group {
+    display: grid;
+
+    gap: var(--space-small);
+
     padding: var(--space-medium);
-    background-color: var(--color-surface);
+
     border: 1px solid var(--color-border);
+
     border-radius: var(--radius-medium);
 }
 
 .skill-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
     gap: var(--space-small);
+
     padding-left: var(--space-large);
 }
+
+
+/* =========================
+   ABOUT
+   ========================= */
+
+#about {
+    padding: var(--space-medium);
+
+    background-color: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-medium);
+}
+
+
+/* =========================
+   PROJECTS
+   ========================= */
+
 .projects {
     display: grid;
+
     gap: var(--space-medium);
+
+    padding: var(--space-medium);
+
+    background-color: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-medium);
+
+    min-width: 0;
+}
+
+.project-list {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: var(--space-medium);
+
+    min-width: 0;
 }
 
 .project-card {
     display: grid;
+
     gap: var(--space-medium);
 
     padding: var(--space-medium);
-    background-color: var(--color-surface);
+
     border: 1px solid var(--color-border);
+
     border-radius: var(--radius-medium);
+
+    min-width: 0;
 }
 
 .card-header {
     display: grid;
+
+    gap: var(--space-small);
+}
+
+.project-meta {
+    display: flex;
+
+    flex-wrap: wrap;
+
     gap: var(--space-small);
 }
 
 .badge {
     width: fit-content;
+
     padding: var(--space-small);
+
     border: 1px solid var(--color-border);
+
     border-radius: var(--radius-medium);
 }
 
 .card-footer {
     margin-top: var(--space-small);
 }
-.contact {
-    display: grid;
-    gap: var(--space-medium);
-}
 
-form {
-    display: grid;
-    gap: var(--space-medium);
-}
 
-input {
-    padding: var(--space-small);
-    font: inherit;
-}
+/* =========================
+   EMPTY STATE
+   ========================= */
 
-textarea {
-    padding: var(--space-small);
-    font: inherit;
-    min-height: 120px;
-}
-
-button {
-    width: fit-content;
-    padding: var(--space-small) var(--space-medium);
-    font: inherit;
-}
 .empty-state {
+    display: grid;
+
+    gap: var(--space-medium);
+
     padding: var(--space-large);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-medium);
+
     text-align: center;
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-medium);
 }
+
+
+/* =========================
+   ERROR STATE
+   ========================= */
 
 .error-state {
+    display: grid;
+
+    gap: var(--space-medium);
+
     padding: var(--space-large);
-    background-color: var(--color-surface);
+
     border: 1px solid var(--color-border);
+
     border-radius: var(--radius-medium);
 }
 
 .retry-button {
+    width: fit-content;
+
     padding: var(--space-small) var(--space-medium);
+
     font: inherit;
 }
-@media (max-width: 600px) {
-.project-list {
-    grid-template-columns: 1fr;
+
+
+/* =========================
+   LOADING SKELETON
+   ========================= */
+
+.skeleton-item {
+    height: 180px;
+
+    padding: var(--space-medium);
+
+    background-color: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-medium);
 }
+
+.skeleton-line {
+    height: 20px;
+
+    margin-bottom: var(--space-medium);
+
+    background: linear-gradient(
+        90deg,
+        var(--color-surface) 25%,
+        var(--color-border) 50%,
+        var(--color-surface) 75%
+    );
+
+    background-size: 200% 100%;
+
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+
+/* =========================
+   CONTACT
+   ========================= */
+
+.contact {
+    display: grid;
+
+    gap: var(--space-medium);
+
+    padding: var(--space-medium);
+
+    background-color: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-medium);
+}
+
+form {
+    display: grid;
+
+    gap: var(--space-medium);
+}
+
+input {
+    width: 100%;
+
+    padding: var(--space-small);
+
+    font: inherit;
+}
+
+textarea {
+    width: 100%;
+
+    min-height: 120px;
+
+    padding: var(--space-small);
+
+    font: inherit;
+
+    resize: vertical;
+}
+
+button {
+    width: fit-content;
+
+    padding: var(--space-small) var(--space-medium);
+
+    font: inherit;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 600px) {
+
     body {
         grid-template-columns: 1fr;
 
@@ -222,50 +471,51 @@ button {
 
     .hero {
         grid-template-columns: 1fr;
+
+        padding: var(--space-medium);
     }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+    }
+
+    .skills {
+        padding: var(--space-medium);
+    }
+
+    .skill-group {
+        padding: var(--space-small);
+    }
+
     .skill-list {
-    grid-template-columns: 1fr;
-}
-}
-.skeleton-item {
-    height: 180px;
-    padding: var(--space-medium);
-    background-color: var(--color-surface);
-    border-radius: var(--radius-medium);
-}
-
-.skeleton-line {
-    height: 20px;
-    margin-bottom: var(--space-medium);
-
-    background: linear-gradient(
-        90deg,
-        var(--color-surface) 25%,
-        var(--color-border) 50%,
-        var(--color-surface) 75%
-    );
-
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
-}
-
-@keyframes shimmer {
-    0% {
-        background-position: 200% 0;
+        grid-template-columns: 1fr;
     }
 
-    100% {
-        background-position: -200% 0;
+    .projects {
+        padding: var(--space-medium);
     }
-}
-.project-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-medium);
-}
 
-.project-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-small);
+    .project-list {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        padding: var(--space-medium);
+    }
+
+    .project-meta {
+        flex-wrap: wrap;
+    }
+
+    .empty-state {
+        padding: var(--space-medium);
+    }
+
+    .error-state {
+        padding: var(--space-medium);
+    }
+
+    .contact {
+        padding: var(--space-medium);
+    }
 }
