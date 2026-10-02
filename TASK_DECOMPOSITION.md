@@ -14,3 +14,9 @@
 - Define colors using CSS variables.
 - Add a basic CSS reset.
 - Do not use hardcoded colors inside CSS rules.
+## T-02B: Responsive Grid
+
+- Build the page layout using CSS Grid.
+- Create a desktop two-column layout.
+- Adapt the layout for mobile screens.
+- Ensure there is no horizontal scrolling at 375px width.

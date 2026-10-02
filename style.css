@@ -26,6 +26,15 @@ body {
     font-family: var(--font-main);
     line-height: 1.6;
     padding: var(--space-large);
+
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    grid-template-areas:
+        "skip skip"
+        "header header"
+        "nav main";
+
+    gap: var(--space-medium);
 }
 
 a {
@@ -34,4 +43,53 @@ a {
 
 ul {
     padding-left: var(--space-large);
+}
+header {
+    grid-area: header;
+    padding: var(--space-medium);
+    background-color: var(--color-surface);
+    border-radius: var(--radius-medium);
+}
+
+nav {
+    grid-area: nav;
+    padding: var(--space-medium);
+    background-color: var(--color-surface);
+    border-radius: var(--radius-medium);
+}
+
+main {
+    grid-area: main;
+    display: grid;
+    gap: var(--space-medium);
+    min-width: 0;
+}
+
+section {
+    padding: var(--space-medium);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+}
+
+.skip-link {
+    grid-area: skip;
+}
+@media (max-width: 600px) {
+
+    body {
+        grid-template-columns: 1fr;
+
+        grid-template-areas:
+            "skip"
+            "header"
+            "nav"
+            "main";
+
+        padding: var(--space-medium);
+    }
+
+    main {
+        grid-template-columns: 1fr;
+    }
 }
