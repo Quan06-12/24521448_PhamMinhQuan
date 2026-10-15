@@ -77,3 +77,42 @@ CSS, and JavaScript.
 - Test multiple simultaneous sounds.
 - Test recording and replay.
 - Verify key binding can be modified.
+# Homework 3 - Resilient Event Hub
+
+## Project Goal
+Build a responsive event landing page with a
+drift-free countdown, resilient registration form,
+and secure input handling.
+
+## Task Breakdown
+
+### T-00: Project Planning
+- Define architecture and project contracts.
+- Define independent implementation tasks.
+- Document expected component states.
+
+### T-01: Semantic HTML
+- Create the event landing page.
+- Add event information and countdown display.
+- Create an accessible registration form.
+- Define IDs for JavaScript integration.
+
+### T-02: Countdown Engine
+- Use UTC ISO 8601 timestamps.
+- Calculate remaining time with Date.now().
+- Prevent cumulative timer drift.
+- Handle expired events.
+
+### T-03: Form State Machine
+- Define idle, submitting, success and error.
+- Implement state transitions.
+- Display accessible feedback messages.
+
+### T-04: Security
+- Prevent duplicate submissions.
+- Validate registration inputs.
+- Avoid unsafe innerHTML usage.
+- Handle asynchronous failures.
+
+### T-05: Testing and AI Audit
+- Test countdown accuracy
