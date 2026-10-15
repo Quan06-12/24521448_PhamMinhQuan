@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>My Developer Portfolio</title>
+    <meta name="description" content="Personal developer portfolio showcasing skills and projects in HTML, CSS, JavaScript, and Python.">
+    <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'none';
+             script-src 'self';
+             style-src 'self';
+             img-src 'self' data:;
+             font-src 'self';
+             connect-src 'self';
+             base-uri 'none';
+             form-action 'self';
+             object-src 'none'">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">
+    Skip to main content
+</a>
+
+   <header>
+    <h1>My Developer Portfolio</h1>
+    <p>Web Development Student</p>
+
+    <button
+        id="theme-btn"
+        type="button"
+        aria-pressed="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-label">Dark Mode</span>
+    </button>
+</header>
+
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello! I am a student learning
+               web application development.</p>
+        </section>
+
+        <section id="skills">
+            <h2>My Skills</h2>
+            <ul>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+                <li>Python</li>
+            </ul>
+        </section>
+
+       <section id="projects">
+    <h2>My Projects</h2>
+
+    <section class="project-grid" aria-label="Project list">
+        <article class="project-card">
+            <h3>Portfolio Website</h3>
+            <p>A personal website created using HTML, CSS, and JavaScript.</p>
+        </article>
+
+        <article class="project-card">
+            <h3>Data Analysis Project</h3>
+            <p>A simple data analysis project using Python.</p>
+        </article>
+    </section>
+</section>
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>Contact information will be added here.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 My Developer Portfolio</p>
+    </footer>
+</body>
+</html>

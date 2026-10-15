@@ -1,0 +1,79 @@
+/* ===== BASIC RESET ===== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* ===== BASIC LAYOUT ===== */
+
+header {
+    margin-bottom: 24px;
+}
+
+main {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 24px;
+}
+
+/* ===== DRUM GRID ===== */
+
+.drum-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 120px), 1fr));
+    gap: 12px;
+}
+
+.drum-pad {
+    min-height: 80px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+/* ===== RECORDER BUTTONS ===== */
+
+#record-btn {
+    padding: 10px;
+}
+
+#stop-btn {
+    padding: 10px;
+}
+
+#replay-btn {
+    padding: 10px;
+}
+/* ===== T-03: DRUM PAD FEEDBACK ===== */
+
+.drum-pad {
+    background-color: #e2e8f0;
+    border: 2px solid #94a3b8;
+    border-radius: 10px;
+    transition: background-color 0.1s, transform 0.1s;
+}
+
+.drum-pad:hover {
+    background-color: #cbd5e1;
+}
+
+.drum-pad:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+}
+
+.drum-pad.active {
+    background-color: #93c5fd;
+    transform: scale(0.96);
+    border-color: #2563eb;
+}

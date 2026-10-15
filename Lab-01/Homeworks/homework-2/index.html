@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Drum Kit Engine</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="icon" href="data:,">
+</head>
+
+<body>
+    <header>
+        <h1>Drum Kit Engine</h1>
+        <p>Play drums using your keyboard or mouse.</p>
+    </header>
+
+    <main id="main-content">
+        <section aria-labelledby="drum-title">
+            <h2 id="drum-title">Drum Pads</h2>
+
+            <section class="drum-grid" aria-label="Drum controls">
+                <button type="button" class="drum-pad"
+                    data-key="a" data-sound="sounds/kick.wav">
+                    A - Kick
+                </button>
+                <button type="button" class="drum-pad"
+                    data-key="s" data-sound="sounds/snare.wav">
+                    S - Snare
+                </button>
+                <button type="button" class="drum-pad"
+                    data-key="d" data-sound="sounds/hihat.wav">
+                    D - Hi-Hat
+                </button>
+                <button type="button" class="drum-pad"
+                    data-key="f" data-sound="sounds/clap.wav">
+                    F - Clap
+                </button>
+                <button type="button" class="drum-pad"
+                    data-key="j" data-sound="sounds/tom.wav">
+                    J - Tom
+                </button>
+                <button type="button" class="drum-pad"
+                    data-key="k" data-sound="sounds/crash.wav">
+                    K - Crash
+                </button>
+                <button type="button" class="drum-pad"
+                    data-key="l" data-sound="sounds/ride.wav">
+                    L - Ride
+                </button>
+            </section>
+        </section>
+
+        <section aria-labelledby="recorder-title">
+            <h2 id="recorder-title">Beat Recorder</h2>
+
+            <button type="button" id="record-btn">Record</button>
+            <button type="button" id="stop-btn">Stop</button>
+            <button type="button" id="replay-btn">Replay</button>
+
+            <p id="recorder-status" role="status">
+                Ready to record
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Drum Kit Engine</p>
+    </footer>
+</body>
+</html>
+  
