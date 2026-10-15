@@ -47,3 +47,33 @@ CSS, and JavaScript.
 - Remove inline event handlers.
 - Audit using Lighthouse.
 - Optimize assets.
+
+## Homework 2 - Drum Kit Engine
+
+### T-01: HTML Data Contract
+- Create semantic HTML structure.
+- Create drum pads using button elements.
+- Define data-key attributes.
+- Define data-sound attributes.
+
+### T-02: Audio Engine
+- Implement polyphonic audio playback.
+- Handle audio loading errors.
+- Keep audio logic independent from UI.
+
+### T-03: Keyboard Events
+- Use keydown and event.key.
+- Prevent repeated key events.
+- Support mouse click.
+
+### T-04: FIFO Beat Recorder
+- Record drum events and timestamps.
+- Preserve event order.
+- Replay recorded beats.
+- Implement stop functionality.
+
+### T-05: Verification
+- Test keyboard and mouse controls.
+- Test multiple simultaneous sounds.
+- Test recording and replay.
+- Verify key binding can be modified.
