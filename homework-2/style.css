@@ -1,0 +1,56 @@
+/* ===== BASIC RESET ===== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* ===== BASIC LAYOUT ===== */
+
+header {
+    margin-bottom: 24px;
+}
+
+main {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 24px;
+}
+
+/* ===== DRUM GRID ===== */
+
+.drum-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 120px), 1fr));
+    gap: 12px;
+}
+
+.drum-pad {
+    min-height: 80px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+/* ===== RECORDER BUTTONS ===== */
+
+#record-btn {
+    padding: 10px;
+}
+
+#stop-btn {
+    padding: 10px;
+}
+
+#replay-btn {
+    padding: 10px;
+}
