@@ -54,3 +54,26 @@ section {
 #replay-btn {
     padding: 10px;
 }
+/* ===== T-03: DRUM PAD FEEDBACK ===== */
+
+.drum-pad {
+    background-color: #e2e8f0;
+    border: 2px solid #94a3b8;
+    border-radius: 10px;
+    transition: background-color 0.1s, transform 0.1s;
+}
+
+.drum-pad:hover {
+    background-color: #cbd5e1;
+}
+
+.drum-pad:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+}
+
+.drum-pad.active {
+    background-color: #93c5fd;
+    transform: scale(0.96);
+    border-color: #2563eb;
+}
