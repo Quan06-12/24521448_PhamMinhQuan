@@ -61,17 +61,21 @@ if (Date.now() < eventTimestamp) {
 const registrationForm = document.querySelector("#registration-form");
 const submitButton = document.querySelector("#submit-btn");
 const formMessage = document.querySelector("#form-message");
-
+const nameInput = document.querySelector("#full-name");
+const emailInput = document.querySelector("#email");
 
 // 2. DEFINE FORM STATE
 
 let formState = "idle";
 
 
-// 3. UPDATE FORM STATE
+// ===== UPDATE FORM STATE =====
 
 function updateFormState(newState) {
     formState = newState;
+
+    // Prevent user interaction during submission
+    submitButton.disabled = formState === "submitting";
 
     if (formState === "idle") {
         submitButton.textContent = "Register Now";
@@ -90,7 +94,8 @@ function updateFormState(newState) {
 
     if (formState === "error") {
         submitButton.textContent = "Try Again";
-        formMessage.textContent = "Registration failed. Please try again.";
+        formMessage.textContent =
+            "Registration failed. Please try again.";
     }
 
     formMessage.dataset.state = formState;
@@ -117,8 +122,30 @@ function simulateRegistration() {
 }
 // ===== FORM SUBMISSION =====
 
+// ===== SECURE FORM SUBMISSION =====
+
 registrationForm.addEventListener("submit", async (event) => {
     event.preventDefault();
+
+    // Prevent duplicate submissions
+    if (formState === "submitting") {
+        return;
+    }
+
+    // Validate user input
+    if (!validateRegistration()) {
+        updateFormState("error");
+        formMessage.textContent =
+            "Please enter a valid name and email.";
+        return;
+    }
+
+    // Normalize data
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+
+    nameInput.value = name;
+    emailInput.value = email;
 
     updateFormState("submitting");
 
@@ -133,3 +160,19 @@ registrationForm.addEventListener("submit", async (event) => {
         updateFormState("error");
     }
 });
+// ===== T-04: INPUT VALIDATION =====
+
+function validateRegistration() {
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+
+    if (name.length < 2) {
+        return false;
+    }
+
+    if (!emailInput.validity.valid || email === "") {
+        return false;
+    }
+
+    return true;
+}
