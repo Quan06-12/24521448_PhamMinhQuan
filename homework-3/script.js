@@ -54,3 +54,82 @@ updateCountdown();
 if (Date.now() < eventTimestamp) {
     countdownInterval = setInterval(updateCountdown, 1000);
 }
+// ===== T-03: FORM STATE MACHINE =====
+
+// 1. SELECT FORM ELEMENTS
+
+const registrationForm = document.querySelector("#registration-form");
+const submitButton = document.querySelector("#submit-btn");
+const formMessage = document.querySelector("#form-message");
+
+
+// 2. DEFINE FORM STATE
+
+let formState = "idle";
+
+
+// 3. UPDATE FORM STATE
+
+function updateFormState(newState) {
+    formState = newState;
+
+    if (formState === "idle") {
+        submitButton.textContent = "Register Now";
+        formMessage.textContent = "Ready to register";
+    }
+
+    if (formState === "submitting") {
+        submitButton.textContent = "Submitting...";
+        formMessage.textContent = "Processing registration...";
+    }
+
+    if (formState === "success") {
+        submitButton.textContent = "Register Now";
+        formMessage.textContent = "Registration successful!";
+    }
+
+    if (formState === "error") {
+        submitButton.textContent = "Try Again";
+        formMessage.textContent = "Registration failed. Please try again.";
+    }
+
+    formMessage.dataset.state = formState;
+}
+
+
+// 4. INITIALIZE FORM
+
+updateFormState("idle");
+// ===== SIMULATED REGISTRATION REQUEST =====
+
+function simulateRegistration() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const isSuccessful = Math.random() >= 0.3;
+
+            if (isSuccessful) {
+                resolve();
+            } else {
+                reject(new Error("Simulated server error"));
+            }
+        }, 1500);
+    });
+}
+// ===== FORM SUBMISSION =====
+
+registrationForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    updateFormState("submitting");
+
+    try {
+        await simulateRegistration();
+
+        updateFormState("success");
+
+    } catch (error) {
+        console.error("Registration error:", error.message);
+
+        updateFormState("error");
+    }
+});
