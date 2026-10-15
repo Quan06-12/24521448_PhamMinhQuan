@@ -1,3 +1,4 @@
+
 /* ===== 1. DESIGN TOKENS ===== */
 
 :root {
@@ -25,7 +26,24 @@ body {
 }
 
 
-/* ===== 3. PAGE LAYOUT ===== */
+/* ===== 3. ACCESSIBILITY ===== */
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 10px;
+    padding: 12px;
+    background-color: #ffffff;
+    color: var(--accent);
+    z-index: 10;
+}
+
+.skip-link:focus {
+    top: 10px;
+}
+
+
+/* ===== 4. PAGE LAYOUT ===== */
 
 header {
     text-align: center;
@@ -47,7 +65,7 @@ footer {
 }
 
 
-/* ===== 4. COUNTDOWN GRID ===== */
+/* ===== 5. COUNTDOWN GRID ===== */
 
 #countdown {
     display: grid;
@@ -62,7 +80,9 @@ footer {
     align-items: center;
     justify-content: center;
 
+    margin: 0;
     padding: 20px 10px;
+
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 12px;
@@ -81,14 +101,14 @@ footer {
     color: var(--accent);
 }
 
-
-/* ===== 5. RESPONSIVE ===== */
-
-@media (min-width: 768px) {
-    #countdown {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
+#countdown-message {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--accent);
 }
+
+
 /* ===== 6. REGISTRATION SECTION ===== */
 
 #registration-section {
@@ -137,8 +157,42 @@ input:focus-visible {
     cursor: pointer;
 }
 
+#submit-btn:disabled {
+    background-color: #94a3b8;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
 
-/* ===== 10. FORM MESSAGE ===== */
+#submit-btn:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+
+/* ===== 10. RESET BUTTON ===== */
+
+#reset-btn {
+    padding: 14px;
+    background-color: #e2e8f0;
+    color: #0f172a;
+    border: 1px solid #94a3b8;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#reset-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#reset-btn:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+
+/* ===== 11. FORM MESSAGE ===== */
 
 #form-message {
     margin-top: 16px;
@@ -152,18 +206,29 @@ input:focus-visible {
 #form-message[data-state="error"] {
     color: #b91c1c;
 }
-/* ===== 11. DISABLED BUTTON ===== */
 
-#submit-btn:disabled {
-    background-color: #94a3b8;
-    cursor: not-allowed;
-    opacity: 0.7;
+
+/* ===== 12. RESPONSIVE ===== */
+
+@media (min-width: 768px) {
+    #countdown {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
 }
 
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
 
-/* ===== 12. KEYBOARD ACCESSIBILITY ===== */
+    #registration-section {
+        padding: 18px;
+    }
 
-#submit-btn:focus-visible {
-    outline: 3px solid var(--accent);
-    outline-offset: 3px;
+    #days,
+    #hours,
+    #minutes,
+    #seconds {
+        font-size: 28px;
+    }
 }
