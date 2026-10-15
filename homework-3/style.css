@@ -1,0 +1,91 @@
+/* ===== 1. DESIGN TOKENS ===== */
+
+:root {
+    --bg-primary: #f8fafc;
+    --text-primary: #0f172a;
+    --accent: #1d4ed8;
+    --card-bg: #ffffff;
+    --border-color: #cbd5e1;
+}
+
+
+/* ===== 2. RESET ===== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+
+/* ===== 3. PAGE LAYOUT ===== */
+
+header {
+    text-align: center;
+    padding: 30px 10px;
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+}
+
+
+/* ===== 4. COUNTDOWN GRID ===== */
+
+#countdown {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px 10px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+.time-box span {
+    font-size: 16px;
+}
+
+#days,
+#hours,
+#minutes,
+#seconds {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--accent);
+}
+
+
+/* ===== 5. RESPONSIVE ===== */
+
+@media (min-width: 768px) {
+    #countdown {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}

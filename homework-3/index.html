@@ -7,6 +7,8 @@
           content="width=device-width, initial-scale=1.0">
 
     <title>Tech Innovation Summit 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -29,13 +31,33 @@
             <p>Event Date: December 31, 2026</p>
         </section>
 
-        <section id="countdown-section">
-            <h2>Event Countdown</h2>
+       <section id="countdown-section">
+    <h2>Event Countdown</h2>
 
-            <p id="countdown" role="timer">
-                Loading countdown...
-            </p>
-        </section>
+    <div id="countdown" role="timer" aria-label="Time until event">
+        <p class="time-box">
+            <span id="days">00</span>
+            <span>Days</span>
+        </p>
+
+        <p class="time-box">
+            <span id="hours">00</span>
+            <span>Hours</span>
+        </p>
+
+        <p class="time-box">
+            <span id="minutes">00</span>
+            <span>Minutes</span>
+        </p>
+
+        <p class="time-box">
+            <span id="seconds">00</span>
+            <span>Seconds</span>
+        </p>
+    </div>
+
+    <p id="countdown-message" role="status"></p>
+</section>
 
         <section id="registration-section">
             <h2>Event Registration</h2>
