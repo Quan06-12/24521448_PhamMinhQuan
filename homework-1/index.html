@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -13,10 +14,18 @@
     Skip to main content
 </a>
 
-    <header>
-        <h1>My Developer Portfolio</h1>
-        <p>Web Development Student</p>
-    </header>
+   <header>
+    <h1>My Developer Portfolio</h1>
+    <p>Web Development Student</p>
+
+    <button
+        id="theme-btn"
+        type="button"
+        aria-pressed="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-label">Dark Mode</span>
+    </button>
+</header>
 
     <nav aria-label="Main navigation">
         <ul>

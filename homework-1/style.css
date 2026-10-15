@@ -6,6 +6,7 @@
     --accent: #0284c7;
     --card-bg: #f8fafc;
     --border-color: #cbd5e1;
+    --button-bg: #e2e8f0;
 }
 
 
@@ -121,4 +122,37 @@ nav a {
     nav ul {
         justify-content: flex-start;
     }
+}
+/* ===== 9. DARK MODE ===== */
+
+.dark-theme {
+    --bg-primary: #0f172a;
+    --text-primary: #f8fafc;
+    --accent: #38bdf8;
+    --card-bg: #1e293b;
+    --border-color: #475569;
+    --button-bg: #334155;
+}
+
+
+/* ===== 10. THEME BUTTON ===== */
+
+#theme-btn {
+    padding: 10px 16px;
+    margin-top: 15px;
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#theme-btn:hover {
+    background-color: var(--card-bg);
+}
+
+#theme-btn:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
 }
