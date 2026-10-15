@@ -156,3 +156,22 @@ nav a {
     outline: 3px solid var(--accent);
     outline-offset: 3px;
 }
+/* ===== 11. ACCESSIBILITY ===== */
+
+a:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+}
+
+button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.skip-link {
+    z-index: 1000;
+}
+
+section {
+    scroll-margin-top: 20px;
+}
