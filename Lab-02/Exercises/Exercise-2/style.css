@@ -1,0 +1,32 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    padding: 30px;
+}
+
+.task-manager {
+    max-width: 600px;
+    margin: auto;
+    padding: 24px;
+    background-color: white;
+    border-radius: 12px;
+}
+
+h1 {
+    color: #222;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin: 10px 0;
+}
