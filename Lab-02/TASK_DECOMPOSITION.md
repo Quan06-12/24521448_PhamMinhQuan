@@ -28,18 +28,18 @@
 ### Task 1.5 – Git
 - [x] Create VNode factory commit.
 - [x] Create DOM rendering commit.
-- [ ] Commit remaining Exercise 1 files.
-- [ ] Push changes to GitHub.
+- [x] Commit remaining Exercise 1 files.
+- [x] Push changes to GitHub.
 
 ## Exercise 2: Reactive State & Event Delegation
-- [ ] Implement state storage and cursor management.
-- [ ] Implement custom `useState()`.
-- [ ] Implement event delegation.
-- [ ] Build a reactive Task Manager.
-- [ ] Verify state updates.
+- [x] Implement state storage and cursor management.
+- [x] Implement custom `useState()`.
+- [x] Implement event delegation.
+- [x] Build a reactive Task Manager.
+- [x] Verify state updates.
 
 ## Exercise 3: Async State Machine
-- [ ] Implement IDLE, LOADING, SUCCESS, ERROR states.
-- [ ] Create skeleton loading UI.
-- [ ] Implement error handling and retry.
-- [ ] Verify async state transitions.
+- [x] Implement IDLE, LOADING, SUCCESS, ERROR states.
+- [x] Create skeleton loading UI.
+- [x] Implement error handling and retry.
+- [x] Verify async state transitions.
