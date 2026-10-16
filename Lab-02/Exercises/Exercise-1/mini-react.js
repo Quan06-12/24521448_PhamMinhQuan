@@ -30,7 +30,11 @@ export function createElement(type, props, ...children) {
     };
 }
 
-
+export function renderToDOM(vNode) {
+    // Step 1: Create real DOM node
+    const dom = vNode.type === "TEXT_ELEMENT"
+        ? document.createTextNode(vNode.props.nodeValue)
+        : document.createElement(vNode.type);
 
     // Step 2: Assign properties and event listeners
     Object.keys(vNode.props)
