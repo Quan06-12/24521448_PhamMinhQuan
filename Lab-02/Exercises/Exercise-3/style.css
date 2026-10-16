@@ -1,0 +1,64 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    padding: 30px;
+}
+
+.data-feed {
+    max-width: 550px;
+    margin: auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 12px;
+}
+
+h1 {
+    color: #222;
+}
+
+button {
+    padding: 10px 16px;
+    margin: 12px 0;
+    cursor: pointer;
+}
+
+ul {
+    padding-left: 24px;
+}
+
+li {
+    padding: 8px;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+}
+
+.error {
+    color: #b91c1c;
+}
+
+.skeleton {
+    height: 110px;
+    border-radius: 8px;
+    background: linear-gradient(
+        90deg,
+        #eeeeee 25%,
+        #dddddd 50%,
+        #eeeeee 75%
+    );
+    background-size: 200% 100%;
+    animation: pulse 1.5s infinite linear;
+}
+
+@keyframes pulse {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
