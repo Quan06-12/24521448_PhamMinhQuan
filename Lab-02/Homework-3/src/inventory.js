@@ -104,6 +104,33 @@ export function createInventoryStore({ products, saleEndsAt, reservationMs = 15_
     transition(reservation, 'RELEASED');
     return result(true, 'RELEASED', reservation);
   }
+  function beginCheckout(id) {
+    sweep();
+    const reservation = reservations.get(id);
+    if (!reservation) return result(false, 'NOT_FOUND');
+    if (reservation.status !== 'RESERVED') {
+      return result(false, reservation.status === 'EXPIRED' ? 'EXPIRED' : 'STALE', reservation);
+    }
+    reservation.attempt++;
+    transition(reservation, 'CHECKING_OUT');
+    return Object.freeze({
+      ...result(true, 'CHECKING_OUT', reservation),
+      token: Object.freeze({ reservationId: id, attempt: reservation.attempt }),
+    });
+  }
+  function finishCheckout(token, succeeded) {
+    sweep();
+    if (!token || !text(token.reservationId) || !Number.isSafeInteger(token.attempt)
+      || token.attempt < 1 || typeof succeeded !== 'boolean') return result(false, 'INVALID');
+    const reservation = reservations.get(token.reservationId);
+    if (!reservation) return result(false, 'NOT_FOUND');
+    if (reservation.status === 'EXPIRED') return result(false, 'EXPIRED', reservation);
+    if (reservation.status !== 'CHECKING_OUT' || reservation.attempt !== token.attempt) {
+      return result(false, 'STALE', reservation);
+    }
+    transition(reservation, succeeded ? 'PURCHASED' : 'RESERVED');
+    return result(succeeded, succeeded ? 'PURCHASED' : 'PAYMENT_FAILED', reservation);
+  }
   function verifyInvariants() {
     for (const product of stock.values()) {
       const values = [product.available, product.held, product.sold];
@@ -119,5 +146,5 @@ export function createInventoryStore({ products, saleEndsAt, reservationMs = 15_
     }
     return true;
   }
-  return Object.freeze({ snapshot, reserve, release, sweep, verifyInvariants });
+  return Object.freeze({ snapshot, reserve, release, beginCheckout, finishCheckout, sweep, verifyInvariants });
 }
