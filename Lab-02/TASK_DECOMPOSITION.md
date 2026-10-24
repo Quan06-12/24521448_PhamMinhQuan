@@ -43,3 +43,17 @@
 - [x] Create skeleton loading UI.
 - [x] Implement error handling and retry.
 - [x] Verify async state transitions.
+
+
+## Homework submission
+
+- [ ] Complete Homework 1 and its independent verification record.
+- [ ] Complete Homework 2 and its independent verification record.
+- [ ] Complete Homework 3 with at least eight atomic Conventional Commits.
+- [ ] Record observed AI defects, fixes and verification evidence.
+- [ ] Capture real browser and relevant DevTools evidence outside Git.
+- [ ] Verify Homework 1 Lighthouse Accessibility and Best Practices scores.
+- [ ] Prepare the English Word report and Vietnamese follow-up prompt set.
+- [ ] Integrate verified homework commits and push to `main`.
+
+Per-homework checklists contain the detailed implementation slices.

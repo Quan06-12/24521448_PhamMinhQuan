@@ -29,3 +29,13 @@
 - Commit individual features separately.
 - Verify changes with `git diff` and `git status`.
 - Do not commit broken or untested code.
+
+
+## 6. Homework verification and evidence
+- Homework folders are `Lab-02/Homework-1`, `Homework-2` and `Homework-3`.
+- Define contracts before implementing each isolated module.
+- Obtain independent QA review before accepting each implementation commit.
+- Store screenshots, local test logs and Lighthouse artifacts in the homework's ignored `evidence/` directory; never force-add evidence to Git.
+- Distinguish unit/static checks from real-browser checks and DevTools captures.
+- Record only observed defects and actual verification results in `AI_FAILURE_AUDIT.md`.
+- Do not mark browser, Lighthouse or assistive-technology checks complete without actual results.
