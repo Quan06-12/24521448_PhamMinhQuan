@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f5f0">
+  <title>Current — a local listening desk</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./src/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to listening desk</a>
+  <header class="site-header">
+    <a class="wordmark" href="./" aria-label="Current home"><span class="brand-mark" aria-hidden="true">≋</span> current<span class="wordmark-dot">.</span></a>
+    <p class="header-note">A LOCAL LISTENING DESK <span class="online-dot" aria-hidden="true"></span></p>
+  </header>
+  <main id="main">
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">SMALL SESSIONS. GOOD FREQUENCIES.</p><h1 id="page-title">Find your <em>current.</em></h1></div>
+      <p class="intro-copy">A few original loops, a little room to listen.<br>Pick your tracks. We’ll keep them in order.</p>
+    </section>
+    <div class="desk">
+      <section class="library panel" aria-labelledby="library-title">
+        <div class="section-heading"><div><p class="eyebrow">THE COLLECTION</p><h2 id="library-title">Made for a moment</h2></div><span class="count-label">03</span></div>
+        <p class="section-description">Three short, locally generated instrumentals.</p>
+        <ul class="track-list" id="catalog"></ul>
+        <button class="button secondary wide" type="button" data-action="queue-all">Queue the collection <span aria-hidden="true">↗</span></button>
+        <div class="library-note"><span aria-hidden="true">◎</span><p>All sound, right here.<br><span>Original audio. No accounts. No external streams.</span></p></div>
+      </section>
+      <div class="listening-column">
+        <section class="player" aria-labelledby="player-title">
+          <div class="player-top"><p class="eyebrow">ON THE FREQUENCY</p><span class="player-badge" id="play-state">READY WHEN YOU ARE</span></div>
+          <h2 id="player-title">Your next quiet moment.</h2>
+          <p class="player-subtitle" id="player-subtitle">Add a track below, then press play.</p>
+          <canvas id="spectrum" width="800" height="180" role="img" aria-label="Live audio frequency spectrum; track status is available in the queue">Live frequency spectrum</canvas>
+          <div class="spectrum-labels" aria-hidden="true"><span>LOW FREQUENCIES</span><span>HIGH FREQUENCIES</span></div>
+          <div class="player-controls">
+            <button class="button play-button" type="button" data-action="play" id="play-button" disabled><span aria-hidden="true">▶</span> Play queue</button>
+            <label class="volume-control" for="volume">Volume <input id="volume" type="range" min="0" max="100" value="65"><output id="volume-value" for="volume">65%</output></label>
+            <label class="bins-control" for="bins">Detail <select id="bins"><option value="256">256 bins</option><option value="512">512 bins</option></select></label>
+          </div>
+        </section>
+        <section class="queue panel" aria-labelledby="queue-title">
+          <div class="section-heading"><div class="queue-heading"><h2 id="queue-title">Up next</h2><span class="queue-count" id="queue-count">0</span></div><div class="queue-actions"><button class="text-button" type="button" data-action="clear" id="clear-button" disabled>Clear finished</button><button class="text-button" type="button" data-action="cancel-all" id="cancel-all-button" disabled>Cancel all</button></div></div>
+          <p class="queue-explanation">Prepared together. Played in the order you add them.</p>
+          <div class="empty-state" id="empty-state"><span class="empty-icon" aria-hidden="true">≋</span><p>Your queue is a blank canvas.</p><span>Add something from the collection to get started.</span></div>
+          <ol class="queue-list" id="queue-list" aria-label="Tracks in enqueue order"></ol>
+          <div class="queue-footer"><span><span class="online-dot" aria-hidden="true"></span> <span id="preparing-status">0 of 3 preparation slots in use</span></span><span>FIRST IN · FIRST OUT</span></div>
+        </section>
+      </div>
+    </div>
+    <p class="notice" id="notice" role="status" aria-live="polite">Choose a track to begin. Audio starts only when you press play.</p>
+  </main>
+  <footer class="site-footer"><span>CURRENT / THE LOCAL SESSIONS</span><span>A little space between the noise.</span><span>WEB AUDIO · VOL. 01</span></footer>
+</body>
+</html>
