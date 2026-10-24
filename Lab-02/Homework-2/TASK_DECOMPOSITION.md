@@ -3,7 +3,7 @@
 Each slice is independently reviewed before its Conventional Commit. Review evidence and test runs are recorded by the QA partner; evidence/ is intentionally ignored.
 
 - [x] 1. Define typed contracts, lifecycle invariants, setup and local rules.
-- [ ] 2. Generate local audio samples and add a portable static development server.
+- [x] 2. Generate local audio samples and add a portable static development server.
 - [ ] 3. Implement abortable download and guarded asynchronous decode.
 - [ ] 4. Implement bounded concurrent preparation, FIFO playback and resource cleanup.
 - [ ] 5. Implement the analyser-driven RAF canvas with resize/teardown.
