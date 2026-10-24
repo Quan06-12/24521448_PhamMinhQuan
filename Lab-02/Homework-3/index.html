@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#122e32">
+  <meta name="description" content="An interactive Vietnam 11.11 flash-sale simulation with expiring stock reservations and concurrent checkout.">
+  <title>Midnight Market — 11.11 Flash Sale</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="src/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the sale</a>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Midnight Market home"><span class="brand-mark" aria-hidden="true">m.</span>midnight market</a>
+    <span class="header-note">VIETNAM · 11.11 MEGA SALE</span>
+    <span class="demo-pill">Interactive demo</span>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="sale-title">
+      <div class="hero-copy">
+        <p class="eyebrow">SMALL DROPS. BIG MIDNIGHT ENERGY.</p>
+        <h1 id="sale-title">Good things.<br>Gone in a flash.</h1>
+        <p class="hero-description">Your next everyday essential, at a once-a-night price.<br>Reserve it now. Make it yours in 15 seconds.</p>
+        <p class="sale-tag"><span aria-hidden="true">↗</span> The 11.11 night drop <span class="tag-divider">/</span> Prices in VND</p>
+      </div>
+      <aside class="countdown-card" aria-label="Sale countdown">
+        <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span><span id="sale-state">DROP IS LIVE</span></p>
+        <p class="countdown-label">This drop closes in</p>
+        <p class="countdown" id="countdown" aria-hidden="true">02:00.000</p>
+        <p class="sr-only" id="countdown-accessible" role="timer" aria-live="off">120 seconds remaining</p>
+        <div class="countdown-rule"></div>
+        <p class="countdown-foot">A fresh 2-minute demo starts when you open this page.</p>
+      </aside>
+    </section>
+
+    <section class="stock-strip" aria-label="Live inventory totals">
+      <p><strong id="total-available">12</strong><span>available</span></p>
+      <p><strong id="total-held">0</strong><span>reserved</span></p>
+      <p><strong id="total-sold">0</strong><span>checked out</span></p>
+      <p class="stock-note"><span class="live-dot" aria-hidden="true"></span> One shared inventory in this demo</p>
+    </section>
+
+    <div class="shop-layout">
+      <section class="products-section" aria-labelledby="products-title">
+        <div class="section-heading"><div><p class="eyebrow">TONIGHT'S EDIT</p><h2 id="products-title">Worth staying up for.</h2></div><span class="small-note">3 essentials / limited stock</span></div>
+        <div class="product-grid">
+          <article class="product-card" data-product="buds">
+            <div class="product-art art-buds">
+              <span class="discount">−40%</span>
+              <svg viewBox="0 0 240 200" aria-hidden="true"><ellipse cx="120" cy="170" rx="64" ry="9" fill="currentColor" opacity=".08"/><rect x="59" y="91" width="122" height="72" rx="31" fill="#faf9f5" stroke="#122e32" stroke-width="3"/><path d="M60 118h120" fill="none" stroke="#122e32" stroke-width="2"/><circle cx="120" cy="142" r="3" fill="#122e32"/><g fill="#faf9f5" stroke="#122e32" stroke-width="3"><path d="M81 40c-19 0-24 30-5 36v18c0 10 15 10 15 0V63c14-10 6-23-10-23Z"/><path d="M159 40c19 0 24 30 5 36v18c0 10-15 10-15 0V63c-14-10-6-23 10-23Z"/></g><path d="M79 51v13m82-13v13" stroke="#122e32" stroke-width="5" stroke-linecap="round"/></svg>
+              <span class="art-caption">SOUND / WITHOUT THE NOISE</span>
+            </div>
+            <div class="product-body"><p class="product-category">AUDIO ESSENTIALS</p><h3>Cloud Buds Pro</h3><p class="product-description">A little quiet for your daily commute.</p><p class="price">599.000 ₫ <del>999.000 ₫</del></p><p class="stock-line"><span data-stock="buds">5 available</span><span data-held="buds">0 held</span></p><meter data-meter="buds" min="0" max="5" value="5" aria-label="Cloud Buds available stock">5 of 5</meter><button class="reserve-button" type="button" data-action="reserve" data-product-id="buds">Reserve one <span aria-hidden="true">↗</span></button></div>
+          </article>
+          <article class="product-card" data-product="keys">
+            <div class="product-art art-keys">
+              <span class="discount">−35%</span>
+              <svg viewBox="0 0 240 200" aria-hidden="true"><ellipse cx="120" cy="160" rx="91" ry="9" fill="currentColor" opacity=".08"/><g transform="rotate(-12 120 100)"><rect x="24" y="63" width="192" height="85" rx="11" fill="#faf9f5" stroke="#122e32" stroke-width="3"/><path d="M35 80h171M35 96h171M35 112h171M57 73v46m22-46v46m22-46v46m22-46v46m22-46v46m22-46v46m22-46v46" stroke="#122e32" stroke-width="2"/><rect x="80" y="122" width="80" height="14" rx="3" fill="#cce7bf" stroke="#122e32" stroke-width="2"/><path d="M35 129h34m102 0h34" stroke="#122e32" stroke-width="5" stroke-linecap="round"/></g></svg>
+              <span class="art-caption">MAKE EVERY KEYSTROKE COUNT</span>
+            </div>
+            <div class="product-body"><p class="product-category">DESK COMPANIONS</p><h3>Daybreak Keyboard</h3><p class="product-description">Compact keys. Room for your ideas.</p><p class="price">845.000 ₫ <del>1.300.000 ₫</del></p><p class="stock-line"><span data-stock="keys">4 available</span><span data-held="keys">0 held</span></p><meter data-meter="keys" min="0" max="4" value="4" aria-label="Daybreak Keyboard available stock">4 of 4</meter><button class="reserve-button" type="button" data-action="reserve" data-product-id="keys">Reserve one <span aria-hidden="true">↗</span></button></div>
+          </article>
+          <article class="product-card" data-product="power">
+            <div class="product-art art-power">
+              <span class="discount">−30%</span>
+              <svg viewBox="0 0 240 200" aria-hidden="true"><ellipse cx="120" cy="170" rx="62" ry="8" fill="currentColor" opacity=".08"/><g transform="rotate(12 120 100)"><rect x="78" y="55" width="84" height="107" rx="18" fill="#faf9f5" stroke="#122e32" stroke-width="3"/><path d="M104 55V33m31 22V33" stroke="#122e32" stroke-width="9" stroke-linecap="round"/><rect x="101" y="82" width="38" height="13" rx="5" fill="#122e32"/><path d="m125 112-12 17h14l-11 17" stroke="#122e32" stroke-width="3" fill="none" stroke-linecap="round"/></g></svg>
+              <span class="art-caption">LESS WAITING. MORE GOING.</span>
+            </div>
+            <div class="product-body"><p class="product-category">POCKET POWER</p><h3>Swift 65W Charger</h3><p class="product-description">One small charger. All your devices.</p><p class="price">349.000 ₫ <del>499.000 ₫</del></p><p class="stock-line"><span data-stock="power">3 available</span><span data-held="power">0 held</span></p><meter data-meter="power" min="0" max="3" value="3" aria-label="Swift Charger available stock">3 of 3</meter><button class="reserve-button" type="button" data-action="reserve" data-product-id="power">Reserve one <span aria-hidden="true">↗</span></button></div>
+          </article>
+        </div>
+      </section>
+      <aside class="bag-panel" aria-labelledby="bag-title">
+        <div class="bag-heading"><h2 id="bag-title">Your night bag</h2><span id="bag-count" class="bag-count">0</span></div>
+        <p class="small-note">A reservation holds stock for 15 seconds.</p>
+        <p class="empty-bag" id="empty-bag"><span aria-hidden="true">＋</span>Your next good find<br>belongs right here.</p>
+        <ul id="reservation-list" class="reservation-list" aria-label="Your reservations"></ul>
+        <p class="bag-tip">Let a hold expire or release it, and the item returns to the drop.</p>
+      </aside>
+    </div>
+
+    <section class="lab-panel" aria-labelledby="lab-title">
+      <div class="lab-intro"><p class="eyebrow">BEHIND THE DROP</p><h2 id="lab-title">Try a little rush hour.</h2><p>Send 20 simulated shoppers at the same stock snapshot. Watch one win the version check, then let the others retry against fresh stock.</p></div>
+      <div class="lab-controls">
+        <label for="race-product">Race for</label><select id="race-product"><option value="buds">Cloud Buds Pro</option><option value="keys">Daybreak Keyboard</option><option value="power">Swift 65W Charger</option></select>
+        <button type="button" class="secondary-button" data-action="race" id="race-button">Run 20 shoppers <span aria-hidden="true">↗</span></button>
+        <p class="small-note" id="race-summary">No race running. Each shopper requests one item.</p>
+      </div>
+      <fieldset class="payment-controls"><legend>Simulate your next checkout</legend><label for="payment-outcome">Payment result</label><select id="payment-outcome"><option value="success">Approve payment</option><option value="failure">Decline payment</option></select><label for="payment-delay">Response delay</label><select id="payment-delay"><option value="800">Quick · 0.8 seconds</option><option value="18000">Slow · 18 seconds (hold expires)</option></select></fieldset>
+    </section>
+    <section class="activity-panel" aria-labelledby="activity-title"><div class="section-heading"><h2 id="activity-title">Live activity</h2><button type="button" class="text-button" data-action="restart">Start a fresh demo <span aria-hidden="true">↗</span></button></div><p id="announcement" class="announcement" role="status">The drop is open. Pick something good.</p><ol id="activity-log" class="activity-log" aria-label="Recent sale events"></ol></section>
+    <p class="simulation-note">A learning simulation in one browser tab. No orders, money or personal data are sent. Stock resets on refresh; real stores require a trusted server, database transactions and payment verification.</p>
+  </main>
+  <footer class="site-footer"><span class="brand">midnight market</span><span>Built for the moment. Engineered for the rush.</span><span>LAB 02 / HOMEWORK 03</span></footer>
+  <noscript><p class="noscript">This interactive simulation needs JavaScript enabled.</p></noscript>
+</body>
+</html>
