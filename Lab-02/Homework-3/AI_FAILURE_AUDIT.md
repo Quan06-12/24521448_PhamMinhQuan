@@ -2,7 +2,7 @@
 
 This report records findings observed in generated working code and corrected after independent review. None was planted. The review task was to implement and adversarially verify an expiring, versioned inventory store, an injectable countdown and asynchronous checkout. The original requests did not ask for vulnerable examples.
 
-Automated evidence is reproducible with `npm test`. Browser/DevTools proof remains **pending** because browser access was blocked; unit and source review are not represented as browser verification. Generated logs/screenshots belong in ignored `evidence/` and are never submission source.
+Automated evidence is reproducible with `npm test`. After the user explicitly authorized the cloud demo, real browser QA exercised the assembled page and found the focus failure in finding 4. Findings 1, 3 and 4 are independent defect classes; finding 2 is an additional qualified boundary-consistency weakness. Browser observations, console captures and screenshots belong in ignored `evidence/`; no synthetic image or fabricated DevTools trace is used.
 
 ## 1. Invalid injected clock created immortal locks and a runaway timer
 
@@ -38,4 +38,16 @@ Automated evidence is reproducible with `npm test`. Browser/DevTools proof remai
 
 **Refactor:** rejected checkout starts also notify the observer, allowing the view to render the authoritative snapshot and explain `EXPIRED`. Disposed controllers continue to suppress notifications.
 
-**Evidence:** `tests/qa-checkout-controller.test.js` failed-start/expiry regression first failed with actual notifications `[]` versus expected `['EXPIRED']`. The regression also verifies the subsequent sweep is false, demonstrating why the periodic render path cannot repair the cached view by itself. The browser interaction itself is still pending browser review.
+**Evidence:** `tests/qa-checkout-controller.test.js` failed-start/expiry regression first failed with actual notifications `[]` versus expected `['EXPIRED']`. The regression also verifies the subsequent sweep is false, demonstrating why the periodic render path cannot repair the cached view by itself. This exact frame-boundary ordering is deterministically verified; ordinary expiry and late-payment rejection also passed the authorized browser QA.
+
+## 4. Disabling checkout discarded keyboard focus before terminal handoff
+
+**Observed generated implementation:** the view moved focus to the bag heading before hiding terminal controls, but it disabled the focused checkout button immediately on entering `CHECKING_OUT`. Native Chrome moved `document.activeElement` to `BODY`. The later terminal handoff checked whether the row contained the active element, so it could no longer recover focus.
+
+**Reproduction:** reserve an item, focus **Check out**, then press Enter. The accessibility tree displayed disabled **Processing…** and enabled **Cancel payment**, while a read-only DOM observation reported `{ activeTag: 'BODY', activeId: '' }`. Approval left focus at the body as well. This was observed through the live browser before the refactor, without changing page state through evaluation.
+
+**Risk:** keyboard users lose their location and the direct route to cancel a pending payment; a focus rule covering only terminal states misses the earlier disabled-control transition.
+
+**Refactor:** when the checkout button is focused and its reservation enters `CHECKING_OUT`, label the release action **Cancel payment** and move focus there before disabling checkout. Preserve the existing terminal handoff to `#bag-title`; leave focus elsewhere untouched.
+
+**Independent browser regression:** Enter on checkout now reports active `BUTTON` **Cancel payment**. Both approval and expiry move focus to `#bag-title`. Moving focus to the response-delay select before approval preserves that focus. `evidence/qa3-checkout-focus-fixed-verified.jpg` shows the real focus ring on **Cancel payment**; `evidence/qa3-sale-closed.jpg` shows terminal heading focus. Immediate screenshot captures can lag the DOM compositor; two earlier captures are explicitly excluded from the evidence mapping.

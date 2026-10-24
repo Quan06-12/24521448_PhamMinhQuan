@@ -6,11 +6,11 @@ Each slice follows contract → implementation → independent review/testing �
 - [x] 2. Implement an injectable deadline-based animation-frame countdown.
 - [x] 3. Implement validated stock reservations, optimistic versions and expiry.
 - [x] 4. Implement checkout transitions and cancellation-safe asynchronous orchestration.
-- [ ] 5. Build semantic Vietnam sale storefront and simulator controls.
-- [ ] 6. Bind safe DOM views and delegated controls to the inventory model.
-- [ ] 7. Add responsive styling, focus states and reduced-motion support.
-- [ ] 8. Integrate timer, lifecycle cleanup and adversarial concurrency demo.
-- [ ] 9. Record actual audit findings, verification evidence and usage documentation.
+- [x] 5. Build semantic Vietnam sale storefront and simulator controls.
+- [x] 6. Bind safe DOM views and delegated controls to the inventory model.
+- [x] 7. Add responsive styling, focus states and reduced-motion support.
+- [x] 8. Integrate timer, lifecycle cleanup and adversarial concurrency demo.
+- [x] 9. Record actual audit findings, verification evidence and usage documentation.
 
 ## Required invariants
 
@@ -30,4 +30,6 @@ For every product, `available + held + sold = total` and each count is a nonnega
 
 ## Current checkpoint
 
-Inventory and checkout engine slices have independent deterministic QA. The complete HTML/CSS/view/integration draft is awaiting authorized browser review and remains uncommitted until that review succeeds. Two verified defect classes and one qualified boundary-consistency weakness are documented with reproducible regressions; DevTools proof is pending. The eight meaningful engine/documentation commits do not complete the browser-gated UI slices; full integration remains pending.
+The engine retains its independent deterministic QA and eight prior meaningful commits. Authorized browser review now passed the storefront, safe view/integration, checkout/retry/cancellation, natural expiry/closure, stock conservation, keyboard focus and restart/history workflows. A real browser focus defect was corrected and independently rechecked; three independent defect classes plus one qualified clock-boundary weakness are documented. Responsive review passed at desktop and an actual 390px iframe viewport. Tablet/device, actual hidden-tab and mid-race restart observations remain explicitly limited in `VERIFICATION.md`.
+
+The reviewed UI slice and final audit/verification documents await the root maintainer's atomic commits; this checklist records reviewed work, not an assertion that the UI was already committed.
