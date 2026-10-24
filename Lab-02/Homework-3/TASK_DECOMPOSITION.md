@@ -4,8 +4,8 @@ Each slice follows contract → implementation → independent review/testing �
 
 - [x] 1. Define data contracts, invariants and local project rules.
 - [x] 2. Implement an injectable deadline-based animation-frame countdown.
-- [ ] 3. Implement validated stock reservations, optimistic versions and expiry.
-- [ ] 4. Implement checkout transitions and cancellation-safe asynchronous orchestration.
+- [x] 3. Implement validated stock reservations, optimistic versions and expiry.
+- [x] 4. Implement checkout transitions and cancellation-safe asynchronous orchestration.
 - [ ] 5. Build semantic Vietnam sale storefront and simulator controls.
 - [ ] 6. Bind safe DOM views and delegated controls to the inventory model.
 - [ ] 7. Add responsive styling, focus states and reduced-motion support.
@@ -27,3 +27,7 @@ For every product, `available + held + sold = total` and each count is a nonnega
 | RESERVED / CHECKING_OUT | release | RELEASED |
 | RESERVED / CHECKING_OUT | lock deadline or sale deadline reached | EXPIRED |
 | terminal state | late checkout completion | unchanged |
+
+## Current checkpoint
+
+Inventory and checkout engine slices have independent deterministic QA. The complete HTML/CSS/view/integration draft is awaiting authorized browser review and remains uncommitted until that review succeeds. Two verified defect classes and one qualified boundary-consistency weakness are documented with reproducible regressions; DevTools proof is pending. The eight meaningful engine/documentation commits do not complete the browser-gated UI slices; full integration remains pending.
