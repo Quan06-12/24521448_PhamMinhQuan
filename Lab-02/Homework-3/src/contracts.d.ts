@@ -65,3 +65,13 @@ export type CheckoutViewState =
   | { status: 'PENDING'; reservationId: string }
   | { status: 'SUCCESS'; reservationId: string }
   | { status: 'ERROR'; reservationId: string; code: ResultCode };
+
+export interface CheckoutController {
+  /** Starts one asynchronous payment simulation per live reservation. */
+  checkout(reservationId: string, options?: { delayMs?: number; succeeds?: boolean }): Promise<Result>;
+  /** Cancels the scheduled response and releases its inventory lock. */
+  cancel(reservationId: string): Result;
+  /** Cancels all pending responses, releases their locks and makes checkout inert. */
+  dispose(): void;
+  readonly pendingCount: number;
+}
