@@ -3,7 +3,7 @@
 Each slice follows contract → implementation → independent review/testing → atomic commit.
 
 - [x] 1. Define data contracts, invariants and local project rules.
-- [ ] 2. Implement an injectable deadline-based animation-frame countdown.
+- [x] 2. Implement an injectable deadline-based animation-frame countdown.
 - [ ] 3. Implement validated stock reservations, optimistic versions and expiry.
 - [ ] 4. Implement checkout transitions and cancellation-safe asynchronous orchestration.
 - [ ] 5. Build semantic Vietnam sale storefront and simulator controls.
