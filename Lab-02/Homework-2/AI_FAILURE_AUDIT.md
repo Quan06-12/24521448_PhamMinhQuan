@@ -10,6 +10,10 @@ The audit records defects actually observed during implementation review or test
 | 2 — Local audio and static server | Independent PCM header/duration/peak checks and live Node HTTP requests for root, audio MIME, no-store, missing files and traversal | Pass after fixing observed root containment defect; 2 tests | Node HTTP checks only; playback remains pending |
 | 3 — Abortable preparation | Injected fetch/body/decode promises; checked phase order, signal forwarding, already cancelled work, cancellation at each asynchronous boundary, HTTP/body/decode failures | Pass; 6 tests | Deterministic Node tests; real Web Audio decoding remains pending |
 
+| 4 — Queue ownership and ordering | Controlled promises complete out of order; cancellation of queued/decode/ready/playing tasks; preparation-slot retention; late callback suppression; preparation/start errors; source cleanup; disposal/resume race; metadata immutability, FFT bins and 25 repeated cancel/clear cycles | Pass; 7 tests | Injected AudioContext/source doubles; audible playback and real browser lifecycle remain pending |
+
+| 5 — Canvas visualizer | Injected RAF/canvas/resize doubles verify a single frame loop, typed-array reuse and bins change, no frame layout reads, DPR cap, stale-frame suppression, observer/listener teardown and idempotent disposal | Pass; 1 lifecycle test | Actual rendering, browser RAF cadence and DevTools performance remain pending |
+
 ## Observed defects
 
 ### 1. Static server rejected the application root
