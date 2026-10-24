@@ -4,7 +4,7 @@ Each slice follows contract → isolated implementation → independent QA → c
 Browser evidence belongs in ignored `evidence/`, never in Git.
 
 - [x] Define member, column, query, result, selection, and controller contracts.
-- [ ] Implement immutable member data and pure search/sort/page queries.
+- [x] Implement immutable member data and pure search/sort/page queries.
 - [ ] Render a native table with complete ARIA grid metadata and safe text.
 - [ ] Add delegated selection, sorting, and roving keyboard navigation.
 - [ ] Assemble filters, pagination, live feedback, and responsive visual design.

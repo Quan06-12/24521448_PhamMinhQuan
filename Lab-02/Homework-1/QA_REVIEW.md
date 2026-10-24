@@ -4,8 +4,8 @@ The QA partner reviews each feature before the code partner commits it. Evidence
 
 | Slice | Review | Checks | Browser/evidence | Result |
 | --- | --- | --- | --- | --- |
-| Contracts and project rules | QA reviewed before commit | Member/column/query/controller types and ten invariants cover sorting, filters, page clamping, safe rendering, persistent selection, keyboard behavior, and cleanup. Documentation makes no unverified score claim. | Not applicable: documentation-only slice, no rendered UI | Pass |
-| Dataset and query model | Pending | Node tests and mutation review | Not applicable: pure model | Pending |
+| Contracts and project rules (`04cb838`) | QA reviewed before commit | Member/column/query/controller types and ten invariants cover sorting, filters, page clamping, safe rendering, persistent selection, keyboard behavior, and cleanup. Documentation makes no unverified score claim. | Not applicable: documentation-only slice, no rendered UI | Pass |
+| Dataset and query model | QA reviewed before commit | Independently ran 14 Node tests; added stable-tie/identity, fractional/nonpositive page bounds, empty-source and frozen-result checks. Source review confirms copy-before-sort and no query mutation. | Not applicable: pure model. `evidence/02-query-tests.txt` | Pass: 14/14 |
 | Semantic grid view | Pending | DOM construction and ARIA review | Pending interactive shell | Pending |
 | Delegated controller | Pending | Keyboard, sorting, filtering, selection, pagination | Pending interactive shell | Pending |
 | Application shell and styling | Pending | Desktop/mobile visual and interaction check | Pending | Pending |
