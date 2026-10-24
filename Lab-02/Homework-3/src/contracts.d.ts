@@ -75,3 +75,10 @@ export interface CheckoutController {
   dispose(): void;
   readonly pendingCount: number;
 }
+export interface RaceResult {
+  readonly attempted: number;
+  readonly firstPassWins: number;
+  readonly conflicts: number;
+  readonly purchased: number;
+  readonly rejected: number;
+}
