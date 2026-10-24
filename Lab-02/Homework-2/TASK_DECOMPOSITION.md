@@ -4,12 +4,12 @@ Each slice is independently reviewed before its Conventional Commit. Review evid
 
 - [x] 1. Define typed contracts, lifecycle invariants, setup and local rules.
 - [x] 2. Generate local audio samples and add a portable static development server.
-- [ ] 3. Implement abortable download and guarded asynchronous decode.
-- [ ] 4. Implement bounded concurrent preparation, FIFO playback and resource cleanup.
-- [ ] 5. Implement the analyser-driven RAF canvas with resize/teardown.
-- [ ] 6. Connect semantic queue/catalog controls and lifecycle announcements.
-- [ ] 7. Add responsive, limited-palette styling and visual polish.
-- [ ] 8. Verify browser behavior, fix observed issues, and finish the README/audit.
+- [x] 3. Implement abortable download and guarded asynchronous decode.
+- [x] 4. Implement bounded concurrent preparation, FIFO playback and resource cleanup.
+- [x] 5. Implement the analyser-driven RAF canvas with resize/teardown.
+- [x] 6. Connect semantic queue/catalog controls and lifecycle announcements. Source, injected lifecycle and real browser functional review pass; committed after independent browser approval.
+- [x] 7. Add responsive, limited-palette styling and visual polish. Desktop and actual 390px iframe viewport visual/keyboard checks pass; committed after independent browser approval.
+- [ ] 8. Verify browser behavior, fix observed issues, and finish the README/audit. Authorized real Web Audio, diagnostic races/errors/cleanup, screenshots and console observations recorded. Local 60Hz DevTools performance evidence remains outstanding; cloud cadence was about 2.41fps and is disclosed.
 
 ## Verification targets
 
