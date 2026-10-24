@@ -59,3 +59,12 @@ test('QA: sub-millisecond remaining time does not display expiry early', () => {
   assert.equal(formatRemaining(0.001), '00:00.001');
   assert.equal(formatRemaining(999.001), '00:01.000');
 });
+
+test('QA regression: invalid injected timer clock stops without emitting NaN or rescheduling', () => {
+  const fake = scheduler();
+  const ticks = [];
+  createDeadlineTimer({ ...fake, now: () => NaN, deadline: 1000, onTick: (remaining) => ticks.push(remaining) });
+  assert.throws(() => fake.fire(1), /finite timestamp/);
+  assert.deepEqual(ticks, []);
+  assert.equal(fake.size(), 0);
+});

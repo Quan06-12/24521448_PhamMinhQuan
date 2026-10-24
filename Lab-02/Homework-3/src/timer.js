@@ -7,7 +7,7 @@ export function createDeadlineTimer({
   requestFrame = requestAnimationFrame,
   cancelFrame = cancelAnimationFrame,
 }) {
-  if (!Number.isFinite(deadline) || typeof onTick !== 'function') {
+  if (!Number.isFinite(deadline) || typeof onTick !== 'function' || typeof now !== 'function') {
     throw new TypeError('A finite deadline and onTick callback are required.');
   }
   let frameId = null;
@@ -20,7 +20,12 @@ export function createDeadlineTimer({
   function tick() {
     frameId = null;
     if (stopped) return;
-    const remaining = Math.max(0, deadline - now());
+    const time = now();
+    if (!Number.isFinite(time)) {
+      stop();
+      throw new TypeError('The timer clock must return a finite timestamp.');
+    }
+    const remaining = Math.max(0, deadline - time);
     onTick(remaining);
     if (stopped) return;
     if (remaining === 0) {
