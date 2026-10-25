@@ -68,3 +68,18 @@ Homework folders are direct children of `Lab-02`, as required for this submissio
 Each homework has its own contracts, implementation, tests and README. Current verification status is recorded in those files; implementation alone does not establish browser or accessibility acceptance.
 
 Evidence is stored in each homework's ignored `evidence/` folder. Do not force-add that folder to Git. Screen captures, Lighthouse outputs and local test logs are supplied separately with the report.
+
+
+## Homework results
+
+| Homework | Automated tests | Actual browser checks | Audit result |
+| --- | ---: | --- | --- |
+| 1 | 24 passed | Keyboard grid, filters/sort/page, focus and desktop/390px iframe | Lighthouse Accessibility 100 and Best Practices 100 |
+| 2 | 17 passed | Real WAV decode/playback, FIFO/cancel/error/cleanup and desktop/390px iframe | Functional checks pass; cloud cadence does not establish 60fps |
+| 3 | 34 passed | Checkout/retry/expiry, competing shoppers, sale closure, restart and focus | Stock conservation and late-response rejection verified |
+
+The unified post-integration Node run passed all 75 tests. No application source was changed by that integration check. Each homework retains its individual contracts, tests and independent verification record.
+
+These are measured results, not a claim of complete accessibility certification or production backend concurrency guarantees. Screen-reader speech, physical-device testing and native DevTools-panel screenshots remain outside the observed scope. Homework 2's cloud cadence sample was approximately 2.41fps; verify the 60fps target on an appropriate local display before claiming it.
+
+The English submission report and separate evidence archive contain the screenshots and actual Lighthouse outputs. Evidence remains outside Git. See `AI_FAILURE_AUDIT.md` for the consolidated findings and `COMMIT_HISTORY.md` for the published atomic commit history.

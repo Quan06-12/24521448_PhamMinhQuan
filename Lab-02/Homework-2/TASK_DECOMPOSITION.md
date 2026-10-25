@@ -9,7 +9,7 @@ Each slice is independently reviewed before its Conventional Commit. Review evid
 - [x] 5. Implement the analyser-driven RAF canvas with resize/teardown.
 - [x] 6. Connect semantic queue/catalog controls and lifecycle announcements. Source, injected lifecycle and real browser functional review pass; committed after independent browser approval.
 - [x] 7. Add responsive, limited-palette styling and visual polish. Desktop and actual 390px iframe viewport visual/keyboard checks pass; committed after independent browser approval.
-- [ ] 8. Verify browser behavior, fix observed issues, and finish the README/audit. Authorized real Web Audio, diagnostic races/errors/cleanup, screenshots and console observations recorded. Local 60Hz DevTools performance evidence remains outstanding; cloud cadence was about 2.41fps and is disclosed.
+- [x] 8. Verify browser behavior, fix observed issues, and finish the README/audit within the observed scope. Authorized real Web Audio, diagnostic races/errors/cleanup, screenshots and console observations recorded. Local 60Hz DevTools performance evidence remains outstanding; cloud cadence was about 2.41fps and is disclosed.
 
 ## Verification targets
 
@@ -19,3 +19,5 @@ Each slice is independently reviewed before its Conventional Commit. Review evid
 - Repeated enqueue/cancel cycles leave no live sources or retained buffers.
 - 256/512 bins map to 512/1024 FFT size; RAF does not emit snapshots.
 - Browser playback, keyboard controls, responsive layout and no uncaught errors.
+
+- [ ] Establish the 60fps target with a local 60Hz DevTools Performance trace.

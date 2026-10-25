@@ -32,4 +32,4 @@ For every product, `available + held + sold = total` and each count is a nonnega
 
 The engine retains its independent deterministic QA and eight prior meaningful commits. Authorized browser review now passed the storefront, safe view/integration, checkout/retry/cancellation, natural expiry/closure, stock conservation, keyboard focus and restart/history workflows. A real browser focus defect was corrected and independently rechecked; three independent defect classes plus one qualified clock-boundary weakness are documented. Responsive review passed at desktop and an actual 390px iframe viewport. Tablet/device, actual hidden-tab and mid-race restart observations remain explicitly limited in `VERIFICATION.md`.
 
-The reviewed UI slice and final audit/verification documents await the root maintainer's atomic commits; this checklist records reviewed work, not an assertion that the UI was already committed.
+The reviewed UI slice and final audit/verification documents were committed separately and published to `main`. Published hashes are indexed in `../COMMIT_HISTORY.md`.

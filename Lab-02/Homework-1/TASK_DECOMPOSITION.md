@@ -25,4 +25,4 @@ Browser evidence belongs in ignored `evidence/`, never in Git.
 
 ## Handoff
 
-Contracts `04cb838` and query model `10cd6ae` remain preserved. Semantic view/controller and app shell/style/lifecycle slices are independently approved for integration within the reviewed scope. Root owns atomic commits and any push. Four actual findings and their corrections are recorded in `AI_FAILURE_AUDIT.md`. Final evidence mapping is in `QA_REVIEW.md`; screenshots and reports remain ignored.
+Contracts `04cb838` and query model `10cd6ae` remain preserved. Semantic view/controller and app shell/style/lifecycle slices were independently approved, committed separately and published to `main` within the reviewed scope. Published hashes are indexed in `../COMMIT_HISTORY.md`. Four actual findings and their corrections are recorded in `AI_FAILURE_AUDIT.md`. Final evidence mapping is in `QA_REVIEW.md`; screenshots and reports remain ignored.

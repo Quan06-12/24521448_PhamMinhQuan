@@ -47,13 +47,16 @@
 
 ## Homework submission
 
-- [ ] Complete Homework 1 and its independent verification record.
-- [ ] Complete Homework 2 and its independent verification record.
-- [ ] Complete Homework 3 with at least eight atomic Conventional Commits.
-- [ ] Record observed AI defects, fixes and verification evidence.
-- [ ] Capture real browser and relevant DevTools evidence outside Git.
-- [ ] Verify Homework 1 Lighthouse Accessibility and Best Practices scores.
-- [ ] Prepare the English Word report and Vietnamese follow-up prompt set.
-- [ ] Integrate verified homework commits and push to `main`.
+- [x] Complete Homework 1 and its independent verification record.
+- [x] Complete Homework 2 and its independent verification record.
+- [x] Complete Homework 3 with at least eight atomic Conventional Commits.
+- [x] Record observed AI defects, fixes and verification evidence.
+- [x] Capture real browser screenshots and available console/Lighthouse outputs outside Git.
+- [ ] Capture native DevTools-panel screenshots and a local 60Hz visualizer trace.
+- [x] Verify Homework 1 Lighthouse Accessibility and Best Practices scores.
+- [x] Prepare the English Word report and Vietnamese follow-up prompt set.
+- [x] Integrate verified homework commits and push to `main`.
 
 Per-homework checklists contain the detailed implementation slices.
+
+- [ ] Add a genuine public follow-up ChatGPT conversation link. Browser host restrictions blocked chat creation; the separate prompt pack is ready and no share URL is fabricated.
