@@ -18,7 +18,7 @@ function getInitials(fullName) {
 }
 
 /**
- * Semantic developer / pro-gamer profile card. Zero <div> by contract.
+ * Semantic developer / pro-gamer profile card. Zero div elements by contract.
  * ES6 default parameters replace the removed defaultProps API.
  */
 export function DeveloperCard({
