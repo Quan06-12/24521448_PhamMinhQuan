@@ -14,11 +14,10 @@ const MY_SKILLS = [
 export default function App() {
   return (
     <main className={styles.app}>
-      <h1 className={styles.title}>Developer Card</h1>
-            <DeveloperCard
+            <h1 className={styles.title}>Developer Card</h1>
+      <DeveloperCard
         fullName="Pham Minh Quan"
         role="Student 24521448 • UIT"
-     
         metrics={MY_METRICS}
         skills={MY_SKILLS}
       />
