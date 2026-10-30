@@ -1,5 +1,5 @@
 import { DeveloperCard } from './components/DeveloperCard.jsx';
-
+import styles from './App.module.css';
 // Card data defined once at module level (stable references)
 const MY_METRICS = { commits: 13, vdomNodes: 0, a11yScore: 100 };
 const MY_SKILLS = [

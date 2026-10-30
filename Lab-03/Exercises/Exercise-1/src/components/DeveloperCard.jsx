@@ -1,5 +1,6 @@
 import { Fragment, useId, useState } from 'react';
 import { SkillBadge } from './SkillBadge.jsx';
+import styles from './DeveloperCard.module.css';
 
 // Default data lives at module level: one stable reference, not a new object per render
 const DEFAULT_METRICS = { commits: 512, vdomNodes: 0, a11yScore: 100 };
@@ -34,11 +35,12 @@ export function DeveloperCard({
   // Only HTTPS images are allowed; anything else falls back to initials
   const canShowAvatar = avatarUrl.startsWith('https://') && !avatarFailed;
 
-  return (
-    <article aria-labelledby={headingId}>
-      <header>
+    return (
+    <article className={styles.card} aria-labelledby={headingId}>
+      <header className={styles.header}>
         {canShowAvatar ? (
           <img
+            className={styles.avatar}
             src={avatarUrl}
             alt={`Portrait of ${fullName}`}
             width="64"
@@ -46,18 +48,18 @@ export function DeveloperCard({
             onError={() => setAvatarFailed(true)}
           />
         ) : (
-          <span role="img" aria-label={`Initials of ${fullName}`}>
+          <span className={styles.initials} role="img" aria-label={`Initials of ${fullName}`}>
             {getInitials(fullName)}
           </span>
         )}
-        <hgroup>
+        <hgroup className={styles.title}>
           <h2 id={headingId}>{fullName}</h2>
           <p>{role}</p>
         </hgroup>
       </header>
 
       {/* Key-value metadata: <dl>, never repeated <h1> tags (legacy slide 22 bug) */}
-      <dl>
+      <dl className={styles.metrics}>
         {Object.entries(metrics).map(([key, value]) => (
           <Fragment key={key}>
             <dt>{METRIC_LABELS[key] ?? key}</dt>
@@ -66,9 +68,9 @@ export function DeveloperCard({
         ))}
       </dl>
 
-      <ul aria-label="Engineered skills">
+      <ul className={styles.skills} aria-label="Engineered skills" role="list">
         {skills.map((skill) => (
-          <SkillBadge key={skill.id} name={skill.name} tier={skill.tier} />
+          <SkillBadge key={skill.id} name={skill.name} tier={skill.tier} className={styles.skill} />
         ))}
       </ul>
     </article>

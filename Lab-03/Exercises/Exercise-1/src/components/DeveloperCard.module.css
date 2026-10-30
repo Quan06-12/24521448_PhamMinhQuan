@@ -1,0 +1,89 @@
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Avatar and initials share the same 64x64 box -> identical layout either way */
+.avatar,
+.initials {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.avatar {
+  object-fit: cover;
+}
+
+.initials {
+  display: inline-grid;
+  place-items: center;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.title {
+  min-width: 0;               /* allow long names to wrap inside flex */
+}
+
+.title h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  overflow-wrap: anywhere;
+}
+
+.title p {
+  margin: 0;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;    /* long role text never causes horizontal scroll */
+}
+
+/* Key-value grid: label column + value column */
+.metrics {
+  margin: 0;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 4px 16px;
+}
+
+.metrics dt {
+  color: var(--text-muted);
+}
+
+.metrics dd {
+  margin: 0;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.skills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;            /* badges wrap instead of overflowing at 375px */
+  gap: 8px;
+}
+
+.skill {
+  padding: 4px 10px;
+  border: 1px solid var(--text-muted);
+  border-radius: 999px;
+  font-size: 0.875rem;
+}
+
+.skill small {
+  color: var(--text-muted);
+}

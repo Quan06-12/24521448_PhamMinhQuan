@@ -1,0 +1,16 @@
+/* Page layout: cards stack on mobile, sit side by side on wide screens */
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;              /* 16px side gutter at 375px */
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  align-items: start;
+}
+
+.title {
+  grid-column: 1 / -1;        /* heading spans all columns */
+  margin: 0;
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+}
