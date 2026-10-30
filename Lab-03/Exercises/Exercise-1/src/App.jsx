@@ -1,5 +1,6 @@
 import { DeveloperCard } from './components/DeveloperCard.jsx';
 import styles from './App.module.css';
+
 // Card data defined once at module level (stable references)
 const MY_METRICS = { commits: 13, vdomNodes: 0, a11yScore: 100 };
 const MY_SKILLS = [
@@ -12,11 +13,12 @@ const MY_SKILLS = [
 // App shell for Exercise 1 – Semantic DeveloperCard
 export default function App() {
   return (
-    <main>
-      <h1>Developer Card</h1>
-      <DeveloperCard
+    <main className={styles.app}>
+      <h1 className={styles.title}>Developer Card</h1>
+            <DeveloperCard
         fullName="Pham Minh Quan"
         role="Student 24521448 • UIT"
+     
         metrics={MY_METRICS}
         skills={MY_SKILLS}
       />
