@@ -26,7 +26,7 @@ Lab-03/
 ## Exercises
 
 ### Exercise 1 – Semantic Engineer & Pro-Gamer Profile Card
-Status: Not started
+Status: Completed
 
 ### Exercise 2 – Interactive Scientist & Pioneer Directory
 Status: Not started

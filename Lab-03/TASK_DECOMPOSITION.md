@@ -1,14 +1,14 @@
 # Lab 03 – Task Decomposition
 
 ## Setup
-- [ ] Create the Lab-03 folder structure and documentation.
-- [ ] Commit: `chore(lab3): init lab 03 structure and rules`
+- [x] Create the Lab-03 folder structure and documentation.
+- [x] Commit: `chore(lab3): init lab 03 structure and rules`
 
 ## Exercise 1: Semantic DeveloperCard
-- [ ] Scaffold Vite React app.
-- [ ] Implement `DeveloperCard.jsx` and `SkillBadge.jsx` with zero `<div>`.
-- [ ] Add `DeveloperCard.module.css` (375px responsive).
-- [ ] Verify: `grep '<div'` and `grep 'http://'` return 0 matches.
+- [x] Scaffold Vite React app.
+- [x] Implement `DeveloperCard.jsx` and `SkillBadge.jsx` with zero `<div>`.
+- [x] Add `DeveloperCard.module.css` (375px responsive).
+- [x] Verify: `grep '<div'` and `grep 'http://'` return 0 matches.
 
 ## Exercise 2: ScientistDirectory
 - [ ] Normalize `SMART_PEOPLE` schema with stable IDs.
