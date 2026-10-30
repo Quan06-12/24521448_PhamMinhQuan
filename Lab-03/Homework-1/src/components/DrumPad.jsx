@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import styles from './DrumPad.module.css';
 
 const FLASH_MS = 150; // how long a pad stays lit after a hit
 
@@ -24,11 +25,12 @@ export function DrumPad({ pad, hitToken, onPress, onRelease }) {
   return (
     <button
       type="button"
+      className={styles.pad}
       aria-pressed={isActive}
       onClick={() => onPress(pad.id)}
     >
       <span>{pad.label}</span>
-      <kbd>{pad.key}</kbd>
+      <kbd className={styles.key}>{pad.key}</kbd>
     </button>
   );
 }

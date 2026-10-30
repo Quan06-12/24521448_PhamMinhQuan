@@ -1,0 +1,51 @@
+.status {
+  display: block;
+  min-height: 1.5em;          /* reserve space -> no layout shift (CLS) */
+  margin-bottom: 8px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.meterRow {
+  display: flex;
+  flex-wrap: wrap;            /* wraps instead of overflowing at 375px */
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+
+.meter {
+  flex: 1 1 160px;
+  height: 16px;
+}
+
+.list {
+  margin: 0 0 12px;
+  padding-left: 1.5em;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums; /* times do not jitter */
+}
+
+.clear {
+  padding: 8px 16px;
+  border: 1px solid var(--text-muted);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.clear:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* Browser default <kbd> is smaller than surrounding text */
+.list kbd {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.875em;
+  padding: 0 4px;
+  border: 1px solid var(--text-muted);
+  border-radius: 4px;
+}

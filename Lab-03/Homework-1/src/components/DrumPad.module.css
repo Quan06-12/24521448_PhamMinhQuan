@@ -1,0 +1,38 @@
+.pad {
+  width: 100%;
+  aspect-ratio: 1;            /* square pads */
+  min-height: 88px;           /* large touch target (> 44px WCAG 2.5.8) */
+  display: grid;
+  place-content: center;
+  gap: 6px;
+  border: 2px solid var(--surface-2);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 80ms ease, background-color 80ms ease;
+}
+
+.pad:hover {
+  border-color: var(--text-muted);
+}
+
+/* Visual state is driven by the ARIA attribute -> UI and a11y never disagree */
+.pad[aria-pressed='true'] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+  transform: scale(0.95);
+}
+
+.key {
+  justify-self: center;
+  min-width: 2em;
+  padding: 2px 8px;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.875rem;
+}

@@ -4,6 +4,7 @@ import { useDrumKeyboard } from './hooks/useDrumKeyboard.js';
 import { useDrumAudio } from './hooks/useDrumAudio.js';
 import { DrumPad } from './components/DrumPad.jsx';
 import { HitLog } from './components/HitLog.jsx';
+import styles from './App.module.css';
 
 const MAX_LOG = 10; // keep only the 10 most recent hits
 
@@ -38,13 +39,14 @@ export default function App() {
 
   useDrumKeyboard(PAD_BY_CODE, handleTrigger);
 
-  return (
-    <main>
-      <h1>Production Studio Drum Kit</h1>
+    return (
+    <main className={styles.app}>
+      <h1 className={styles.title}>Production Studio Drum Kit</h1>
 
-      <section aria-labelledby="pads-heading">
-        <h2 id="pads-heading">Pads</h2>
-        <ul>
+      <section className={styles.panel} aria-labelledby="pads-heading">
+        <h2 id="pads-heading" className={styles.panelTitle}>Pads</h2>
+        {/* role="list": Safari drops list semantics when list-style is none */}
+        <ul className={styles.padGrid} role="list">
           {PADS.map((pad) => (
             <li key={pad.id}>
               <DrumPad
@@ -58,7 +60,12 @@ export default function App() {
         </ul>
       </section>
 
-      <HitLog hits={hits} onClear={handleClearLog} />
+      <HitLog
+        hits={hits}
+        onClear={handleClearLog}
+        className={styles.panel}
+        titleClassName={styles.panelTitle}
+      />
     </main>
   );
 }
