@@ -26,7 +26,7 @@ Lab-03/
 ## Exercises
 
 ### Exercise 1 – Semantic Engineer & Pro-Gamer Profile Card
-Status: Completed
+Status: Not started
 
 ### Exercise 2 – Interactive Scientist & Pioneer Directory
 Status: Not started
@@ -38,7 +38,7 @@ Status: Not started
 
 | Homework | Description | Status |
 |---|---|---|
-| Homework 1 | Production Studio Drum Kit — `e.code`, anti-repeat, visual hit log | Not started |
+| Homework 1 | Production Studio Drum Kit — `e.code`, anti-repeat, visual hit log | Completed |
 | Homework 2 | 88-Key Polyphonic Piano — `React.memo`, 8-voice FIFO stealing | Not started |
 | Homework 3 | PUBG VN Airdrop Arena — anti-drift timer, optimistic claim, leaderboard | Not started |
 
