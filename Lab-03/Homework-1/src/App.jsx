@@ -1,30 +1,40 @@
 import { useCallback, useState } from 'react';
-import { PADS, PAD_BY_CODE } from './pads.js';
+import { PADS, PAD_BY_CODE, PAD_BY_ID } from './pads.js';
 import { useDrumKeyboard } from './hooks/useDrumKeyboard.js';
 import { useDrumAudio } from './hooks/useDrumAudio.js';
 import { DrumPad } from './components/DrumPad.jsx';
+import { HitLog } from './components/HitLog.jsx';
+
+const MAX_LOG = 10; // keep only the 10 most recent hits
 
 // App shell for HW1 – Production Studio Drum Kit
 export default function App() {
   const playPad = useDrumAudio(PADS);
+  const [hitTokens, setHitTokens] = useState({}); // padId -> flash token
+  const [hits, setHits] = useState([]);           // newest first
 
-  // padId -> hit token (number). Missing key = pad is idle.
-  const [hitTokens, setHitTokens] = useState({});
-
-  // Single entry point for every hit (keyboard + click)
   const handleTrigger = useCallback((padId) => {
+    const pad = PAD_BY_ID.get(padId);
+    if (!pad) return;
     playPad(padId);
-    // Immutable update: new object, bump this pad's token
+
+    // Build the entry OUTSIDE the updater: updaters must stay pure
+    // (StrictMode calls them twice; randomUUID/Date.now would differ)
+    const entry = { id: crypto.randomUUID(), label: pad.label, key: pad.key, at: Date.now() };
+
     setHitTokens((prev) => ({ ...prev, [padId]: (prev[padId] ?? 0) + 1 }));
+    setHits((prev) => [entry, ...prev].slice(0, MAX_LOG)); // immutable, capped
   }, [playPad]);
 
-  // Called by DrumPad when its flash timer ends
   const handleRelease = useCallback((padId) => {
     setHitTokens((prev) => {
-      const { [padId]: _removed, ...rest } = prev; // copy without this pad
-      return rest;
+      const next = { ...prev };
+      delete next[padId]; // safe: deleting on the copy, not on state
+      return next;
     });
   }, []);
+
+  const handleClearLog = useCallback(() => setHits([]), []);
 
   useDrumKeyboard(PAD_BY_CODE, handleTrigger);
 
@@ -47,6 +57,8 @@ export default function App() {
           ))}
         </ul>
       </section>
+
+      <HitLog hits={hits} onClear={handleClearLog} />
     </main>
   );
 }

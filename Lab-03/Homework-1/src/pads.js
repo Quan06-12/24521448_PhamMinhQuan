@@ -16,3 +16,5 @@ export const PADS = [
 // Built once at module level so its reference never changes between renders
 // (safe to use as a useEffect dependency).
 export const PAD_BY_CODE = new Map(PADS.map((pad) => [pad.code, pad]));
+// Lookup table: pad id -> pad (used by the hit log to show labels)
+export const PAD_BY_ID = new Map(PADS.map((pad) => [pad.id, pad]));
