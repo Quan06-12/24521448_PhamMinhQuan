@@ -1,14 +1,16 @@
 import { useCallback } from 'react';
-import { PAD_BY_CODE } from './pads.js';
+import { PADS, PAD_BY_CODE } from './pads.js';
 import { useDrumKeyboard } from './hooks/useDrumKeyboard.js';
+import { useDrumAudio } from './hooks/useDrumAudio.js';
 
 // App shell for HW1 – Production Studio Drum Kit
 export default function App() {
-  // useCallback keeps the same function reference across renders,
-  // otherwise useDrumKeyboard would re-attach the listener on every render
+  const playPad = useDrumAudio(PADS);
+
+  // Single entry point for every hit (keyboard now, pad buttons in Step 9)
   const handleTrigger = useCallback((padId) => {
-    console.log('hit:', padId); // temporary – replaced by audio in Step 8
-  }, []);
+    playPad(padId);
+  }, [playPad]);
 
   useDrumKeyboard(PAD_BY_CODE, handleTrigger);
 
