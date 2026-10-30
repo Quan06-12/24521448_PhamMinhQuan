@@ -1,7 +1,7 @@
 # Homework 1 — work breakdown
 
 Each slice follows contract → isolated implementation → DevTools verification → commit.
-Browser evidence belongs in ignored `evidence/`, never in Git.
+Screenshots are included in the submitted Word report, never in Git.
 
 - [x] Scaffold React 19 Vite app (`createRoot` + `StrictMode`) — `1e3fe13`
 - [x] Define pad contract and `e.code` lookup map (W A S D J K L) — `4cdab06`

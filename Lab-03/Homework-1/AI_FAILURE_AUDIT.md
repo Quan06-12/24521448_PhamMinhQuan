@@ -13,10 +13,10 @@ fixing commit. Screenshots are included in the submitted Word report.
   96px columns plus two 12px gaps need 312px, so the grid fell back to
   2 oversized columns and pushed the hit log far below the fold.
 - **DevTools Proof**: Device toolbar at 375 × 667 showed 2 columns
-  (`evidence/hw1-375px-before.png`).
+  (before/after screenshots in the Word report).
 - **Engineering Fix (Commit 7d2b386)**: Changed the minimum to 88px
   (3 × 88 + 2 × 12 = 288px ≤ 311px). Re-verified 3 columns and no horizontal
-  scroll at 375px (`evidence/hw1-375px.png`).
+  scroll at 375px.
 
 ## Failure #02: Scaffold missing meta description and robots.txt
 
@@ -27,10 +27,10 @@ fixing commit. Screenshots are included in the submitted Word report.
   robots rules and reported 14 errors.
 - **DevTools Proof**: Lighthouse (mobile, production build, incognito) listed
   "Document does not have a meta description" and "robots.txt is not valid —
-  14 errors found" (`evidence/hw1-lighthouse-seo-before.png`).
+  14 errors found" (screenshot in the Word report).
 - **Engineering Fix (Commit 5ca13e7)**: Added `<meta name="description">` and
   `public/robots.txt`, rebuilt, verified both files in `dist/`, and re-ran
-  Lighthouse: SEO 100 (`evidence/hw1-lighthouse.png`).
+  Lighthouse: SEO 100.
 
 ## Failure #03: Unused variable from rest-destructuring in state update
 

@@ -5,7 +5,9 @@ the bug, DevTools proof and the fixing commit.
 
 | Homework | Finding | Correction and verification |
 | --- | --- | --- |
-| | | |
+| 1 | Pad grid fell to 2 columns at 375px (`minmax(96px)` ignored padding) | `minmax(88px)`; DevTools 375px shows 3 columns, no horizontal scroll (`7d2b386`) |
+| 1 | Missing meta description and robots.txt; Lighthouse SEO 82 | Added both; Lighthouse SEO 100 (`5ca13e7`) |
+| 1 | Rest-destructuring left unused `_removed` binding (ESLint) | Copy-then-delete on the copy (`6057410`) |
 
 Detailed records:
 
