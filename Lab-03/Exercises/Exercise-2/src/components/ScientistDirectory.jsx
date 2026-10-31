@@ -1,7 +1,7 @@
 import { useId, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { SMART_PEOPLE } from '../data/smartPeople.js';
-
+import styles from './ScientistDirectory.module.css';
 // Comparators defined once at module level (not recreated per render)
 const SORTERS = {
   'iq-desc': (a, b) => b.iq - a.iq,
@@ -75,27 +75,29 @@ export function ScientistDirectory({ initialData = SMART_PEOPLE }) {
     setSortBy(DEFAULT_SORT);
   };
 
-  return (
-    <section aria-labelledby={headingId}>
+   return (
+    <section className={styles.panel} aria-labelledby={headingId}>
       {/* tabIndex -1: focusable by script (after the last delete), not a Tab stop */}
-      <h2 id={headingId} ref={headingRef} tabIndex={-1}>Pioneers</h2>
+      <h2 id={headingId} ref={headingRef} tabIndex={-1} className={styles.heading}>Pioneers</h2>
 
       {/* role="search" landmark; Enter must not reload the page */}
-      <form role="search" onSubmit={(e) => e.preventDefault()}>
-        <p>
+      <form role="search" className={styles.filters} onSubmit={(e) => e.preventDefault()}>
+        <p className={styles.field}>
           <label htmlFor={queryId}>Name</label>
           <input
             id={queryId}
+            className={styles.control}
             type="search"
             autoComplete="off"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
         </p>
-        <p>
+        <p className={styles.field}>
           <label htmlFor={iqId}>Minimum IQ</label>
           <input
             id={iqId}
+            className={styles.control}
             type="number"
             inputMode="numeric"
             min="0"
@@ -105,30 +107,34 @@ export function ScientistDirectory({ initialData = SMART_PEOPLE }) {
             onChange={handleIqChange}
           />
         </p>
-        <p>
+        <p className={styles.field}>
           <label htmlFor={sortId}>Sort by</label>
-          <select id={sortId} value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+          <select id={sortId} className={styles.control} value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
             {Object.entries(SORT_LABELS).map(([value, label]) => (
               <option key={value} value={value}>{label}</option>
             ))}
           </select>
         </p>
-        <p>
-          <button type="button" onClick={handleReset}>Reset directory</button>
+        <p className={styles.actions}>
+          <button type="button" className={styles.button} onClick={handleReset}>Reset directory</button>
         </p>
       </form>
 
       {/* Screen readers announce the new count after every search, filter, delete or reset */}
-      <output role="status" aria-live="polite">
+      <output className={styles.status} role="status" aria-live="polite">
         Found {visible.length} of {people.length} pioneers
       </output>
 
-      <ul>
+      <ul className={styles.list} role="list">
         {visible.map((person) => (
-          <li key={person.id}>
-            <span>{person.name} — IQ {person.iq}, age {person.age}</span>{' '}
+          <li key={person.id} className={styles.row}>
+            <span className={styles.person}>
+              <strong>{person.name}</strong>
+              <small>IQ {person.iq} · age {person.age}</small>
+            </span>
             <button
               type="button"
+              className={styles.button}
               aria-label={`Delete ${person.name}`}
               onClick={() => handleDelete(person.id)}
               // React 19 ref callback with cleanup: register on mount, unregister on unmount
@@ -142,7 +148,7 @@ export function ScientistDirectory({ initialData = SMART_PEOPLE }) {
           </li>
         ))}
       </ul>
-      {visible.length === 0 && <p>No pioneers match these filters.</p>}
+      {visible.length === 0 && <p className={styles.empty}>No pioneers match these filters.</p>}
     </section>
   );
 }

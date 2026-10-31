@@ -1,0 +1,108 @@
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+.heading {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+/* Filters: 1 column at 375px (311px available), 2-3 columns on wider screens */
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+}
+
+.field label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.control {
+  width: 100%;
+  min-height: 44px;           /* comfortable touch target */
+  padding: 8px 12px;
+  border: 1px solid var(--text-muted);
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+}
+
+.actions {
+  margin: 0;
+  display: flex;
+  align-items: end;
+}
+
+.button {
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid var(--text-muted);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.button:hover {
+  border-color: var(--text);
+}
+
+/* Reserve one line so the count never shifts the list (CLS) */
+.status {
+  display: block;
+  min-height: 1.5em;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--surface-2);
+}
+
+.person {
+  min-width: 0;
+  overflow-wrap: anywhere;    /* long names wrap instead of pushing the button out */
+}
+
+.person small {
+  display: block;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.row .button {
+  flex: 0 0 auto;
+}
+
+.empty {
+  margin: 0;
+  color: var(--text-muted);
+}

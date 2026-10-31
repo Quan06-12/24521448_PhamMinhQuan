@@ -1,0 +1,13 @@
+/* Page layout */
+.app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px;              /* 16px side gutter at 375px */
+  display: grid;
+  gap: 16px;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+}
