@@ -11,9 +11,10 @@
 - [x] Verify: `grep '<div'` and `grep 'http://'` return 0 matches.
 
 ## Exercise 2: ScientistDirectory
-- [ ] Normalize `SMART_PEOPLE` schema with stable IDs.
-- [ ] Add search, Min-IQ filter and `toSorted` (no `useEffect`).
-- [ ] Add delete / reset and `<output role="status">` counter.
+- [x] Normalize `SMART_PEOPLE` schema with stable IDs.
+- [x] Add search, Min-IQ filter and `toSorted` (no `useEffect`).
+- [x] Add delete / reset and `<output role="status">` counter.
+- [x] Keep keyboard focus after delete; responsive 375px CSS module.
 
 ## Exercise 3: PUBG VN Match Telemetry
 - [ ] Implement 4-state machine + `AbortController`.

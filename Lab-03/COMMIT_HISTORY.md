@@ -17,3 +17,9 @@
 | Exercise 1 | `6150725` | style(ex1): add responsive 375px CSS module (CSS files and card classes) |
 | Exercise 1 | `751a4a3` | style(ex1): add responsive 375px CSS module (follow-up: page classes on main/h1 were missing) |
 | Exercise 1 | `2e2b409` | style(ex1): tidy App.jsx indentation |
+| Exercise 1 | `41933bb` | fix(ex1): set page title and meta description |
+| Exercise 2 | `c1cb147` | chore(ex2): scaffold react 19 vite app |
+| Exercise 2 | `3517e05` | feat(ex2): normalize smartPeople schema with stable IDs |
+| Exercise 2 | `7c88bd0` | feat(ex2): add search, IQ filter & toSorted |
+| Exercise 2 | `7b2d14b` | feat(ex2): add delete/reset & live status |
+| Exercise 2 | `4587002` | style(ex2): add responsive 375px CSS module |

@@ -29,7 +29,7 @@ Lab-03/
 Status: Completed
 
 ### Exercise 2 – Interactive Scientist & Pioneer Directory
-Status: Not started
+Status: Completed
 
 ### Exercise 3 – KRAFTON PUBG VN Live Match Telemetry
 Status: Not started
