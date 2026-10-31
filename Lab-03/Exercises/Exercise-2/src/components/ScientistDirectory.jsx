@@ -1,4 +1,5 @@
-import { useId, useState } from 'react';
+import { useId, useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 import { SMART_PEOPLE } from '../data/smartPeople.js';
 
 // Comparators defined once at module level (not recreated per render)
@@ -17,8 +18,11 @@ const SORT_LABELS = {
 // Tie-breaker so equal IQ/age rows keep a deterministic order
 const byName = (a, b) => a.name.localeCompare(b.name);
 
+const DEFAULT_MIN_IQ = 160;
+const DEFAULT_SORT = 'iq-desc';
+
 /**
- * Pioneer directory with derived search / filter / sort state.
+ * Pioneer directory with derived search / filter / sort state, delete and reset.
  * @param {{ initialData?: ReadonlyArray<{id: string, name: string, age: number, iq: number}> }} props
  */
 export function ScientistDirectory({ initialData = SMART_PEOPLE }) {
@@ -29,10 +33,14 @@ export function ScientistDirectory({ initialData = SMART_PEOPLE }) {
   const sortId = useId();
 
   // Source-of-truth state: only raw, independent inputs
-  const [people] = useState(initialData);        // setter added in Step 4 (delete/reset)
+  const [people, setPeople] = useState(initialData);
   const [query, setQuery] = useState('');
-  const [minIq, setMinIq] = useState(160);
-  const [sortBy, setSortBy] = useState('iq-desc');
+  const [minIq, setMinIq] = useState(DEFAULT_MIN_IQ);
+  const [sortBy, setSortBy] = useState(DEFAULT_SORT);
+
+  // DOM handles for focus management (never read during render)
+  const headingRef = useRef(null);
+  const deleteButtonsRef = useRef(new Map()); // person.id -> <button>
 
   // Derived state: computed during render in one pass, no extra state or effect hooks.
   // toSorted() returns a new array (ES2023); sort() would mutate and throws on a frozen array.
@@ -47,9 +55,30 @@ export function ScientistDirectory({ initialData = SMART_PEOPLE }) {
     setMinIq(Number.isNaN(value) ? 0 : value);
   };
 
+  const handleDelete = (id) => {
+    // Pick the neighbour that should receive focus BEFORE the row disappears
+    const index = visible.findIndex((p) => p.id === id);
+    const nextId = (visible[index + 1] ?? visible[index - 1])?.id;
+
+    // Immutable removal; flushSync commits the DOM now so focus can move right after
+    flushSync(() => setPeople((prev) => prev.filter((p) => p.id !== id)));
+
+    // Keyboard users never fall back to <body>: next/previous Delete button, else the heading
+    const target = nextId ? deleteButtonsRef.current.get(nextId) : headingRef.current;
+    target?.focus();
+  };
+
+  const handleReset = () => {
+    setPeople(initialData); // restore the original frozen snapshot
+    setQuery('');
+    setMinIq(DEFAULT_MIN_IQ);
+    setSortBy(DEFAULT_SORT);
+  };
+
   return (
     <section aria-labelledby={headingId}>
-      <h2 id={headingId}>Pioneers</h2>
+      {/* tabIndex -1: focusable by script (after the last delete), not a Tab stop */}
+      <h2 id={headingId} ref={headingRef} tabIndex={-1}>Pioneers</h2>
 
       {/* role="search" landmark; Enter must not reload the page */}
       <form role="search" onSubmit={(e) => e.preventDefault()}>
@@ -84,12 +113,32 @@ export function ScientistDirectory({ initialData = SMART_PEOPLE }) {
             ))}
           </select>
         </p>
+        <p>
+          <button type="button" onClick={handleReset}>Reset directory</button>
+        </p>
       </form>
+
+      {/* Screen readers announce the new count after every search, filter, delete or reset */}
+      <output role="status" aria-live="polite">
+        Found {visible.length} of {people.length} pioneers
+      </output>
 
       <ul>
         {visible.map((person) => (
           <li key={person.id}>
-            {person.name} — IQ {person.iq}, age {person.age}
+            <span>{person.name} — IQ {person.iq}, age {person.age}</span>{' '}
+            <button
+              type="button"
+              aria-label={`Delete ${person.name}`}
+              onClick={() => handleDelete(person.id)}
+              // React 19 ref callback with cleanup: register on mount, unregister on unmount
+              ref={(node) => {
+                deleteButtonsRef.current.set(person.id, node);
+                return () => deleteButtonsRef.current.delete(person.id);
+              }}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
