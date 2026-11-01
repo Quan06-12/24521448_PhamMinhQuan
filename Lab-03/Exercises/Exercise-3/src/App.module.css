@@ -1,0 +1,70 @@
+/* Page layout */
+.app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px;              /* 16px side gutter at 375px */
+  display: grid;
+  gap: 16px;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+}
+
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.panelTitle {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+/* 3 squads in one row even at 375px: 3 * 88 + 2 * 8 = 280px <= 311px available */
+.squads {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+  gap: 8px;
+}
+
+.squadButton {
+  width: 100%;
+  min-height: 64px;
+  display: grid;
+  place-content: center;
+  gap: 2px;
+  padding: 8px;
+  border: 2px solid var(--surface-2);
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+
+.squadButton:hover {
+  border-color: var(--text-muted);
+}
+
+.squadButton small {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+/* Selected state is driven by the ARIA attribute: visuals and a11y never disagree */
+.squadButton[aria-pressed='true'] {
+  border-color: var(--accent);
+}
+
+.squadButton[aria-pressed='true'] small {
+  color: var(--text);
+}

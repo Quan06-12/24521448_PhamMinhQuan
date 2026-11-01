@@ -1,6 +1,6 @@
 /* One frame for every state: same 220px box -> switching states never shifts layout (CLS 0) */
 .frame {
-  min-height: 220px;
+  min-height: 280px;          /* measured: SUCCESS card is ~272px at 375px; skeleton must match it */
   padding: 16px;
   border-radius: var(--radius);
   background: var(--surface-2);
@@ -76,4 +76,33 @@
 
 .retry:hover {
   background: var(--surface);
+}
+
+/* SUCCESS */
+.card {
+  display: grid;
+  gap: 12px;
+}
+
+.squadName {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.stats {
+  margin: 0;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+}
+
+.stats dt {
+  color: var(--text-muted);
+}
+
+.stats dd {
+  margin: 0;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
 }

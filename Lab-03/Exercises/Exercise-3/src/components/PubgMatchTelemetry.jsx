@@ -78,9 +78,9 @@ export function PubgMatchTelemetry({ squadId }) {
       )}
 
       {view.status === 'SUCCESS' && (
-        <article aria-labelledby="squad-title">
-          <h3 id="squad-title">{view.data.name}</h3>
-          <dl>
+        <article className={styles.card} aria-labelledby="squad-title">
+          <h3 id="squad-title" className={styles.squadName}>{view.data.name}</h3>
+          <dl className={styles.stats}>
             <dt>Map</dt><dd>{view.data.map}</dd>
             <dt>Phase</dt><dd>{view.data.phase}</dd>
             <dt>Alive</dt><dd>{view.data.alive} / 4</dd>
