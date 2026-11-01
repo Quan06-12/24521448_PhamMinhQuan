@@ -10,6 +10,7 @@ the bug, DevTools proof and the fixing commit.
 | 1 | Rest-destructuring left unused `_removed` binding (ESLint) | Copy-then-delete on the copy (`6057410`) |
 | Ex 1 | JSDoc comment contained a `<div>` literal, so the zero-div grep audit returned 1 match | Reworded the comment; grep returns 0 matches (`4c2cdeb`) |
 | Ex 2 | Same pattern as Ex 1: a comment containing `useEffect` made the no-effect grep audit return 1 match | Reworded the comment before committing; grep returns 0 matches (`7c88bd0`) |
+
 Detailed records:
 
 - [Homework 1 audit](Homework-1/AI_FAILURE_AUDIT.md)
