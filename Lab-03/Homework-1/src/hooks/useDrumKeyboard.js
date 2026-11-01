@@ -19,7 +19,7 @@ export function useDrumKeyboard(padByCode, onTriggerPad, isEnabled = true) {
       const target = e.target;
       if (TYPING_TAGS.has(target.tagName) || target.isContentEditable) return; // focus isolation
 
-      const pad = padByCode.get(e.code);                    // physical key, never keyCode
+       const pad = padByCode.get(e.code);                    // physical key position (IME-safe)
       if (!pad) return;
 
       e.preventDefault();

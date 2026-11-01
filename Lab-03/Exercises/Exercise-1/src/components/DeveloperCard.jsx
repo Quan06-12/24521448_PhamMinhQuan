@@ -20,7 +20,7 @@ function getInitials(fullName) {
 
 /**
  * Semantic developer / pro-gamer profile card. Zero div elements by contract.
- * ES6 default parameters replace the removed defaultProps API.
+ * ES6 default parameters replace the legacy default-props API.
  */
 export function DeveloperCard({
   fullName = 'Tran Vinh Khiem',

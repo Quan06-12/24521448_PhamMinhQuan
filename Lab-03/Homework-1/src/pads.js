@@ -1,6 +1,6 @@
 // Pad data contract for HW1 Drum Kit.
 // Each pad: { id, code, key, label, src }
-// - code: physical key from KeyboardEvent.code (IME-safe, never keyCode)
+// - code: physical key from KeyboardEvent.code (IME-safe, layout-independent)
 // - key:  letter shown on screen inside <kbd>
 export const PADS = [
   { id: 'kick',  code: 'KeyW', key: 'W', label: 'Kick',   src: '/sounds/kick.wav' },
