@@ -32,7 +32,7 @@ Status: Completed
 Status: Completed
 
 ### Exercise 3 – KRAFTON PUBG VN Live Match Telemetry
-Status: Not started
+Status: Completed
 
 ## Homeworks
 

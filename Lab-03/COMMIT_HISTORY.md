@@ -23,3 +23,9 @@
 | Exercise 2 | `7c88bd0` | feat(ex2): add search, IQ filter & toSorted |
 | Exercise 2 | `7b2d14b` | feat(ex2): add delete/reset & live status |
 | Exercise 2 | `4587002` | style(ex2): add responsive 375px CSS module |
+| Lab 03 docs | `9640aa4` | docs(lab3): restore blank line after AI failure table |
+| Exercise 3 | `66f64ed` | chore(ex3): scaffold react 19 vite app |
+| Exercise 3 | `8265d30` | feat(ex3): implement PUBG VN 4-state telemetry & AbortController |
+| Exercise 3 | `b459957` | feat(ex3): add skeleton UI & retry alert |
+| Lab 03 | `09261d9` | fix(lab3): reword comments that tripped banned-API grep audits |
+| Exercise 3 | `6963c43` | style(ex3): add responsive 375px CSS module and match skeleton height |

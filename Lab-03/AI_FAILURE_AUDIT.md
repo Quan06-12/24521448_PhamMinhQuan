@@ -10,6 +10,8 @@ the bug, DevTools proof and the fixing commit.
 | 1 | Rest-destructuring left unused `_removed` binding (ESLint) | Copy-then-delete on the copy (`6057410`) |
 | Ex 1 | JSDoc comment contained a `<div>` literal, so the zero-div grep audit returned 1 match | Reworded the comment; grep returns 0 matches (`4c2cdeb`) |
 | Ex 2 | Same pattern as Ex 1: a comment containing `useEffect` made the no-effect grep audit return 1 match | Reworded the comment before committing; grep returns 0 matches (`7c88bd0`) |
+| Lab 3 | The comment pattern from Ex 1 and Ex 2 recurred in 4 more places (`keyCode` ×2 in HW1, `defaultProps` in Ex 1, `window.alert` in Ex 3), each tripping a banned-API grep | Reworded all comments; a lab-wide grep returns 0 matches (`b459957`, `09261d9`) |
+| Ex 3 | Skeleton frame copied the slide's 220px, but the success card measured 272px at 375px, so loading → success shifted the layout by 52px | Frame `min-height: 280px`; DevTools shows 280px in both states (`6963c43`) |
 
 Detailed records:
 

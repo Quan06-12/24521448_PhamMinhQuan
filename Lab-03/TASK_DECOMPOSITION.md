@@ -17,9 +17,10 @@
 - [x] Keep keyboard focus after delete; responsive 375px CSS module.
 
 ## Exercise 3: PUBG VN Match Telemetry
-- [ ] Implement 4-state machine + `AbortController`.
-- [ ] Add skeleton UI and retry alert.
-- [ ] Verify rapid squad switching cancels requests (Network tab).
+- [x] Implement 4-state machine + `AbortController`.
+- [x] Add skeleton UI and retry alert.
+- [x] Verify rapid squad switching cancels requests (Network tab).
+- [x] Responsive 375px CSS module; skeleton height matched to the success card.
 
 ## Homeworks
 - [ ] Homework 1 – see `Homework-1/TASK_DECOMPOSITION.md`.
