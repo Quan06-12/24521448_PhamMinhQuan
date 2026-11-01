@@ -1,0 +1,79 @@
+/* One frame for every state: same 220px box -> switching states never shifts layout (CLS 0) */
+.frame {
+  min-height: 220px;
+  padding: 16px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+.frame:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.idle {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+/* LOADING: pulsing Blue-Zone skeleton bars */
+.skeletonBar {
+  height: 14px;
+  border-radius: 7px;
+  background: var(--surface);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.skeletonTitle {
+  width: 55%;
+  height: 22px;
+}
+
+.skeletonShort {
+  width: 35%;
+}
+
+.syncing {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
+/* Respect users who turn animations off */
+@media (prefers-reduced-motion: reduce) {
+  .skeletonBar { animation: none; }
+}
+
+/* ERROR */
+.alert {
+  display: grid;
+  gap: 12px;
+}
+
+.alert p {
+  margin: 0;
+}
+
+.retry {
+  justify-self: start;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.retry:hover {
+  background: var(--surface);
+}
