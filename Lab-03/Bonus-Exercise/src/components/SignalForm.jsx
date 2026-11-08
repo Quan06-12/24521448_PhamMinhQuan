@@ -1,5 +1,6 @@
 import { useId } from 'react';
 import { ACTOR_LABELS, EFFORT_MULTIPLIER } from '../fsm/relationshipMachine.js';
+import styles from './SignalForm.module.css';
 
 /**
  * Logs one effort signal. Uncontrolled inputs, read once on submit.
@@ -21,10 +22,10 @@ export function SignalForm({ disabled, onAdd }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <fieldset disabled={disabled}>
+      <fieldset className={styles.fieldset} disabled={disabled}>
         <legend>Thêm tín hiệu</legend>
         <label htmlFor={actorId}>Ai cố gắng</label>
-        <select id={actorId} name="actor" defaultValue="EM">
+        <select className={styles.field} id={actorId} name="actor" defaultValue="EM">
           {Object.keys(ACTOR_LABELS).map((actor) => (
             <option key={actor} value={actor}>
               {ACTOR_LABELS[actor]} (×{EFFORT_MULTIPLIER[actor]})
@@ -32,8 +33,17 @@ export function SignalForm({ disabled, onAdd }) {
           ))}
         </select>
         <label htmlFor={stepsId}>Số lần cố</label>
-        <input id={stepsId} name="steps" type="number" min="0" step="1" inputMode="numeric" defaultValue="10" />
-        <button type="submit">Thêm</button>
+        <input
+          className={styles.field}
+          id={stepsId}
+          name="steps"
+          type="number"
+          min="0"
+          step="1"
+          inputMode="numeric"
+          defaultValue="10"
+        />
+        <button className={styles.submit} type="submit">Thêm</button>
       </fieldset>
     </form>
   );

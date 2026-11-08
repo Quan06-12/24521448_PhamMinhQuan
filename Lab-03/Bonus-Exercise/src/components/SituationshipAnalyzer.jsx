@@ -10,6 +10,7 @@ import { useGhostTimer } from '../hooks/useGhostTimer.js';
 import { PhaseStepper } from './PhaseStepper.jsx';
 import { SignalForm } from './SignalForm.jsx';
 import { EffortReport } from './EffortReport.jsx';
+import styles from './SituationshipAnalyzer.module.css';
 
 const EXIT_TEXT = {
   TIMEOUT: 'Seen không rep — hết giờ chờ.',
@@ -36,37 +37,38 @@ export function SituationshipAnalyzer() {
   const addSignal = (signal) => dispatch({ type: 'ADD_SIGNAL', signal });
 
   return (
-    <article aria-label="Hẹn Hò Nhưng Không Yêu Analyzer" data-phase={phase}>
-      <header>
+    <article className={styles.analyzer} aria-label="Hẹn Hò Nhưng Không Yêu Analyzer" data-phase={phase}>
+      <header className={`${styles.panel} ${styles.wide}`}>
         <h2>Trạng thái</h2>
         <PhaseStepper phase={phase} />
-        {phase === 'GHOSTED_EXIT' && exitReason && <p data-exit-reason={exitReason}>{EXIT_TEXT[exitReason]}</p>}
+        {phase === 'GHOSTED_EXIT' && exitReason && <p className={styles.exit} data-exit-reason={exitReason}>{EXIT_TEXT[exitReason]}</p>}
       </header>
 
-      <EffortReport effort={effort} />
+      <EffortReport className={styles.panel} effort={effort} />
 
-      <section aria-labelledby="chat-heading">
+      <section className={styles.panel} aria-labelledby="chat-heading">
         <h2 id="chat-heading">Tin nhắn</h2>
         {secondsLeft === null ? (
-          <p data-countdown="idle">Không có tin nhắn nào đang chờ.</p>
+          <p className={styles.countdown} data-countdown="idle">Không có tin nhắn nào đang chờ.</p>
         ) : (
-          <p data-countdown="running">
+          <p className={styles.countdown} data-countdown="running">
             Đã seen, chờ rep: <strong data-seconds-left={secondsLeft}>{secondsLeft}</strong> giây
           </p>
         )}
-        <ul role="list">
+        <ul className={styles.actions} role="list">
           <li>
-            <button type="button" disabled={!can('SEND_MESSAGE')} onClick={sendMessage}>
+            <button className={styles.button} type="button" disabled={!can('SEND_MESSAGE')} onClick={sendMessage}>
               Gửi tin nhắn
             </button>
           </li>
           <li>
-            <button type="button" disabled={!can('REPLY')} onClick={() => dispatch({ type: 'REPLY' })}>
+            <button className={styles.button} type="button" disabled={!can('REPLY')} onClick={() => dispatch({ type: 'REPLY' })}>
               Người ấy rep
             </button>
           </li>
           <li>
             <button
+              className={styles.button}
               type="button"
               disabled={!can('SWITCH_TO_AI_DO')}
               onClick={() => dispatch({ type: 'SWITCH_TO_AI_DO' })}
@@ -77,42 +79,42 @@ export function SituationshipAnalyzer() {
         </ul>
       </section>
 
-      <section aria-labelledby="actions-heading">
+      <section className={`${styles.panel} ${styles.wide}`} aria-labelledby="actions-heading">
         <h2 id="actions-heading">Hành động</h2>
-        <ul role="list">
+        <ul className={styles.actions} role="list">
           <li>
-            <button type="button" disabled={!can('START_DATING')} onClick={() => dispatch({ type: 'START_DATING' })}>
+            <button className={styles.button} type="button" disabled={!can('START_DATING')} onClick={() => dispatch({ type: 'START_DATING' })}>
               Bắt đầu hẹn hò
             </button>
           </li>
           <li>
-            <button type="button" disabled={!can('CONFESS')} onClick={() => dispatch({ type: 'CONFESS' })}>
+            <button className={styles.button} type="button" disabled={!can('CONFESS')} onClick={() => dispatch({ type: 'CONFESS' })}>
               Tỏ tình
             </button>
           </li>
           <li>
-            <button type="button" disabled={!can('STOP')} onClick={() => dispatch({ type: 'STOP' })}>
+            <button className={styles.danger} type="button" disabled={!can('STOP')} onClick={() => dispatch({ type: 'STOP' })}>
               Dừng Lại
             </button>
           </li>
           <li>
-            <button type="button" disabled={!can('UNBIND')} onClick={() => dispatch({ type: 'UNBIND' })}>
+            <button className={styles.danger} type="button" disabled={!can('UNBIND')} onClick={() => dispatch({ type: 'UNBIND' })}>
               Unbind &amp; Free Memory
             </button>
           </li>
           <li>
-            <button type="button" disabled={!can('RESET')} onClick={() => dispatch({ type: 'RESET' })}>
+            <button className={styles.button} type="button" disabled={!can('RESET')} onClick={() => dispatch({ type: 'RESET' })}>
               Làm lại
             </button>
           </li>
         </ul>
       </section>
 
-      <section aria-labelledby="log-heading">
+      <section className={`${styles.panel} ${styles.wide}`} aria-labelledby="log-heading">
         <h2 id="log-heading">Nhật ký tín hiệu</h2>
         <SignalForm disabled={!can('ADD_SIGNAL')} onAdd={addSignal} />
         {/* Newest first; toReversed keeps the log itself untouched */}
-        <ul role="list">
+        <ul className={styles.log} role="list">
           {signals.toReversed().map((signal) => (
             <li key={signal.id} data-actor={signal.actor}>
               {ACTOR_LABELS[signal.actor]}: {signal.steps} × {signal.multiplier} ={' '}

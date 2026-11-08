@@ -1,0 +1,46 @@
+.fieldset {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
+  min-width: 0; /* fieldsets default to min-content width, which can overflow at 375px */
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--surface-2);
+  border-radius: var(--radius);
+}
+
+.fieldset:disabled {
+  opacity: 0.5;
+}
+
+.fieldset legend {
+  padding: 0 4px;
+  font-weight: 600;
+}
+
+.field {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid var(--surface-2);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+.submit {
+  min-height: 44px;
+  margin-top: 6px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--accent-text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submit:disabled {
+  cursor: not-allowed;
+}

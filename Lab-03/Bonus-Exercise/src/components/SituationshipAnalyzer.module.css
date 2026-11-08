@@ -1,0 +1,109 @@
+.analyzer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* minmax(0) lets long Vietnamese labels wrap instead of overflowing */
+  gap: 16px;
+}
+
+.panel {
+  min-width: 0;
+  padding: 16px;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.panel h2 {
+  margin: 0 0 12px;
+  font-size: 1.125rem;
+}
+
+.exit {
+  margin: 12px 0 0;
+  padding: 10px 14px;
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+.countdown {
+  margin: 0 0 12px;
+  color: var(--text-muted);
+}
+
+.countdown strong {
+  color: var(--accent);
+  font-size: 1.25rem;
+  font-variant-numeric: tabular-nums; /* digits keep the same width while counting down */
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.button {
+  min-height: 44px; /* touch target */
+  padding: 8px 14px;
+  border: 1px solid var(--surface-2);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.danger {
+  composes: button;
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.log {
+  display: grid;
+  gap: 6px;
+  max-height: 16rem;
+  margin: 16px 0 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.log li {
+  padding: 6px 10px;
+  border-left: 3px solid var(--focus);
+  border-radius: 6px;
+  background: var(--surface-2);
+  overflow-wrap: anywhere;
+}
+
+.log li[data-actor='AI_DO'] {
+  border-left-color: var(--accent);
+}
+
+@media (min-width: 48rem) {
+  .analyzer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wide {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .button {
+    transition: border-color 150ms ease, opacity 150ms ease;
+  }
+}
