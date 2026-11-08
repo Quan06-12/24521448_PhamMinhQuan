@@ -1,0 +1,59 @@
+/* Position comes from --white-index (set per key); --white-w comes from the region */
+.white,
+.black {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  cursor: pointer;
+  font: inherit;
+  touch-action: pan-x;
+  user-select: none;
+}
+
+.white {
+  left: calc(var(--white-index) * var(--white-w));
+  width: var(--white-w);
+  height: 100%;
+  background: #f4f4f1;
+  color: #111;
+  border: 1px solid #555;
+  border-radius: 0 0 6px 6px;
+  padding-bottom: 8px;
+}
+
+.black {
+  --black-w: calc(var(--white-w) * 0.62);
+  /* centred on the border after the white key with the same index */
+  left: calc((var(--white-index) + 1) * var(--white-w) - var(--black-w) / 2);
+  width: var(--black-w);
+  height: 62%;
+  z-index: 2;
+  background: #15171c;
+  color: #eee;
+  border: 1px solid #000;
+  border-radius: 0 0 4px 4px;
+  padding-bottom: 6px;
+}
+
+.white[aria-pressed='true'] {
+  background: var(--accent);
+}
+
+.black[aria-pressed='true'] {
+  background: #b47a10;
+}
+
+.name {
+  font-size: 0.6875rem;
+}
+
+.shortcut {
+  font-size: 0.75rem;
+  font-weight: 700;
+}

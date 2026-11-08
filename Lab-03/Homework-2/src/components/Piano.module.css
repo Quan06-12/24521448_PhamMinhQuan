@@ -1,0 +1,14 @@
+/* Scroll container: the strip is wider than a phone, the page is not */
+.region {
+  --white-w: 44px;
+  overflow-x: auto;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  max-width: 100%;
+}
+
+.strip {
+  position: relative;
+  height: 220px;
+  width: calc(var(--white-count) * var(--white-w));
+}
