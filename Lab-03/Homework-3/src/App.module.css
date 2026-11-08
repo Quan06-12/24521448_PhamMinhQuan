@@ -17,7 +17,7 @@
 
 .drops {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  grid-template-columns: minmax(0, 1fr); /* one column on phones */
   gap: 16px;
   margin: 0;
   padding: 0;
@@ -27,6 +27,10 @@
 @media (min-width: 48rem) {
   .title {
     font-size: 2.25rem;
+  }
+
+  .drops {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* four drops = 2x2 on desktop */
   }
 }
 
