@@ -1,8 +1,9 @@
 .app {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 16px;
+  padding: 16px;                          /* 16px side gutter, also at 375px */
   display: grid;
+  grid-template-columns: minmax(0, 1fr);  /* wide children can never stretch the page */
   gap: 24px;
 }
 
@@ -31,4 +32,9 @@
 .status {
   display: block;
   margin-bottom: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--surface-2);
+  font-variant-numeric: tabular-nums;     /* digits do not jiggle while counting */
+  overflow-wrap: anywhere;
 }

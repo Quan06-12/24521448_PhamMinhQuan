@@ -2,13 +2,19 @@
 .region {
   --white-w: 44px;
   overflow-x: auto;
+  overscroll-behavior-x: contain;         /* swiping the keys must not trigger browser back */
   border-radius: var(--radius);
   background: var(--surface-2);
   max-width: 100%;
+  padding-bottom: 8px;                    /* room so the scrollbar does not cover the keys */
+}
+
+.region:focus-visible {
+  outline-offset: -3px;
 }
 
 .strip {
   position: relative;
-  height: 220px;
+  height: clamp(160px, 38vw, 220px);
   width: calc(var(--white-count) * var(--white-w));
 }
