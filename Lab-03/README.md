@@ -16,6 +16,7 @@ Lab-03/
 ├── Homework-1/       # Production Studio Drum Kit (WCAG 2.2 AA)
 ├── Homework-2/       # 88-Key Polyphonic Piano & FIFO Sequencer
 ├── Homework-3/       # KRAFTON x PUBG VN Airdrop Arena
+├── Bonus-Exercise/   # 'Hẹn Hò Nhưng Không Yêu' state machine
 ├── AI_FAILURE_AUDIT.md
 ├── COMMIT_HISTORY.md
 ├── README.md
@@ -39,8 +40,13 @@ Status: Completed
 | Homework | Description | Status |
 |---|---|---|
 | Homework 1 | Production Studio Drum Kit — `e.code`, anti-repeat, visual hit log | Completed |
-| Homework 2 | 88-Key Polyphonic Piano — `React.memo`, 8-voice FIFO stealing | Not started |
-| Homework 3 | PUBG VN Airdrop Arena — anti-drift timer, optimistic claim, leaderboard | Not started |
+| Homework 2 | 88-Key Polyphonic Piano — `React.memo`, 8-voice FIFO stealing | Completed |
+| Homework 3 | PUBG VN Airdrop Arena — anti-drift timer, optimistic claim, leaderboard | Completed |
+
+## Bonus Exercise
+
+### 'Hẹn Hò Nhưng Không Yêu' State Machine
+Status: Completed — finite state machine, derived red-flag meter and leak-free ghosting timer.
 
 ## Technologies
 - React 19 + Vite

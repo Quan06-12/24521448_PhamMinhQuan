@@ -23,7 +23,13 @@
 - [x] Responsive 375px CSS module; skeleton height matched to the success card.
 
 ## Homeworks
-- [ ] Homework 1 – see `Homework-1/TASK_DECOMPOSITION.md`.
-- [ ] Homework 2 – see `Homework-2/TASK_DECOMPOSITION.md`.
-- [ ] Homework 3 – see `Homework-3/TASK_DECOMPOSITION.md`.
-- [ ] Record at least 3 observed AI bugs in `AI_FAILURE_AUDIT.md`.
+- [x] Homework 1 – see `Homework-1/TASK_DECOMPOSITION.md`.
+- [x] Homework 2 – see `Homework-2/TASK_DECOMPOSITION.md`.
+- [x] Homework 3 – see `Homework-3/TASK_DECOMPOSITION.md`.
+- [x] Record at least 3 observed AI bugs in `AI_FAILURE_AUDIT.md`.
+
+## Bonus Exercise: SituationshipAnalyzer
+- [x] Model the relationship FSM with a pure reducer.
+- [x] Derive effort scores and the red flag during render.
+- [x] 5-second ghosting timer with cleanup on phase change and unmount.
+- [x] Responsive 375px CSS module.

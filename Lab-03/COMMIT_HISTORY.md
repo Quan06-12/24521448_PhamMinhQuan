@@ -29,3 +29,26 @@
 | Exercise 3 | `b459957` | feat(ex3): add skeleton UI & retry alert |
 | Lab 03 | `09261d9` | fix(lab3): reword comments that tripped banned-API grep audits |
 | Exercise 3 | `6963c43` | style(ex3): add responsive 375px CSS module and match skeleton height |
+| Homework 2 | `c1e8b0c` | chore(hw2): scaffold react 19 vite app |
+| Homework 2 | `d71b108` | feat(hw2): generate 88-key layout from MIDI frequency math |
+| Homework 2 | `c445f57` | feat(hw2): add 8-voice polyphonic synth with FIFO voice stealing |
+| Homework 2 | `e0c46be` | feat(hw2): render memoized piano keys with pointer and keyboard input |
+| Homework 2 | `e671626` | feat(hw2): add FIFO recorder with abortable variable-speed replay |
+| Homework 2 | `f56b151` | style(hw2): add responsive piano layout with CSS modules |
+| Homework 2 | `dffbe49` | fix(hw2): keep render counter out of production builds |
+| Homework 3 | `d52865b` | chore(hw3): scaffold react 19 vite app |
+| Homework 3 | `490cba6` | feat(hw3): define PVS drop and squad standing contracts |
+| Homework 3 | `29a900b` | feat(hw3): add anti-drift usePubgAirdropTimer with visibility resync |
+| Homework 3 | `0267b22` | feat(hw3): add optimistic crate claim with in-flight lock and 409 rollback |
+| Homework 3 | `e0addf9` | feat(hw3): add derived leaderboard and kill-feed filters |
+| Homework 3 | `33fd47f` | style(hw3): add responsive arena layout with CSS modules |
+| Homework 3 | `7e61fd7` | style(hw3): balance drop card grid for four drops |
+| Bonus | `6009d5f` | chore(bonus): scaffold react 19 vite app |
+| Bonus | `f649115` | feat(fsm): model HenHoKhongYeu state machine |
+| Bonus | `c8bbb1d` | feat(ui): add derived red-flag meter & ghosting cleanup |
+| Bonus | `6856839` | style(bonus): add responsive 375px CSS module |
+| Homework 3 | `3676ff3` | fix(hw3): derive EXPIRED phase when a drop's claim window closes |
+| Homework 3 | `c0ea479` | fix(hw3): report non-conflict claim failures instead of rethrowing |
+| Homework 2 | `164438f` | docs(hw2): record verification results and AI failure audit |
+| Homework 3 | `206e4ed` | docs(hw3): record verification results and AI failure audit |
+| Bonus | `272ca37` | docs(bonus): describe scope and verification results |
