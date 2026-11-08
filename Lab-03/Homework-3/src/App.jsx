@@ -1,5 +1,7 @@
 import { useDropClaims } from './hooks/useDropClaims.js';
 import { DropCard } from './components/DropCard.jsx';
+import { Leaderboard } from './components/Leaderboard.jsx';
+import { KillFeed } from './components/KillFeed.jsx';
 import { ClaimNotice } from './components/ClaimNotice.jsx';
 import styles from './App.module.css';
 
@@ -21,6 +23,8 @@ export default function App() {
           ))}
         </ul>
       </section>
+      <Leaderboard />
+      <KillFeed />
     </main>
   );
 }
