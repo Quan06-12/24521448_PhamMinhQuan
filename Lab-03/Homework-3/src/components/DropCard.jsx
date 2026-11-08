@@ -14,7 +14,7 @@ const CLAIM_LABEL = {
   WARMUP: 'Not open yet',
   AIRDROP_LIVE: 'Claim',
   LOOTED_OUT: 'Looted out',
-  EXPIRED: 'Expired',
+  EXPIRED: 'Claim window closed',
 };
 
 /**
@@ -23,8 +23,13 @@ const CLAIM_LABEL = {
  *           onClaim: (dropId: string) => void }} props
  */
 export function DropCard({ drop, isClaiming, onClaim }) {
-  const { remainingMs } = usePubgAirdropTimer(drop.dropEpochMs);
-  const phase = getDropPhase(remainingMs, drop.remainingStock);
+  const { remainingMs, elapsedMs } = usePubgAirdropTimer(drop.dropEpochMs);
+  // Same tick drives both deadlines, so open/close can never disagree
+  const closesInMs = Math.max(0, drop.claimWindowMs - elapsedMs);
+  const phase = getDropPhase(remainingMs, drop.remainingStock, closesInMs);
+  const isLive = phase === 'AIRDROP_LIVE';
+  const countdownMs = phase === 'WARMUP' ? remainingMs : isLive ? closesInMs : 0;
+  const countdownLabel = phase === 'WARMUP' ? 'Opens in' : isLive ? 'Closes in' : 'Countdown';
 
   return (
     <article className={styles.card} data-phase={phase} aria-labelledby={`${drop.id}-title`}>
@@ -38,9 +43,9 @@ export function DropCard({ drop, isClaiming, onClaim }) {
           <dd>{formatVnd(drop.priceVnd)}</dd>
         </div>
         <div>
-          <dt>{phase === 'WARMUP' ? 'Opens in' : 'Countdown'}</dt>
+          <dt>{countdownLabel}</dt>
           <dd>
-            <time dateTime={toIsoDuration(remainingMs)}>{formatCountdown(remainingMs)}</time>
+            <time dateTime={toIsoDuration(countdownMs)}>{formatCountdown(countdownMs)}</time>
           </dd>
         </div>
         <div>
@@ -52,7 +57,7 @@ export function DropCard({ drop, isClaiming, onClaim }) {
       <button
         type="button"
         className={styles.claim}
-        disabled={isClaiming || phase !== 'AIRDROP_LIVE'}
+        disabled={isClaiming || !isLive}
         aria-busy={isClaiming}
         onClick={() => onClaim(drop.id)}
       >

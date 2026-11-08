@@ -12,6 +12,7 @@
  * @property {number} priceVnd
  * @property {number} remainingStock
  * @property {number} dropEpochMs - absolute time (ms since epoch) when the drop opens
+ * @property {number} claimWindowMs - how long claims stay open after dropEpochMs
  */
 
 /**
@@ -40,16 +41,19 @@ export const DROP_PHASE = Object.freeze({
 });
 
 /**
- * Phase is a pure function of the countdown and the stock.
+ * Phase is a pure function of the two countdowns and the stock.
  * LOOTED_OUT wins over WARMUP only after the countdown ended, so a sold-out
  * drop that has not opened yet still reads as a warm-up.
- * @param {number} remainingMs
+ * Sold out beats expired: if nothing is left, the window closing changes nothing.
+ * @param {number} remainingMs - time until the drop opens
  * @param {number} remainingStock
+ * @param {number} closesInMs - time until the claim window closes
  * @returns {DropPhase}
  */
-export function getDropPhase(remainingMs, remainingStock) {
+export function getDropPhase(remainingMs, remainingStock, closesInMs) {
   if (remainingMs > 0) return DROP_PHASE.WARMUP;
-  return remainingStock > 0 ? DROP_PHASE.AIRDROP_LIVE : DROP_PHASE.LOOTED_OUT;
+  if (remainingStock <= 0) return DROP_PHASE.LOOTED_OUT;
+  return closesInMs > 0 ? DROP_PHASE.AIRDROP_LIVE : DROP_PHASE.EXPIRED;
 }
 
 /** Total tournament points of a squad (derived, never stored). */

@@ -8,7 +8,7 @@ const TICK_MS = 250; // finer than 1 s so the displayed second never lags by alm
  * on the next tick, so nothing can accumulate drift.
  * @param {number} targetEpochMs - absolute end time
  * @param {number} [serverOffsetMs] - serverTime - clientTime, to trust the server clock
- * @returns {{ remainingMs: number, isLive: boolean }}
+ * @returns {{ remainingMs: number, elapsedMs: number, isLive: boolean }}
  */
 export function usePubgAirdropTimer(targetEpochMs, serverOffsetMs = 0) {
   // Lazy initialiser, so the first paint is already correct
@@ -31,6 +31,9 @@ export function usePubgAirdropTimer(targetEpochMs, serverOffsetMs = 0) {
   }, []);
 
   // Derived during render: changing the target or offset needs no effect
-  const remainingMs = Math.max(0, targetEpochMs - (nowMs + serverOffsetMs));
-  return { remainingMs, isLive: remainingMs === 0 };
+  const deltaMs = targetEpochMs - (nowMs + serverOffsetMs);
+  const remainingMs = Math.max(0, deltaMs);
+  // Time since the target passed, so callers can derive a second deadline from the same tick
+  const elapsedMs = Math.max(0, -deltaMs);
+  return { remainingMs, elapsedMs, isLive: remainingMs === 0 };
 }
