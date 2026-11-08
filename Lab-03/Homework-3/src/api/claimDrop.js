@@ -29,6 +29,11 @@ function getConflictRate() {
   return Number.isFinite(rate) ? Math.min(1, Math.max(0, rate)) : DEFAULT_CONFLICT_RATE;
 }
 
+// ?fail=1 makes every claim die like a dropped connection, to test the error path
+function shouldFailNetwork() {
+  return new URLSearchParams(window.location.search).get('fail') === '1';
+}
+
 // Abortable delay: rejects with the signal's reason as soon as abort() is called
 function wait(ms, signal) {
   return new Promise((resolve, reject) => {
@@ -54,9 +59,13 @@ function wait(ms, signal) {
  * @param {{ signal?: AbortSignal }} [options]
  * @returns {Promise<{ ok: true, remainingStock: number }>}
  * @throws {ClaimConflictError} when the server has no stock left or the claim was sniped
+ * @throws {TypeError} generic network failure (forced with ?fail=1)
  */
 export async function claimDrop(dropId, { signal } = {}) {
   await wait(MIN_LATENCY_MS + Math.random() * (MAX_LATENCY_MS - MIN_LATENCY_MS), signal);
+
+  // Same error type a failed fetch() gives, so the client cannot special-case it
+  if (shouldFailNetwork()) throw new TypeError('Network request failed');
 
   const stock = serverStock.get(dropId) ?? 0;
   // Real sold-out always conflicts, even with ?conflict=0

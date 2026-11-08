@@ -17,3 +17,8 @@
 .notice[data-kind='success'] p {
   border-left: 4px solid var(--focus);
 }
+
+/* Dashed edge, so an error does not rely on colour alone */
+.notice[data-kind='error'] p {
+  border-left: 4px dashed var(--accent);
+}

@@ -5,12 +5,12 @@ import { ClaimConflictError, claimDrop, isAbortError } from '../api/claimDrop.js
 /**
  * Drop stock with optimistic claims.
  * Flow: lock the drop -> stock - 1 right away -> ask the server ->
- * success reconciles with the server stock, 409 restores the previous stock.
+ * success reconciles with the server stock, any failure restores the previous stock.
  */
 export function useDropClaims() {
   const [drops, setDrops] = useState(INITIAL_DROPS);
   const [inFlight, setInFlight] = useState({}); // { [dropId]: true } - only for rendering
-  const [notice, setNotice] = useState(null);   // { id, kind: 'success' | 'conflict', title }
+  const [notice, setNotice] = useState(null);   // { id, kind: 'success' | 'conflict' | 'error', title }
 
   // The ref is the real lock: two clicks in the same tick both see the same stale state
   const lockedIdsRef = useRef(new Set());
@@ -48,12 +48,11 @@ export function useDropClaims() {
       } catch (error) {
         if (isAbortError(error)) return; // unmounted, nothing left to update
         setStock(dropId, previousStock); // rollback
-        if (error instanceof ClaimConflictError) {
-          noticeCountRef.current += 1;
-          setNotice({ id: noticeCountRef.current, kind: 'conflict', title: drop.title });
-        } else {
-          throw error;
-        }
+        // Report instead of rethrowing: this runs from a click handler, so a throw
+        // would only become an unhandled rejection the user never sees
+        const kind = error instanceof ClaimConflictError ? 'conflict' : 'error';
+        noticeCountRef.current += 1;
+        setNotice({ id: noticeCountRef.current, kind, title: drop.title });
       } finally {
         lockedIdsRef.current.delete(dropId);
         controllersRef.current.delete(controller);
