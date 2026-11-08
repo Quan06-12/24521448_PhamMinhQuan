@@ -2,7 +2,9 @@ import { useCallback, useEffect, useState } from 'react';
 import { KEY_BY_MIDI, SHORTCUT_BY_CODE } from './music/keyboard.js';
 import { MAX_VOICES, PolyphonicSynth } from './audio/PolyphonicSynth.js';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts.js';
+import { useSequencer } from './hooks/useSequencer.js';
 import { Piano } from './components/Piano.jsx';
+import { Sequencer } from './components/Sequencer.jsx';
 import styles from './App.module.css';
 
 // Always hand back a NEW Set when something changes, the same Set when nothing does
@@ -39,8 +41,9 @@ export default function App() {
     [synth],
   );
 
-  // Stable handlers: only deps are the synth (never changes) and setState functions
-  const handleNoteOn = useCallback(
+  // Sound + highlight only. Replay uses these directly, so it is never recorded.
+  // Deps are the synth (never changes) and setState functions, so both stay stable.
+  const startNote = useCallback(
     (midi) => {
       const key = KEY_BY_MIDI.get(midi);
       if (!key) return;
@@ -50,12 +53,36 @@ export default function App() {
     [synth],
   );
 
-  const handleNoteOff = useCallback(
+  const endNote = useCallback(
     (midi) => {
       synth.noteOff(midi);
       setPressed((prev) => withoutNote(prev, midi));
     },
     [synth],
+  );
+
+  const clearHighlights = useCallback(() => {
+    setPressed((prev) => (prev.size === 0 ? prev : new Set()));
+  }, []);
+
+  const sequencer = useSequencer({ synth, startNote, endNote, clearHighlights });
+  const { recordNoteOn, recordNoteOff } = sequencer;
+
+  // What the player triggers: play it and let the recorder see it
+  const handleNoteOn = useCallback(
+    (midi) => {
+      recordNoteOn(midi);
+      startNote(midi);
+    },
+    [recordNoteOn, startNote],
+  );
+
+  const handleNoteOff = useCallback(
+    (midi) => {
+      recordNoteOff(midi);
+      endNote(midi);
+    },
+    [recordNoteOff, endNote],
   );
 
   useKeyboardShortcuts(SHORTCUT_BY_CODE, handleNoteOn, handleNoteOff);
@@ -73,11 +100,17 @@ export default function App() {
       <section className={styles.panel} aria-labelledby="keyboard-heading">
         <h2 id="keyboard-heading" className={styles.panelTitle}>Keyboard</h2>
         <output className={styles.status} role="status" aria-live="polite">
+          <span>{sequencer.statusText}</span>
+          {' | '}
           {/* Voice count changes on every note, so it stays out of the live announcement */}
           <span aria-hidden="true">Voices {voiceCount} / {MAX_VOICES}</span>
         </output>
         <Piano pressed={pressed} onNoteOn={handleNoteOn} onNoteOff={handleNoteOff} />
       </section>
+
+      <div className={styles.panel}>
+        <Sequencer sequencer={sequencer} />
+      </div>
     </main>
   );
 }
