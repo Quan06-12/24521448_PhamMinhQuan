@@ -24,9 +24,11 @@ export const PianoKey = memo(function PianoKey({
   const pointerHeldRef = useRef(false);
   const keyHeldRef = useRef(false);
 
-  // Render counter for the demo, written to the DOM in an effect (no state, no re-render).
+  // Dev-only render counter, written to the DOM in an effect (no state, no re-render).
   // It runs after every commit of THIS key only, so memo isolation can be checked in the page.
+  // The DEV check is a build-time constant, so production does no DOM write at all.
   useEffect(() => {
+    if (!import.meta.env.DEV) return;
     const el = buttonRef.current;
     el.dataset.renders = String(Number(el.dataset.renders ?? 0) + 1);
   });
