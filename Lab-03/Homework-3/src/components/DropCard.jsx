@@ -10,8 +10,19 @@ const PHASE_LABEL = {
   EXPIRED: 'Expired',
 };
 
-/** @param {{ drop: import('../domain/contracts.js').PubgCrateDrop }} props */
-export function DropCard({ drop }) {
+const CLAIM_LABEL = {
+  WARMUP: 'Not open yet',
+  AIRDROP_LIVE: 'Claim',
+  LOOTED_OUT: 'Looted out',
+  EXPIRED: 'Expired',
+};
+
+/**
+ * @param {{ drop: import('../domain/contracts.js').PubgCrateDrop,
+ *           isClaiming: boolean,
+ *           onClaim: (dropId: string) => void }} props
+ */
+export function DropCard({ drop, isClaiming, onClaim }) {
   const { remainingMs } = usePubgAirdropTimer(drop.dropEpochMs);
   const phase = getDropPhase(remainingMs, drop.remainingStock);
 
@@ -38,6 +49,15 @@ export function DropCard({ drop }) {
         </div>
       </dl>
       <p className={styles.hint}>{PHASE_LABEL[phase]}</p>
+      <button
+        type="button"
+        className={styles.claim}
+        disabled={isClaiming || phase !== 'AIRDROP_LIVE'}
+        aria-busy={isClaiming}
+        onClick={() => onClaim(drop.id)}
+      >
+        {isClaiming ? 'Claiming…' : CLAIM_LABEL[phase]}
+      </button>
     </article>
   );
 }

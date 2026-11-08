@@ -1,0 +1,19 @@
+.notice {
+  min-height: 3rem; /* reserved space, so the grid below does not jump */
+  margin: 0 0 16px;
+}
+
+.notice p {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+.notice[data-kind='conflict'] p {
+  border-left: 4px solid var(--accent);
+}
+
+.notice[data-kind='success'] p {
+  border-left: 4px solid var(--focus);
+}
