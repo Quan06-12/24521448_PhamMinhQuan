@@ -14,6 +14,7 @@
   padding: 12px;
   border: 1px solid var(--surface-2);
   border-radius: var(--radius);
+  min-width: 0; /* fieldsets default to min-content width, which pushes the page sideways */
 }
 
 .field {
@@ -25,6 +26,7 @@
 
 .field input,
 .field select {
+  max-width: 100%;
   min-height: 44px;
   padding: 6px 10px;
   border: 1px solid var(--text-muted);

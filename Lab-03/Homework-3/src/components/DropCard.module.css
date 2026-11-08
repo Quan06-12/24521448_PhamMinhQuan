@@ -6,6 +6,8 @@
   background: var(--surface);
   border-radius: var(--radius);
   border: 1px solid var(--surface-2);
+  min-width: 0;
+  height: 100%;
 }
 
 .header {
@@ -28,7 +30,7 @@
 
 .facts {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
   gap: 8px;
   margin: 0;
 }
@@ -40,6 +42,7 @@
 
 .facts dd {
   margin: 0;
+  overflow-wrap: anywhere;
   font-variant-numeric: tabular-nums;
   font-weight: 600;
 }
@@ -55,6 +58,7 @@
 }
 
 .claim {
+  margin-top: auto; /* buttons line up at the bottom of equal-height cards */
   min-height: 44px;
   padding: 8px 16px;
   border: 0;

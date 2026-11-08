@@ -1,18 +1,44 @@
 .app {
   max-width: 72rem;
   margin: 0 auto;
-  padding: 24px 16px 48px;
+  padding: 24px 16px 48px; /* 16px side gutter at every width */
 }
 
 .title {
-  margin: 0 0 16px;
+  margin: 0 0 8px;
   font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+.intro {
+  margin: 0 0 24px;
+  color: var(--text-muted);
 }
 
 .drops {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
   gap: 16px;
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+@media (min-width: 48rem) {
+  .title {
+    font-size: 2.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .drops > li {
+    animation: rise 240ms ease-out both;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
 }

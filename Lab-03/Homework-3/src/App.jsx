@@ -12,6 +12,7 @@ export default function App() {
   return (
     <main className={styles.app}>
       <h1 className={styles.title}>PVS Airdrop Arena</h1>
+      <p className={styles.intro}>PUBG Vietnam Series finals tickets, G-Coin crates and the live squad table.</p>
       <section aria-labelledby="drops-heading">
         <h2 id="drops-heading">Airdrops</h2>
         <ClaimNotice notice={notice} />
