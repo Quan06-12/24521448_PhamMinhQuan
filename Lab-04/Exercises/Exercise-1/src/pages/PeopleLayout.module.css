@@ -1,0 +1,10 @@
+/* Master-detail grid; single column on mobile (375px) */
+.grid { display: grid; grid-template-columns: minmax(200px, 1fr) 2fr; gap: 1.5rem; }
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+.title { font-size: 1.25rem; margin: 0 0 0.75rem; }
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.25rem; }
+.link { display: block; padding: 0.5rem 0.75rem; border-radius: 6px; color: #cbd5e1; text-decoration: none; }
+.link:hover { background: #1e293b; }
+.link:focus-visible { outline: 2px solid #22d3ee; outline-offset: 2px; }
+.active { background: #22d3ee; color: #0f172a; font-weight: 600; }
+.detail { min-height: 260px; padding: 1rem; border: 1px solid #1e293b; border-radius: 8px; }
