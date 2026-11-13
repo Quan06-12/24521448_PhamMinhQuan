@@ -33,7 +33,7 @@ Lab-04/
 ### Exercise 1 – Responsive Master-Detail Directory & Case Dossier Router
 React Router v7 nested layout, `NavLink` active styling, `useParams` detail route with 404 guard,
 lazy-loaded detail view with dimension-matched skeleton.
-Status: In progress
+Status: Completed
 
 ### Exercise 2 – Context-Driven Multi-Field Form Engine
 `FormContext` with synchronous derived validation, `useId` label binding,

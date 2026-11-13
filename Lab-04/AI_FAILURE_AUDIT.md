@@ -5,7 +5,9 @@ the bug, DevTools proof and the fixing commit.
 
 | Scope | Finding | Correction and verification |
 | --- | --- | --- |
-| | | |
+| Ex 1 | Comment containing "activeClassName" made the banned-API grep return 1 match | Reworded the comment; grep returns 0 matches (`268dbfe`) |
+| Ex 1 | `App.jsx` imported `./data/people.js` before the file existed; Vite overlay "Failed to resolve import" | Created `src/data/people.js` with string ids; build passes (`e42b918`) |
+| Ex 2 | Comment containing "useEffect" in `validateForm.js` made the no-effect grep return 1 match | Reworded to "effect hook" before committing; grep returns 0 matches |
 
 Detailed records:
 
