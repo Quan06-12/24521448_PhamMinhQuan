@@ -1,0 +1,10 @@
+# Dependencies and build output (all labs)
+node_modules/
+dist/
+
+# Secrets – only .env.example is committed
+.env
+
+# OS / editor files
+.DS_Store
+Thumbs.db
