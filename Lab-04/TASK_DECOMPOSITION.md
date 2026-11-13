@@ -2,7 +2,7 @@
 
 ## Setup
 - [x] Create the Lab-04 folder structure and documentation.
-- [ ] Commit: `chore(lab4): init lab 04 structure and rules`
+- [x] Commit: `chore(lab4): init lab 04 structure and rules`
 
 ## Exercise 1: Master-Detail Directory (Sprint 1)
 - [ ] Scaffold Vite React app and install `react-router@7`.
