@@ -5,20 +5,20 @@
 - [x] Commit: `chore(lab4): init lab 04 structure and rules`
 
 ## Exercise 1: Master-Detail Directory (Sprint 1)
-- [ ] Scaffold Vite React app and install `react-router@7`.
-- [ ] Wrap the app in `<BrowserRouter>`; declare nested `<Routes>` (Ex 1.3).
-- [ ] Shared `Layout` with `NavLink` active callback and `<Outlet />` (Ex 1.3.1).
-- [ ] `PeopleLayout` CSS Grid `minmax(200px, 1fr) 2fr`, responsive at 375px (Ex 1.3.2).
-- [ ] `PersonDetail` with `useParams`, `people.find()` 404 guard and `<dl>` rendering (Ex 1.3.2).
-- [ ] Lazy-load `PersonDetail` with a dimension-matched `<Suspense>` skeleton (Ex 1.2).
-- [ ] Verify: deep link reload, `/people/999` 404, unknown URL page, 0 console warnings,
+- [x] Scaffold Vite React app and install `react-router@7`.
+- [x] Wrap the app in `<BrowserRouter>`; declare nested `<Routes>` (Ex 1.3).
+- [x] Shared `Layout` with `NavLink` active callback and `<Outlet />` (Ex 1.3.1).
+- [x] `PeopleLayout` CSS Grid `minmax(200px, 1fr) 2fr`, responsive at 375px (Ex 1.3.2).
+- [x] `PersonDetail` with `useParams`, `people.find()` 404 guard and `<dl>` rendering (Ex 1.3.2).
+- [x] Lazy-load `PersonDetail` with a dimension-matched `<Suspense>` skeleton (Ex 1.2).
+- [x] Verify: deep link reload, `/people/999` 404, unknown URL page, 0 console warnings,
       separate chunk in Network tab, no `Switch` / `activeClassName` / `exact`.
-- [ ] Commits: `feat: router layout`, `feat: detail route handling`, `feat: lazy detail with suspense`.
+- [x] Commits: `feat: router layout`, `feat: detail route handling`, `feat: lazy detail with suspense`.
 
 ## Exercise 2: Context Form Engine (Sprint 2)
 - [ ] Document the legacy 5-`useEffect` chain and its failure (Ex 1.6).
 - [ ] `FormContext` provider + `useFormContext` hook.
-- [ ] `SimpleForm` derives `errors` / `isValid` during render (zero `useEffect`).
+- [ ] `SimpleForm` derives `errors` / `isValid` during render (zero effect hooks).
 - [ ] `InputField` with `useId`, `aria-invalid`, `aria-describedby`, `role="alert"` error.
 - [ ] `ShowData` renders submitted values as a `<dl>` inspector.
 - [ ] Commits: `feat: form context`, `feat: input field validation`, `feat: inspector output`.
