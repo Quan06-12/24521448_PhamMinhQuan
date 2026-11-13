@@ -1,0 +1,8 @@
+/* Grey bars that mimic h2 + three dl rows; pulse animation respects reduced motion */
+.skeleton { display: grid; gap: 0.75rem; min-height: 226px; align-content: start; }
+.title, .line, .lineShort { display: block; border-radius: 4px; background: #1e293b; animation: pulse 1.2s ease-in-out infinite; }
+.title { height: 1.75rem; width: 50%; margin: 0.8rem 0 0.5rem; }
+.line { height: 1rem; width: 80%; }
+.lineShort { height: 1rem; width: 40%; }
+@keyframes pulse { 50% { opacity: 0.4; } }
+@media (prefers-reduced-motion: reduce) { .title, .line, .lineShort { animation: none; } }
