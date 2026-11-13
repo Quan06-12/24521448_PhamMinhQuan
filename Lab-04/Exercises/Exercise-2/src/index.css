@@ -1,0 +1,7 @@
+/* Global reset and base typography (replaces Vite template styles) */
+*, *::before, *::after { box-sizing: border-box; }
+:root { color-scheme: dark; background: #0b1120; color: #e2e8f0; }
+body { margin: 0; font-family: system-ui, sans-serif; line-height: 1.5; }
+h1 { font-size: clamp(1.5rem, 4vw, 2.25rem); line-height: 1.2; }
+a { color: #22d3ee; }
+code { background: #1e293b; padding: 0.1rem 0.35rem; border-radius: 4px; }

@@ -1,0 +1,25 @@
+/* Layout */
+.main { max-width: 560px; margin: 0 auto; padding: 1.5rem 1rem; }
+.card { padding: 1.25rem; border: 1px solid #1e293b; border-radius: 10px; background: #0f172a; }
+.form { display: grid; gap: 1rem; }
+
+/* Field: label above input, error below */
+.field { display: grid; gap: 0.35rem; margin: 0; }
+.input { padding: 0.6rem 0.75rem; border: 1px solid #334155; border-radius: 6px; background: #020617; color: inherit; font: inherit; }
+.input:focus-visible { outline: 2px solid #22d3ee; outline-offset: 1px; }
+.input[aria-invalid='true'] { border-color: #f87171; }
+.error { color: #fca5a5; font-size: 0.875rem; }
+
+/* Live status + buttons */
+.ok { color: #4ade80; }
+.pending { color: #fbbf24; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 0; }
+.actions button { padding: 0.55rem 1.1rem; border: 1px solid #334155; border-radius: 6px; background: #1e293b; color: inherit; font: inherit; cursor: pointer; }
+.actions button:focus-visible { outline: 2px solid #22d3ee; outline-offset: 2px; }
+.actions .primary { background: #22d3ee; border-color: #22d3ee; color: #0f172a; font-weight: 600; }
+
+/* Inspector */
+.inspector { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #1e293b; }
+.list { display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 1rem; margin: 0; }
+.list dt { color: #94a3b8; font-family: ui-monospace, monospace; }
+.list dd { margin: 0; word-break: break-word; }
