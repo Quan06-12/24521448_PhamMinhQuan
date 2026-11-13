@@ -1,16 +1,37 @@
-# React + Vite
+# Exercise 1 — Responsive Master-Detail Directory & Case Dossier Router
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React 19 + React Router v7 nested routes covering Ex 1.2, 1.3, 1.3.1 and 1.3.2.
 
-Currently, two official plugins are available:
+## Scope
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- `<BrowserRouter>` + declarative `<Routes>` / `<Route element>` (no v5 APIs).
+- Shared `Layout` with `NavLink` className callback (`isActive`) and `<Outlet />`; root link uses `end`.
+- `PeopleLayout` master-detail grid `minmax(200px, 1fr) 2fr`, single column at ≤ 600px.
+- `PersonDetail` reads `useParams()`, guards unknown ids with a `role="alert"` 404 state,
+  renders attributes as `<dl>/<dt>/<dd>`.
+- `PersonDetail` is code-split with `React.lazy` and wrapped in `<Suspense>`;
+  `DetailSkeleton` uses `aria-busy` / `aria-live="polite"` and matches the detail box size.
 
-## React Compiler
+## Run locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```sh
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+## Verification (Sprint 1)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Check | Result |
+|---|---|
+| Reload `/people/2` (deep link) | Same person rendered |
+| `/people/999` | "Person not found." alert, no crash |
+| `/abc` | 404 page inside the shared layout |
+| Active link: only the current route is highlighted; Home not active on `/people` | Pass |
+| 375px: list stacks above detail, no horizontal scroll | Pass |
+| Slow 3G + reload `/people/1`: skeleton shown, no layout shift on swap | Pass |
+| `npm run build` emits a separate `PersonDetail-*.js` chunk | Pass |
+| `npm run lint` | 0 problems |
+| `Select-String -Path src\*\*.jsx,src\*.jsx -Pattern "Switch\|activeClassName\|exact"` | 0 matches |
+| Console (clean Incognito profile) | 0 errors / warnings |
+
+Screenshots are included in the submitted Word report.

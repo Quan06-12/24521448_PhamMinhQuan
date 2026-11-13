@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from 'react-router';
 import styles from './Layout.module.css';
 
-// v7 replaces activeClassName with a className callback
+// v7 active styling: className receives a callback with { isActive }
 const linkClass = ({ isActive }) => (isActive ? `${styles.link} ${styles.active}` : styles.link);
 
 export default function Layout() {
