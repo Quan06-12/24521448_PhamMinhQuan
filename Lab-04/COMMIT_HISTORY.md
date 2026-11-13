@@ -13,3 +13,14 @@
 
 Note: `e42b918` and `268dbfe` reused the previous commit message by mistake. History was
 not rewritten because the commits were already pushed; the real scope is recorded above.
+
+## Exercises 2–3
+
+| Scope | Commit | Change |
+| --- | --- | --- |
+| Lab 04 docs | `27a92a5` | docs(lab4): record exercise 1 commits and AI audit |
+| Exercise 2 | `b98364d` | feat(ex2): add context form engine with derived validation and ShowData inspector |
+| Lab 04 docs | `4fe46f2` | docs(lab4): tick exercise 1 tasks |
+| Exercise 3 | `acccb0a` | feat(ex3): add express forum API with CORS and payload validation |
+| Exercise 3 | `5e2b081` | feat(ex3): add useForumMessages hook with AbortController and channel switcher |
+| Lab 04 docs | `2c7ba1e` | docs(lab4): mark exercises 1-3 complete |
