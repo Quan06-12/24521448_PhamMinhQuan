@@ -38,11 +38,11 @@ Status: Completed
 ### Exercise 2 – Context-Driven Multi-Field Form Engine
 `FormContext` with synchronous derived validation, `useId` label binding,
 `aria-invalid` / `aria-describedby`, live `<ShowData />` inspector.
-Status: Not started
+Status: Completed
 
 ### Exercise 3 – Full-Stack `useForumMessages` Hook & Live Channel Switcher
 Custom hook with `AbortController` cleanup, Express REST API with CORS and POST payload validation.
-Status: Not started
+Status: Completed
 
 ## Homeworks
 

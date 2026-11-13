@@ -16,22 +16,22 @@
 - [x] Commits: `feat: router layout`, `feat: detail route handling`, `feat: lazy detail with suspense`.
 
 ## Exercise 2: Context Form Engine (Sprint 2)
-- [ ] Document the legacy 5-`useEffect` chain and its failure (Ex 1.6).
-- [ ] `FormContext` provider + `useFormContext` hook.
-- [ ] `SimpleForm` derives `errors` / `isValid` during render (zero effect hooks).
-- [ ] `InputField` with `useId`, `aria-invalid`, `aria-describedby`, `role="alert"` error.
-- [ ] `ShowData` renders submitted values as a `<dl>` inspector.
-- [ ] Commits: `feat: form context`, `feat: input field validation`, `feat: inspector output`.
+- [x] Document the legacy 5-`useEffect` chain and its failure (Ex 1.6).
+- [x] `FormContext` provider + `useFormContext` hook.
+- [x] `SimpleForm` derives `errors` / `isValid` during render (zero effect hooks).
+- [x] `InputField` with `useId`, `aria-invalid`, `aria-describedby`, `role="alert"` error.
+- [x] `ShowData` renders submitted values as a `<dl>` inspector.
+- [x] Commits: `feat: form context`, `feat: input field validation`, `feat: inspector output`.
 
 ## Exercise 3: Full-Stack Forum (Sprint 3)
-- [ ] `server/`: Express + CORS (`localhost:5173`) + `express.json()`.
-- [ ] `GET /api/messages/:forum` and `POST /api/messages/:forum` with payload validation
+- [x] `server/`: Express + CORS (`localhost:5173`) + `express.json()`.
+- [x] `GET /api/messages/:forum` and `POST /api/messages/:forum` with payload validation
       and `crypto.randomUUID()`.
-- [ ] `client/`: `useForumMessages(channelId)` with `AbortController` cleanup,
+- [x] `client/`: `useForumMessages(channelId)` with `AbortController` cleanup,
       loading / error state and POST helper (Ex 1.7.1).
-- [ ] Channel switcher for `nasa`, `esports-tribunal`, `notNasa`.
-- [ ] Verify on Slow 3G: rapid switching shows cancelled requests, no stale data.
-- [ ] Save the full-stack error log verification.
+- [x] Channel switcher for `nasa`, `esports-tribunal`, `notNasa`.
+- [x] Verify on Slow 3G: rapid switching shows cancelled requests, no stale data.
+- [x] Save the full-stack error log verification.
 
 ## Homeworks
 - [ ] Homework 1 – see `Homework-1/TASK_DECOMPOSITION.md`.
