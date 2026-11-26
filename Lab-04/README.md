@@ -48,7 +48,7 @@ Status: Completed
 
 | Homework | Description | Status |
 |---|---|---|
-| Homework 1 | Photo & Evidence Gallery SPA — `useSearchParams` deep linking, native `<dialog>` lightbox, WCAG 2.2 AA | Not started |
+| Homework 1 | Photo & Evidence Gallery SPA — `useSearchParams` deep linking, native `<dialog>` lightbox, WCAG 2.2 AA | Completed |
 | Homework 2 | 'Hẹn Hò Nhưng Không Yêu' Card-Swipe Deck — keyboard/pointer swipe, LIFO undo, Express + Mongoose 8 | Not started |
 | Homework 3 | Esports Fair-Play Appeal Tribunal — `/dossier/:playerId`, context form, anti-drift SLA timer | Not started |
 

@@ -34,7 +34,7 @@
 - [x] Save the full-stack error log verification.
 
 ## Homeworks
-- [ ] Homework 1 – see `Homework-1/TASK_DECOMPOSITION.md`.
+- [x] Homework 1 – see `Homework-1/TASK_DECOMPOSITION.md`.
 - [ ] Homework 2 – see `Homework-2/TASK_DECOMPOSITION.md`.
 - [ ] Homework 3 – see `Homework-3/TASK_DECOMPOSITION.md`.
 - [ ] Record at least 3 observed AI bugs in `AI_FAILURE_AUDIT.md`.
