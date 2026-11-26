@@ -1,16 +1,19 @@
 import mongoose from 'mongoose';
 import { Profile } from './models/Profile.js';
+import { Swipe } from './models/Swipe.js';
 import { PROFILES } from './data/profiles.js';
 
-// One-off script: reset the profiles collection with the seed data
+// One-off script: reset profiles and swipe history with the seed data
 const { MONGODB_URI } = process.env;
 if (!MONGODB_URI) throw new Error('MONGODB_URI missing – copy .env.example to .env');
 
 try {
   await mongoose.connect(MONGODB_URI);
-  const { deletedCount } = await Profile.deleteMany({});
+  // Old swipes point at old profile ids, so clear them together
+  const swipes = await Swipe.deleteMany({});
+  const profiles = await Profile.deleteMany({});
   const created = await Profile.insertMany(PROFILES);
-  console.log(`Seed done: removed ${deletedCount}, inserted ${created.length} profiles`);
+  console.log(`Seed done: removed ${profiles.deletedCount} profiles + ${swipes.deletedCount} swipes, inserted ${created.length} profiles`);
 } catch (err) {
   console.error('Seed failed:', err.message);
   process.exitCode = 1;
