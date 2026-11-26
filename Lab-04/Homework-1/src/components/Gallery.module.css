@@ -1,0 +1,16 @@
+/* Category filter: pill links with 44px targets */
+.filters { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 1rem 0 0; padding: 0; }
+.filter, .filterActive { display: inline-flex; align-items: center; min-height: 44px; padding: 0 1rem; border-radius: 999px; border: 1px solid #334155; background: #1e293b; color: #e2e8f0; text-decoration: none; }
+.filter:hover { border-color: #22d3ee; }
+.filterActive { background: #22d3ee; border-color: #22d3ee; color: #0f172a; font-weight: 600; }
+.filter:focus-visible, .filterActive:focus-visible { outline: 3px solid #22d3ee; outline-offset: 2px; }
+
+/* Responsive grid: one column at 375px, more on wider screens */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; list-style: none; margin: 0; padding: 0; }
+.card { display: block; color: inherit; text-decoration: none; border-radius: 10px; overflow: hidden; border: 1px solid #1e293b; background: #0f172a; }
+.card:hover { border-color: #22d3ee; }
+.card:focus-visible { outline: 3px solid #22d3ee; outline-offset: 2px; }
+.figure { margin: 0; }
+/* Uniform 16:9 tiles; mobile screenshots (wider) are cropped at the edges */
+.figure img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.figure figcaption { padding: 0.6rem 0.75rem; font-size: 0.95rem; }
