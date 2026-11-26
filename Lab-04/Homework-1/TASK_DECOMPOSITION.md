@@ -3,9 +3,9 @@
 Each slice follows contract → isolated implementation → DevTools verification → commit.
 Screenshots are included in the submitted Word report, never in Git.
 
-- [x] Step 0 – Scaffold React 19 Vite app with `react-router@7`, docs and meta description
-- [ ] Step 1 – Photo catalogue (`data/photos.js`) and optimized WebP assets (480w / 1200w)
-- [ ] Step 2 – Router layout (`NavLink`, `<Outlet />`), skip link, Home and 404 pages
+- [x] Step 0 – Scaffold React 19 Vite app with `react-router@7`, docs and meta description — `145614d`
+- [x] Step 1 – Photo catalogue (`data/photos.js`) and optimized WebP assets (480w / original width) — `cad521d`
+- [x] Step 2 – Router layout (`NavLink`, `<Outlet />`), skip link, Home and 404 pages — `e6b04a5`
 - [ ] Step 3 – `useGalleryParams` hook: `?category=` and `?photo=` as the single source of truth
 - [ ] Step 4 – `CategoryFilter` and `PhotoGrid` as deep links (`aria-current`, sized lazy images)
 - [ ] Step 5 – Native `<dialog>` lightbox synced to `?photo=` (Esc, Back button, deep link)
