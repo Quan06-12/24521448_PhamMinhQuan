@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { requestJson } from '../api.js';
+import { useSwipeInput, directionFromOffset } from '../hooks/useSwipeInput.js';
 import ProfileCard from './ProfileCard.jsx';
 import styles from './Deck.module.css';
+
+const STAMP = { left: 'NOPE', right: 'LIKE', up: 'SUPER' };
 
 // Owns the swipe history. Everything else (current card, remaining count) is derived from it.
 export default function SwipeDeck({ profiles, initialSwipes }) {
@@ -33,15 +36,42 @@ export default function SwipeDeck({ profiles, initialSwipes }) {
     }
   };
 
+  const { offset, regionProps, cardProps } = useSwipeInput({
+    onSwipe: swipe,
+    onUndo: null, // Step 7
+    enabled: Boolean(current) && !pending,
+  });
+
+  // Card follows the pointer and tilts; the stamp previews the direction once past the threshold
+  const dragDirection = directionFromOffset(offset);
+  const cardStyle = {
+    transform: `translate(${offset.x}px, ${offset.y}px) rotate(${offset.x / 20}deg)`,
+  };
+
   return (
-    <section className={styles.deck} aria-labelledby="deck-title">
+    <section
+      className={styles.deck}
+      aria-labelledby="deck-title"
+      aria-describedby="deck-help"
+      {...regionProps}
+    >
       <h2 id="deck-title" className={styles.srOnly}>Swipe deck</h2>
+      <p id="deck-help" className={styles.help}>
+        Drag the card, or focus the deck and use ← Nope, → Like, ↑ Super.
+      </p>
       <p className={styles.counter} role="status">
         {remaining.length} of {profiles.length} profiles left
       </p>
 
       {current ? (
-        <ProfileCard profile={current} />
+        <ProfileCard
+          // key: a fresh element per profile, so the next card never inherits the drag transform
+          key={current._id}
+          profile={current}
+          style={cardStyle}
+          label={dragDirection ? STAMP[dragDirection] : null}
+          {...cardProps}
+        />
       ) : (
         <p className={styles.empty}>No more profiles. Maybe it is time to text someone back.</p>
       )}

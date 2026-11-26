@@ -20,3 +20,11 @@
 .controls button { min-height: 44px; border-radius: 10px; border: 1px solid #334155; background: #1e293b; color: #e2e8f0; font: inherit; cursor: pointer; }
 .controls button:focus-visible { outline: 3px solid #22d3ee; outline-offset: 2px; }
 .controls button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* Step 6: focusable deck region, draggable card, direction stamp */
+.deck:focus-visible { outline: 3px solid #22d3ee; outline-offset: 6px; border-radius: 16px; }
+.help { margin: 0; color: #94a3b8; font-size: 0.9rem; }
+/* touch-action: none lets pointer events handle the drag instead of page scrolling */
+.card { position: relative; touch-action: none; user-select: none; cursor: grab; }
+.card:active { cursor: grabbing; }
+.stamp { position: absolute; top: 1rem; right: 1rem; margin: 0; padding: 0.2rem 0.75rem; border: 3px solid var(--accent); border-radius: 8px; color: var(--accent); font-weight: 800; font-size: 1.4rem; letter-spacing: 0.08em; transform: rotate(8deg); }
