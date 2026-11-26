@@ -12,6 +12,9 @@ the bug, DevTools proof and the fixing commit.
 | HW1 | Duplicate `aria-current="page"` (filter pill + header NavLink) | Pill changed to `aria-current="true"`; one current-page element in DevTools |
 | HW1 | Lightbox taller than a laptop viewport; Source row hidden behind a dialog scrollbar | Image capped with `max-height: 50dvh`; no dialog scrollbar at 1920×1080 |
 | HW1 | Claimed only 3 thumbnails load first; Chrome actually fetched 7 of 9 at 375px | Claim corrected in README; lazy-loading code unchanged |
+| HW2 | Dragged card overflowed the deck at 375px (possible horizontal scroll) | `overflow-x: clip` on `.deck`; scrollWidth stays 375 |
+| HW2 | `vite preview` on port 4173 blocked by the API's CORS origin (5173) | Preview with `--port 5173 --strictPort` |
+| HW2 | Client shipped without `public/robots.txt` (same gap as HW1) → SEO 91 | Added `robots.txt`; SEO 100 (`8fc17f6`) |
 
 Detailed records:
 

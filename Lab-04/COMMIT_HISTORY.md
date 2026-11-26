@@ -45,3 +45,18 @@ not rewritten because the commits were already pushed; the real scope is recorde
 
 Note: commits reusing the previous message, and the inaccurate message on `20457f4`,
 were already pushed, so history was not rewritten; the real scope is recorded above.
+
+## Homework 2
+
+| Scope | Commit | Change |
+| --- | --- | --- |
+| Homework 2 | `cdcba7b` | chore(hw2): init homework 2 structure and docs |
+| Homework 2 | `4e78402` | feat(hw2): express server with env guard and mongoose 8 connection |
+| Homework 2 | `d6b66d9` | feat(hw2): profile model, seed script and GET /api/profiles |
+| Homework 2 | `d8732f0` | feat(hw2): swipe model, POST /api/swipes validation and DELETE undo route |
+| Homework 2 | `1d63222` | feat(hw2): vite client with useDeckData hook (parallel fetch, AbortController, retry) |
+| Homework 2 | `3e5b0c8` | feat(hw2): swipe deck with current card derived from saved history |
+| Homework 2 | `2c80de5` | feat(hw2): keyboard and pointer swipe input with drag preview |
+| Homework 2 | `7a37849` | feat(hw2): LIFO undo synced with DELETE /api/swipes/:id |
+| Homework 2 | `ec13e09` | feat(hw2): asymmetric score and metrics derived from swipe history |
+| Homework 2 | `8fc17f6` | docs(hw2): robots.txt, verification results, AI audit and root .env.example |
