@@ -1,0 +1,16 @@
+{
+  "name": "lab04-hw2-swipe-server",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+ "scripts": {
+  "dev": "node --watch --env-file=.env server.js",
+  "start": "node --env-file=.env server.js",
+  "seed": "node --env-file=.env seed.js"
+},
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mongoose": "^8.20.0"
+  }
+}

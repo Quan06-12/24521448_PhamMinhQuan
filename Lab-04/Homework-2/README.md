@@ -71,7 +71,7 @@ npm run dev
 | Score: → ↑ ← = 25 pts, like rate 67%; undo and reload keep the score consistent | Pass |
 | Server down: load error with Retry; swipe / undo errors shown, state unchanged | Pass |
 | 375px: no horizontal scroll, even while dragging a card off-screen | Pass |
-| Lighthouse mobile (production build on port 5173, Incognito) | See report |
+| Lighthouse mobile (production build on port 5173, Incognito): 98 / 100 / 100 / 100 | Pass |
 | `npm run lint` (client) | Pass |
 
 Screenshots are included in the submitted Word report.
