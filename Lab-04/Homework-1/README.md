@@ -47,3 +47,7 @@ npm run preview    # serve the build: http://localhost:4173
 | `npm run lint` | Pending |
 
 Screenshots are included in the submitted Word report.
+## Image credits
+
+Screenshots of Teamfight Tactics © Riot Games, collected from public web sources for
+non-commercial coursework only.
