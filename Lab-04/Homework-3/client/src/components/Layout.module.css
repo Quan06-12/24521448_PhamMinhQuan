@@ -1,0 +1,12 @@
+.header { background: #0f172a; border-bottom: 1px solid #1e293b; padding: 0.75rem 1rem; }
+.menu { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0 auto; padding: 0; max-width: 960px; }
+/* 44px minimum target size */
+.link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 0.85rem; border-radius: 6px; color: #cbd5e1; text-decoration: none; }
+.link:hover { background: #1e293b; }
+.link:focus-visible { outline: 3px solid #22d3ee; outline-offset: 2px; }
+/* .active:hover keeps the active colours: .link:hover alone would win and hide the text */
+.active, .active:hover { background: #22d3ee; color: #0f172a; font-weight: 600; }
+.main { max-width: 960px; margin: 0 auto; padding: 1.5rem 1rem 2rem; }
+.footer { max-width: 960px; margin: 0 auto; padding: 0 1rem 2rem; color: #94a3b8; font-size: 0.85rem; }
+.skip { position: absolute; left: 0.5rem; top: -3rem; z-index: 10; padding: 0.6rem 0.9rem; border-radius: 6px; background: #22d3ee; color: #0f172a; font-weight: 600; }
+.skip:focus { top: 0.5rem; }

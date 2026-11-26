@@ -5,7 +5,8 @@
 .link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 0.85rem; border-radius: 6px; color: #cbd5e1; text-decoration: none; }
 .link:hover { background: #1e293b; }
 .link:focus-visible { outline: 3px solid #22d3ee; outline-offset: 2px; }
-.active { background: #22d3ee; color: #0f172a; font-weight: 600; }
+/* .active:hover keeps the active colours: .link:hover alone would win and hide the text */
+.active, .active:hover { background: #22d3ee; color: #0f172a; font-weight: 600; }
 .main { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
 
 /* Skip link: off-screen until it receives keyboard focus */
