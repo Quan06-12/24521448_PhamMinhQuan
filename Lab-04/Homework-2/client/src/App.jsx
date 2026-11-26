@@ -1,6 +1,6 @@
 import { useDeckData } from './hooks/useDeckData.js';
+import SwipeDeck from './components/SwipeDeck.jsx';
 
-// Temporary Step 4 screen: proves the client can read both API endpoints
 export default function App() {
   const { status, profiles, swipes, error, retry } = useDeckData();
 
@@ -14,16 +14,8 @@ export default function App() {
           <button type="button" onClick={retry}>Retry</button>
         </p>
       )}
-      {status === 'ready' && (
-        <>
-          <p>{profiles.length} profiles, {swipes.length} saved swipes</p>
-          <ul>
-            {profiles.map((p) => (
-              <li key={p._id}>{p.avatar} {p.name}, {p.age} – {p.city}</li>
-            ))}
-          </ul>
-        </>
-      )}
+      {/* Mounted only when data is ready, so SwipeDeck can seed its state from props once */}
+      {status === 'ready' && <SwipeDeck profiles={profiles} initialSwipes={swipes} />}
     </main>
   );
 }
