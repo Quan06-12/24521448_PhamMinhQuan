@@ -30,7 +30,24 @@ export default function SwipeDeck({ profiles, initialSwipes }) {
       });
       setHistory((prev) => [...prev, saved]);
     } catch (err) {
-      setError(err.message);
+      setError(`Swipe not saved: ${err.message}`);
+    } finally {
+      setPending(false);
+    }
+  };
+
+  // LIFO undo: pop the most recent swipe. The server deletes it first, so the
+  // stack and the database never disagree (a failed delete leaves both unchanged).
+  const lastSwipe = history.at(-1) ?? null;
+  const undo = async () => {
+    if (!lastSwipe || pending) return;
+    setPending(true);
+    setError(null);
+    try {
+      await requestJson(`/swipes/${lastSwipe._id}`, { method: 'DELETE' });
+      setHistory((prev) => prev.slice(0, -1));
+    } catch (err) {
+      setError(`Undo failed: ${err.message}`);
     } finally {
       setPending(false);
     }
@@ -38,7 +55,7 @@ export default function SwipeDeck({ profiles, initialSwipes }) {
 
   const { offset, regionProps, cardProps } = useSwipeInput({
     onSwipe: swipe,
-    onUndo: null, // Step 7
+    onUndo: undo,
     enabled: Boolean(current) && !pending,
   });
 
@@ -57,7 +74,7 @@ export default function SwipeDeck({ profiles, initialSwipes }) {
     >
       <h2 id="deck-title" className={styles.srOnly}>Swipe deck</h2>
       <p id="deck-help" className={styles.help}>
-        Drag the card, or focus the deck and use ← Nope, → Like, ↑ Super.
+        Drag the card, or focus the deck and use ← Nope, → Like, ↑ Super, Backspace Undo.
       </p>
       <p className={styles.counter} role="status">
         {remaining.length} of {profiles.length} profiles left
@@ -88,7 +105,15 @@ export default function SwipeDeck({ profiles, initialSwipes }) {
         </button>
       </p>
 
-      {error && <p role="alert" className={styles.error}>Swipe not saved: {error}</p>}
+      {/* Undo restores the most recently swiped card (last in, first out) */}
+      <p className={styles.undoRow}>
+        <button type="button" onClick={undo} disabled={!lastSwipe || pending}>
+          <span aria-hidden="true">↶</span> Undo
+        </button>
+        <span className={styles.help}>{history.length} swipe{history.length === 1 ? '' : 's'} on the stack</span>
+      </p>
+
+      {error && <p role="alert" className={styles.error}>{error}</p>}
     </section>
   );
 }
