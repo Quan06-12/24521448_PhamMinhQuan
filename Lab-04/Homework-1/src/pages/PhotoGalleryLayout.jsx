@@ -2,9 +2,10 @@ import { CATEGORIES, PHOTOS } from '../data/photos.js';
 import { useGalleryParams } from '../hooks/useGalleryParams.js';
 import CategoryFilter from '../components/CategoryFilter.jsx';
 import PhotoGrid from '../components/PhotoGrid.jsx';
+import Lightbox from '../components/Lightbox.jsx';
 
 export default function PhotoGalleryLayout() {
-  const { category, photoId, buildSearch } = useGalleryParams();
+  const { category, photoId, buildSearch, closePhoto } = useGalleryParams();
 
   // Everything below is derived from the URL during render
   const visible = category === 'all' ? PHOTOS : PHOTOS.filter((p) => p.category === category);
@@ -29,7 +30,9 @@ export default function PhotoGalleryLayout() {
       )}
 
       <PhotoGrid photos={visible} buildSearch={buildSearch} />
-      {/* Step 5: <Lightbox photo={selected} ... /> goes here */}
+
+      {/* Always rendered so the ref is stable; opens when ?photo matches a real photo */}
+      <Lightbox photo={selected} onClose={closePhoto} />
     </section>
   );
 }
