@@ -12,7 +12,7 @@ export default function CategoryFilter({ current, buildSearch }) {
             <Link
               to={{ search: buildSearch({ category: c.id, photo: null }) }}
               // Screen readers announce the active filter as "current page"
-              aria-current={c.id === current ? 'page' : undefined}
+              aria-current={c.id === current ? 'true' : undefined}
               className={c.id === current ? styles.filterActive : styles.filter}
               preventScrollReset
             >
