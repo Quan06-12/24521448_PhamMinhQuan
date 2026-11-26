@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { requestJson } from '../api.js';
 import { useSwipeInput, directionFromOffset } from '../hooks/useSwipeInput.js';
 import ProfileCard from './ProfileCard.jsx';
+import ScoreBoard from './ScoreBoard.jsx';
 import styles from './Deck.module.css';
 
 const STAMP = { left: 'NOPE', right: 'LIKE', up: 'SUPER' };
@@ -114,6 +115,8 @@ export default function SwipeDeck({ profiles, initialSwipes }) {
       </p>
 
       {error && <p role="alert" className={styles.error}>{error}</p>}
+
+      <ScoreBoard history={history} />
     </section>
   );
 }

@@ -36,3 +36,14 @@
 .undoRow button:disabled { opacity: 0.45; cursor: not-allowed; }
 /* A card dragged off-screen must not create a horizontal scrollbar */
 .deck { overflow-x: clip; }
+
+/* Step 8: scoreboard */
+.board { display: grid; gap: 0.6rem; padding: 1rem; border: 1px solid #1e293b; border-radius: 16px; background: #0f172a; }
+.boardTitle { margin: 0; font-size: 1.1rem; }
+.score { font-size: 2rem; font-weight: 800; color: #22d3ee; }
+.stats { display: grid; grid-template-columns: 1fr auto; gap: 0.25rem 1rem; margin: 0; }
+.stats dt { color: #94a3b8; }
+.stats dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+.meterLabel { display: grid; gap: 0.35rem; color: #94a3b8; }
+.meterLabel meter { width: 100%; height: 1rem; }
+.verdict { margin: 0; }
