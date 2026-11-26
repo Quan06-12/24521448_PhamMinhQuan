@@ -26,8 +26,7 @@
 /* Whole screenshot visible: 16:9 box, letterboxed when the ratio differs */
 .viewer { margin: 0; }
 /* Whole screenshot visible: 16:9 box capped to the viewport height, letterboxed when needed */
-.viewer img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; max-height: 60dvh; object-fit: contain; background: #020617; border-radius: 8px; }.viewer figcaption { color: #94a3b8; margin-top: 0.5rem; }
-.meta { display: grid; grid-template-columns: max-content 1fr; gap: 0.25rem 1rem; margin: 0; }
+.viewer img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; max-height: 50dvh; object-fit: contain; background: #020617; border-radius: 8px; }.meta { display: grid; grid-template-columns: max-content 1fr; gap: 0.25rem 1rem; margin: 0; }
 .meta dt { color: #94a3b8; }
 .meta dd { margin: 0; }
 /* Lightbox footer: prev / position / next, 44px targets */
