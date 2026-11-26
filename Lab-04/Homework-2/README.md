@@ -1,55 +1,77 @@
-# Homework 1 — Production Photo & Evidence Gallery
+# Homework 2 — Full-Stack Card-Swipe Deck ("Hẹn Hò Nhưng Không Yêu")
 
-React 19 + React Router v7 evidence gallery for a Teamfight Tactics fair-play appeal.
-Category filters and the open photo live in the URL, so every view is a shareable deep link.
+React 19 card-swipe deck backed by an Express + Mongoose 8 REST API on a local MongoDB.
+Profiles are fictional; every swipe is persisted, so a reload restores progress and score.
 
 ## Scope
 
-- Multi-route SPA: Home, `/gallery`, 404 page inside a shared layout with a skip link.
-- Deep linking with `useSearchParams`: `?category=<id>` filters the grid, `?photo=<id>` opens the lightbox.
-- Native HTML `<dialog>` lightbox (`showModal()`): focus trap, Esc, backdrop click, Back button closes it.
-- Prev / next with buttons and arrow keys (history entry replaced, not pushed); focus returns to the last viewed card.
-- WCAG 2.2 AA: 44px targets, labelled icon buttons, `aria-current` filters, `role="status"` count, visible focus.
-- Performance: sized, lazy-loaded WebP thumbnails (480px), large file only inside the lightbox.
+- Dual input: keyboard (← Nope, → Like, ↑ Super, Backspace Undo; key repeat ignored) and
+  Pointer Events for mouse, pen and touch (80px threshold, live drag preview, `touch-action: none`).
+- LIFO undo stack: `history` is pushed on swipe and popped on undo; the server deletes the record first,
+  so the stack and the database never disagree.
+- Asymmetric score: Like +10, Super +20, Nope −5. Score, counts, like rate (`<meter>`) and verdict are
+  derived from the history during render (`computeMetrics`), never stored in state.
+- Full-stack persistence: `GET /api/profiles`, `GET/POST/DELETE /api/swipes`, payload validation,
+  one swipe per profile (unique index → 409), JSON error handler.
+- Security: `MONGODB_URI` read from `process.env` with a fail-fast guard; `.env` is git-ignored,
+  only `.env.example` is committed; CORS limited to `http://localhost:5173`.
 
 ## Run locally
 
+Requires Node.js 20.19+ and MongoDB running on `127.0.0.1:27017`.
+
 ```sh
+# Terminal 1 – API (http://localhost:3002)
+cd server
 npm install
-npm run dev        # development: http://localhost:5173
-npm run build      # production build into dist/
-npm run preview    # serve the build: http://localhost:4173
+cp .env.example .env      # PowerShell: Copy-Item .env.example .env
+npm run seed              # 8 fictional profiles, clears swipes
+npm run dev
+
+# Terminal 2 – client (http://localhost:5173, the only origin allowed by CORS)
+cd client
+npm install
+npm run dev
 ```
+
+## API
+
+| Method | Route | Result |
+|---|---|---|
+| GET | `/api/health` | `{ ok, db }` |
+| GET | `/api/profiles` | Profiles in seed order (`.lean()`) |
+| GET | `/api/swipes` | Swipe history, oldest first |
+| POST | `/api/swipes` | `{ profileId, direction }` → 201; 400 missing/invalid; 404 unknown profile; 409 duplicate |
+| DELETE | `/api/swipes/:id` | Undo one swipe → 200; 400 bad id; 404 not found |
+| DELETE | `/api/swipes` | Reset history → `{ deletedCount }` |
 
 ## Architecture
 
 | File | Responsibility |
 |---|---|
-| `src/data/photos.js` | Photo catalogue, categories and image path helpers |
-| `src/hooks/useGalleryParams.js` | Reads / writes `?category` and `?photo`; prev / next use `replace` |
-| `src/components/Layout.jsx` | Skip link, main navigation, `<Outlet />` |
-| `src/components/CategoryFilter.jsx` | Filter links with `aria-current="true"` |
-| `src/components/PhotoGrid.jsx` | Thumbnail links with sized, lazy images and `data-photo-id` |
-| `src/components/Lightbox.jsx` | `<dialog>` synced to the URL, prev / next, backdrop close, focus return |
-| `src/pages/PhotoGalleryLayout.jsx` | Derives visible photos, selected photo and prev / next during render |
+| `server/server.js` | Env guard, CORS, routes, validation, central JSON error handler |
+| `server/models/Profile.js`, `Swipe.js` | Mongoose schemas (`enum`, `unique`, timestamps) |
+| `server/seed.js`, `data/profiles.js` | Idempotent seed of fictional profiles |
+| `client/src/hooks/useDeckData.js` | Parallel fetch with one `AbortController`, retry |
+| `client/src/hooks/useSwipeInput.js` | Keyboard + pointer input, drag offset, threshold |
+| `client/src/components/SwipeDeck.jsx` | History state, swipe, LIFO undo, derived current card |
+| `client/src/utils/score.js`, `ScoreBoard.jsx` | Pure asymmetric metrics and their view |
 
 ## Verification status
 
 | Check | Result |
 |---|---|
-| Deep link `/gallery?category=shop&photo=p04` opens filtered grid + lightbox | Pass |
-| Esc / close button / backdrop click remove `photo` from the URL | Pass |
-| Back button closes the lightbox | Pass |
-| Unknown `?photo=` shows an alert, unknown `?category=` falls back to All | Pass |
-| Prev / next and arrow keys; buttons disabled at both ends | Pass |
-| Focus trapped in the dialog and returned to the last viewed card | Pass |
-| 375px: single-column grid, no horizontal scroll | Pass |
-| Lighthouse mobile (production build, Incognito): Performance 97, Accessibility 100, Best Practices 100, SEO 100 | Pass (Performance below the 100 target) |
-| `npm run lint` | Pass |
+| MongoDB 9.0.8 + mongoose 8.24.11 connect; `/api/health` → `db: connected` | Pass |
+| Missing `MONGODB_URI` → fail fast; MongoDB stopped → "connection failed", process exits | Pass |
+| POST valid 201 / duplicate 409 / missing field 400 / bad direction 400 / bad id 400 | Pass |
+| DELETE swipe 200, same id again 404 | Pass |
+| Keyboard ← → ↑ swipe; holding a key swipes once; Backspace undoes the last swipe | Pass |
+| Mouse drag past 80px swipes with a stamp preview; short drag snaps back | Pass |
+| Undo returns the most recently swiped card; works after a page reload | Pass |
+| Score: → ↑ ← = 25 pts, like rate 67%; undo and reload keep the score consistent | Pass |
+| Server down: load error with Retry; swipe / undo errors shown, state unchanged | Pass |
+| 375px: no horizontal scroll, even while dragging a card off-screen | Pass |
+| Lighthouse mobile (production build on port 5173, Incognito) | See report |
+| `npm run lint` (client) | Pass |
 
 Screenshots are included in the submitted Word report.
-
-## Image credits
-
-Screenshots of Teamfight Tactics © Riot Games, collected from public web sources for
-non-commercial coursework only.
