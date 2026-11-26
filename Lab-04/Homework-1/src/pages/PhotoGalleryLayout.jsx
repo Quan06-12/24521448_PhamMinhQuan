@@ -5,12 +5,19 @@ import PhotoGrid from '../components/PhotoGrid.jsx';
 import Lightbox from '../components/Lightbox.jsx';
 
 export default function PhotoGalleryLayout() {
-  const { category, photoId, buildSearch, closePhoto } = useGalleryParams();
+  const { category, photoId, buildSearch, closePhoto, showPhoto } = useGalleryParams();
 
   // Everything below is derived from the URL during render
   const visible = category === 'all' ? PHOTOS : PHOTOS.filter((p) => p.category === category);
   const selected = photoId ? PHOTOS.find((p) => p.id === photoId) ?? null : null;
   const label = CATEGORIES.find((c) => c.id === category).label;
+
+  // Prev / next walk the filtered list. A photo opened from another category
+  // (e.g. ?category=shop&photo=p01) is not in that list, so walk all photos instead.
+  const sequence = selected && visible.includes(selected) ? visible : PHOTOS;
+  const index = selected ? sequence.indexOf(selected) : -1;
+  const prev = index > 0 ? sequence[index - 1] : null;
+  const next = index >= 0 && index < sequence.length - 1 ? sequence[index + 1] : null;
 
   return (
     <section aria-labelledby="gallery-title">
@@ -31,8 +38,14 @@ export default function PhotoGalleryLayout() {
 
       <PhotoGrid photos={visible} buildSearch={buildSearch} />
 
-      {/* Always rendered so the ref is stable; opens when ?photo matches a real photo */}
-      <Lightbox photo={selected} onClose={closePhoto} />
+      <Lightbox
+        photo={selected}
+        position={index + 1}
+        total={sequence.length}
+        onClose={closePhoto}
+        onPrev={prev ? () => showPhoto(prev.id) : null}
+        onNext={next ? () => showPhoto(next.id) : null}
+      />
     </section>
   );
 }

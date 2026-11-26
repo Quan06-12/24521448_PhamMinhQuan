@@ -30,3 +30,9 @@
 .meta { display: grid; grid-template-columns: max-content 1fr; gap: 0.25rem 1rem; margin: 0; }
 .meta dt { color: #94a3b8; }
 .meta dd { margin: 0; }
+/* Lightbox footer: prev / position / next, 44px targets */
+.panelFooter { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.panelFooter button { min-height: 44px; min-width: 96px; padding: 0 1rem; border-radius: 8px; border: 1px solid #334155; background: #1e293b; color: #e2e8f0; font: inherit; cursor: pointer; }
+.panelFooter button:focus-visible { outline: 3px solid #22d3ee; outline-offset: 2px; }
+.panelFooter button:disabled { opacity: 0.45; cursor: not-allowed; }
+.panelFooter output { color: #94a3b8; }
